@@ -106,10 +106,11 @@ function updateActiveNav(sectionId) {
     const sectionMap = {
         'hero': null,
         'probleme': 'probleme',
-        'solution': 'solution',
-        'qui': 'solution',
-        'beta': 'beta',
-        'faq': 'beta'
+        'modules': 'modules',
+        'deploiement': 'modules',
+        'qui': 'modules',
+        'waitlist': 'waitlist',
+        'faq': 'waitlist'
     };
 
     const navId = sectionMap[sectionId];
@@ -263,9 +264,9 @@ function activateAllHighlights() {
    ═══════════════════════════════════ */
 
 const triplets = {
-    0: { verb: "Tracer", nouns: ["décision", "tolérance", "choix"] },
-    1: { verb: "Guider", nouns: ["ingénieur", "technicien", "junior"] },
-    2: { verb: "Ancrer", nouns: ["savoir", "expertise", "méthode"] }
+    0: { verb: "Tracer", nouns: ["décision", "tolérance", "exigence"] },
+    1: { verb: "Connecter", nouns: ["module", "équipe", "métier"] },
+    2: { verb: "Justifier", nouns: ["cote", "choix", "spécification"] }
 };
 
 function initTriptyqueAnimation() {
