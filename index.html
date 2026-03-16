@@ -15,6 +15,7 @@
     <meta property="og:title" content="TRACE7 — L'outil de traçabilité technique pour les bureaux d'études industriels">
     <meta property="og:description" content="13 modules intégrés, de l'analyse fonctionnelle à la gamme de contrôle. Chaque cote a une raison d'exister. SaaS ou on-premise.">
     <meta property="og:image" content="https://trace7.fr/assets/og-image.png">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="fr_FR">
@@ -55,6 +56,70 @@
             "name": "Luc Létoffé",
             "url": "https://lucletoffe.com"
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "C'est quoi exactement TRACE7 ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TRACE7 est un logiciel pour les bureaux d'études industriels. 13 modules intégrés couvrent toute la chaîne : import de cahier des charges, analyse fonctionnelle FAST, AMDEC, spécification GPS avec viewer 3D STEP, analyse de tolérances, gamme de contrôle. Chaque module est utilisable indépendamment, mais tous communiquent pour garantir la traçabilité bidirectionnelle."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Faut-il être expert en GPS pour utiliser TRACE7 ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Non. TRACE7 guide les ingénieurs à travers la démarche. Le logiciel propose un chemin conseillé, mais chaque module est indépendant. Vous pouvez commencer par ce dont vous avez besoin immédiatement."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Mes données sont-elles en sécurité ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En mode SaaS : hébergement souverain en France, chiffrement de bout en bout, données isolées par organisation, IA privée. En mode on-premise : serveur local, base de données locale, IA locale embarquée. Zéro connexion internet requise. Compatible avec les exigences défense, nucléaire et données classifiées."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Quels formats de fichiers sont supportés ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "STEP (.step, .stp) pour le viewer 3D et l'analyse des surfaces. PDF, DOCX, TXT et Markdown pour l'import de cahier des charges avec extraction IA. Excel (.xlsx, .xls, .csv) pour l'import de nomenclature."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment accéder à TRACE7 ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Aujourd'hui, TRACE7 est accessible en priorité aux clients en accompagnement Antifragile Hardware. Inscrivez-vous sur la liste d'attente pour être informé dès que la disponibilité s'élargit."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "C'est pour quels secteurs ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tout secteur qui conçoit des pièces mécaniques. PME machines spéciales, sous-traitance de précision, prototypistes, mais aussi défense, aéronautique, naval, nucléaire, ferroviaire, médical."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "C'est quoi le lien avec Antifragile Hardware ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TRACE7 est développé par Luc Létoffé, fondateur d'Antifragile Hardware. La méthode TRACE7 est née de 15 ans de diagnostic, formation et accompagnement en bureaux d'études. Le logiciel encode cette méthode pour la rendre accessible sans accompagnement."
+                }
+            }
+        ]
     }
     </script>
 </head>
@@ -109,8 +174,6 @@
         <!-- ═══════════════════════════════════════ -->
         <section id="hero" class="section section--hero section--gradient-orange">
             <div class="container">
-                <h1 class="visually-hidden">TRACE7 — L'outil de traçabilité technique pour les bureaux d'études industriels</h1>
-
                 <header class="site-header">
                     <a href="/" class="site-title">
                         TRACE<span class="text-accent">7</span>
@@ -118,7 +181,7 @@
                 </header>
 
                 <div class="hero-content">
-                    <h2 class="hero-headline">Vous en avez assez de coter au pif.</h2>
+                    <h1 class="hero-headline">Vous en avez assez de coter au pif.</h1>
 
                     <p class="hero-subheadline">TRACE7 est le logiciel qui relie chaque cote à sa justification. <span class="highlight-bg--teal">13 modules intégrés</span>, de l'analyse fonctionnelle à la gamme de contrôle. Un seul chemin conseillé. Des modules indépendants. Une traçabilité bidirectionnelle de bout en bout.</p>
 
@@ -185,6 +248,30 @@
                         <p>PME ferroviaire · Composants série</p>
                         <p class="proof-card__detail">Pièce sous-traitée à 120€ depuis 8 ans. Reconception par tolérancement fonctionnel : 8€/pièce. Même fonction, même fiabilité. La méthode TRACE7 appliquée à un seul composant.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- APERÇU PRODUIT                          -->
+        <!-- ═══════════════════════════════════════ -->
+        <section class="section section--compact section--grid">
+            <div class="container">
+                <div class="product-screenshots">
+                    <figure class="product-screenshot">
+                        <!-- TODO: Remplacer par capture réelle du viewer 3D STEP -->
+                        <div class="screenshot-placeholder" aria-label="Capture d'écran du viewer 3D STEP TRACE7">
+                            <span class="screenshot-placeholder__label">Viewer 3D STEP — Analyse des surfaces et contacts</span>
+                        </div>
+                        <figcaption>Importez votre fichier STEP. TRACE7 identifie les surfaces, analyse les contacts et propose les spécifications GPS adaptées.</figcaption>
+                    </figure>
+                    <figure class="product-screenshot">
+                        <!-- TODO: Remplacer par capture réelle de la traçabilité -->
+                        <div class="screenshot-placeholder" aria-label="Capture d'écran de la traçabilité bidirectionnelle TRACE7">
+                            <span class="screenshot-placeholder__label">Traçabilité bidirectionnelle — De l'exigence à la cote</span>
+                        </div>
+                        <figcaption>Modifiez une exigence : voyez immédiatement quelles fonctions, surfaces et cotes GPS sont impactées.</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
@@ -467,7 +554,8 @@
 
                     <div class="beta-card__form">
                         <div class="tally-embed">
-                            <a href="https://tally.so/r/KYlPV8?source=trace7-waitlist&cta=trace7-waitlist-inscription" class="cta-button cta-button--large" target="_blank" rel="noopener noreferrer">S'inscrire sur la liste d'attente</a>
+                            <iframe data-tally-src="https://tally.so/embed/KYlPV8?source=trace7-waitlist&cta=trace7-waitlist-inscription&alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="300" frameborder="0" marginheight="0" marginwidth="0" title="Liste d'attente TRACE7"></iframe>
+                            <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
                             <p class="tally-reassurance">On vous contacte dès que c'est ouvert pour vous.</p>
                         </div>
                     </div>

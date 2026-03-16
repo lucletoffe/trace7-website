@@ -126,10 +126,10 @@ function updateActiveNav(sectionId) {
    ═══════════════════════════════════ */
 
 function initTallyVisitorId() {
-    var vid = sessionStorage.getItem('trace7_vid');
+    var vid = localStorage.getItem('trace7_vid');
     if (!vid) {
         vid = crypto.randomUUID();
-        sessionStorage.setItem('trace7_vid', vid);
+        localStorage.setItem('trace7_vid', vid);
     }
 
     document.querySelectorAll('a[href*="tally.so"]').forEach(function(link) {

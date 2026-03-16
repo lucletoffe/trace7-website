@@ -463,6 +463,60 @@ html.light .faq-item { background: rgba(0, 0, 0, 0.02); }
 }
 
 /* ═══════════════════════════════════
+   PRODUCT SCREENSHOTS
+   ═══════════════════════════════════ */
+
+.product-screenshots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.product-screenshot { margin: 0; }
+
+.product-screenshot figcaption {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+}
+
+.screenshot-placeholder {
+    aspect-ratio: 16 / 10;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+html.light .screenshot-placeholder {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.screenshot-placeholder__label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.product-screenshot img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+@media (max-width: 767px) {
+    .product-screenshots { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* ═══════════════════════════════════
    MODULES GRID
    ═══════════════════════════════════ */
 
