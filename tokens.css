@@ -1,0 +1,54 @@
+/* undust design tokens — variables canoniques (brand kit v1.0)
+   Source : ~/Projects/undust/brand/tokens/tokens.css (extract sans @import Google Fonts ni reset)
+   Décision T7 (2026-04-29) : tokens partagés cross-site (undust.co · antifrag.fr · trace7.fr).
+   Trace7.fr garde sa palette sémantique FR (--noir-mat, --orange-alerte…)
+   en parallèle pour la cohérence interne du site.
+*/
+
+:root {
+  /* ===== Color — DARK ===== */
+  --bg-canonical:    #1a1a1a;
+  --bg-elev:         #141414;
+  --text-canonical:  #e5e7eb;
+  --text-muted:      #9ca3af;
+  --border-canonical:#4a4a4a;
+  --border-dim:      #2a2a2a;
+
+  --accent-50:  #fff4ef; --accent-100: #ffe4d6; --accent-200: #ffc7ad;
+  --accent-300: #ffa37e; --accent-400: #ff8857; --accent-500: #ff6b35;
+  --accent-600: #e85a26; --accent-700: #c4491b; --accent-800: #963617;
+  --accent-900: #6e2812;
+
+  --teal-300: #86afb8; --teal-400: #62929d; --teal-500: #4a7f8a;
+  --teal-700: #33575e;
+
+  --green-500:#4ade80;
+
+  --critical-300: #d68a8a; --critical-500: #b84848; --critical-700: #7d2c2c;
+
+  /* ===== Spacing — base 4 ===== */
+  --space-0: 0;       --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;    --space-5: 20px;  --space-6: 24px;  --space-8: 32px;
+  --space-10: 40px;   --space-12: 48px; --space-16: 64px; --space-20: 80px;
+  --space-24: 96px;   --space-32: 128px;
+
+  /* ===== Radius ===== */
+  --radius-none: 0;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-full: 9999px;
+
+  /* ===== Shadow ===== */
+  --shadow-sm:   0 1px 2px rgba(0,0,0,0.18);
+  --shadow-md:   0 4px 12px rgba(0,0,0,0.25);
+  --shadow-lg:   0 12px 32px rgba(0,0,0,0.32);
+  --shadow-glow-accent: 0 0 24px rgba(255,107,53,0.18);
+  --shadow-glow-teal:   0 0 24px rgba(74,127,138,0.18);
+
+  /* ===== Transition ===== */
+  --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}

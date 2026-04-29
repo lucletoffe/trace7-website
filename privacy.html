@@ -8,9 +8,7 @@
     <meta name="theme-color" content="#ff6b35">
     <link rel="canonical" href="https://trace7.fr/privacy.html">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- T7 (2026-04-29) : Google Fonts retirés (souveraineté + perf). -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -93,21 +91,32 @@
             </div>
         </section>
 
-        <footer class="footer-section">
+        <footer class="footer-section site-footer">
             <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <p>&copy; TRACE7, 2026. Par <a href="https://antifragilehardware.fr" class="footer-link" target="_blank" rel="noopener noreferrer">Antifragile Hardware</a>.<br><svg class="icon-sm icon-accent" aria-hidden="true"><use href="#icon-map-pin"/></svg> Auvergne, France</p>
-                        <p><a href="privacy.html" class="footer-link">Politique de Confidentialité</a></p>
-                        <p><a href="terms.html" class="footer-link">Conditions d'Utilisation</a></p>
-                    </div>
-                    <div class="footer-column footer-column--center"><p class="footer-motto">chaque cote a une raison d'exister</p></div>
-                    <div class="footer-column footer-column--right">
-                        <ul class="footer-links">
-                            <li><a href="https://linkedin.com/in/lucletoffe" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn&nbsp;&nbsp;<svg class="icon-sm icon-accent" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
-                            <li><a href="mailto:contact@trace7.fr" class="footer-link">Contact&nbsp;&nbsp;<svg class="icon-sm icon-accent" aria-hidden="true"><use href="#icon-mail"/></svg></a></li>
-                        </ul>
-                    </div>
+                <div class="footer-inner">
+                    <p class="footer-manifeste"><em>chaque cote a une raison d'exister</em></p>
+                    <p class="footer-souverainete">Hébergé en France <span aria-hidden="true">·</span> Protégé par CrowdSec</p>
+                    <nav class="cross-sites" aria-label="Sites undust">
+                        <a href="https://undust.co/">undust.co</a>
+                        <span aria-hidden="true">·</span>
+                        <a href="https://antifrag.fr/">antifrag.fr</a>
+                        <span aria-hidden="true">·</span>
+                        <a href="https://trace7.fr/" aria-current="page">trace7.fr</a>
+                        <span aria-hidden="true">·</span>
+                        <a href="https://lucletoffe.com/">lucletoffe.com</a>
+                    </nav>
+                    <p class="footer-mentions">
+                        TRACE7 <span aria-hidden="true">·</span> SIREN 792&nbsp;722&nbsp;449 <span aria-hidden="true">·</span>
+                        <a href="https://www.linkedin.com/in/lucletoffe" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> <span aria-hidden="true">·</span>
+                        <a href="https://antifrag.fr/charte-ia/" class="footer-link" target="_blank" rel="noopener noreferrer">Charte IA</a> <span aria-hidden="true">·</span>
+                        <a href="privacy.html" class="footer-link">Confidentialité</a> <span aria-hidden="true">·</span>
+                        <a href="terms.html" class="footer-link">Conditions d'utilisation</a>
+                    </p>
+                    <p class="footer-territoire">&copy; TRACE7, 2026 <span aria-hidden="true">·</span> Auvergne, France</p>
+                    <p class="footer-by-undust">
+                        <img src="assets/monogram-mono-white.svg" alt="" width="22" height="22" class="undust-monogram" aria-hidden="true">
+                        <span>by <a href="https://undust.co/" class="footer-link">undust</a></span>
+                    </p>
                 </div>
             </div>
         </footer>
