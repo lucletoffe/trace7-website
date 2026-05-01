@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand"><strong>Trace</strong><span class="seven">7</span></a>
+    <nav class="main-nav">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </header>
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      {{ range .Site.Menus.footer }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <p class="footer-credit">
+      Trace7 — édité par <a href="https://undust.co">Undust SAS</a>.
+      Composant de la stack Undust : capture (Trace7) · moteur (Fractal7) · référentiel client (Atlas7) · ressources publiques (Forge7).
+      <br>Hébergé en France · <a href="https://undust.co/charte-ia/">Charte IA souveraine</a>
+    </p>
+  </footer>
+</body>
+</html>

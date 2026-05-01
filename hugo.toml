@@ -1,0 +1,68 @@
+baseURL = "https://trace7.fr/"
+languageCode = "fr-fr"
+title = "Trace7"
+defaultContentLanguage = "fr"
+enableRobotsTXT = true
+enableEmoji = false
+
+[params]
+  description = "Logiciel de spécification technique pour l'industrie. Capturer le geste, restituer la décision, tenir la conformité."
+  contact_email = "luc@undust.co"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[taxonomies]
+  domaine = "domaines"
+  secteur = "secteurs"
+  composant = "composants"
+
+[menu]
+  [[menu.main]]
+    name = "Produit"
+    url = "/produit/"
+    weight = 10
+  [[menu.main]]
+    name = "Formation"
+    url = "/formation/"
+    weight = 20
+  [[menu.main]]
+    name = "Communauté"
+    url = "/communaute/"
+    weight = 30
+  [[menu.main]]
+    name = "Cas"
+    url = "/cas/"
+    weight = 40
+  [[menu.main]]
+    name = "Pricing"
+    url = "/pricing/"
+    weight = 50
+  [[menu.main]]
+    name = "Démo →"
+    url = "/demo/"
+    weight = 60
+
+  [[menu.footer]]
+    name = "Sécurité"
+    url = "/securite/"
+    weight = 10
+  [[menu.footer]]
+    name = "Changelog"
+    url = "/changelog/"
+    weight = 20
+  [[menu.footer]]
+    name = "Recherche"
+    url = "/recherche/"
+    weight = 30
+  [[menu.footer]]
+    name = "Affiliation"
+    url = "/affiliation/"
+    weight = 40
+  [[menu.footer]]
+    name = "Mentions légales"
+    url = "/legal/mentions-legales/"
+    weight = 50

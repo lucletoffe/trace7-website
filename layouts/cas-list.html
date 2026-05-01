@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="cas-list-page">
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="lede">{{ . }}</p>{{ end }}
+  </header>
+  {{ .Content }}
+
+  <section class="cas-grid">
+    {{ range where .Site.RegularPages "Section" "cas" }}
+      {{ if ne .File.LogicalName "_index.md" }}
+      <article class="cas-card">
+        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Params.description }}</p>
+        <ul class="cas-meta">
+          {{ with .Params.roi }}<li><strong>ROI :</strong> {{ . }}</li>{{ end }}
+          {{ with .Params.secteur }}<li><strong>Secteur :</strong> {{ . }}</li>{{ end }}
+          {{ with .Params.duree_mission }}<li><strong>Durée :</strong> {{ . }}</li>{{ end }}
+        </ul>
+      </article>
+      {{ end }}
+    {{ end }}
+  </section>
+</article>
+{{ end }}

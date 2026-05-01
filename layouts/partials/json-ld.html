@@ -1,0 +1,14 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ if .IsHome }}Organization{{ else }}WebPage{{ end }}",
+  "name": "{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "description": "{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}"{{ if .IsHome }},
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Undust SAS",
+    "url": "https://undust.co/"
+  }{{ end }}
+}
+</script>

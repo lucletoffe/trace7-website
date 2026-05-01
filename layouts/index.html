@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="home">
+  <header>
+    <h1>{{ .Site.Title }}</h1>
+    <p class="lede">{{ .Site.Params.description }}</p>
+  </header>
+  {{ .Content }}
+</article>
+{{ end }}

@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="cas-single">
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="lede">{{ . }}</p>{{ end }}
+    <ul class="cas-meta">
+      {{ with .Params.secteur }}<li><strong>Secteur :</strong> {{ . }}</li>{{ end }}
+      {{ with .Params.composants }}<li><strong>Composants :</strong> {{ delimit . ", " }}</li>{{ end }}
+      {{ with .Params.roi }}<li><strong>ROI :</strong> {{ . }}</li>{{ end }}
+      {{ with .Params.duree_mission }}<li><strong>Durée :</strong> {{ . }}</li>{{ end }}
+      {{ if .Params.client_anonymise }}<li><em>Client anonymisé</em></li>{{ end }}
+    </ul>
+  </header>
+  {{ .Content }}
+</article>
+{{ end }}

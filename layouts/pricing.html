@@ -1,0 +1,28 @@
+{{ define "main" }}
+<article class="pricing-page">
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="lede">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ .Content }}
+
+  <section class="pricing-tiers">
+    {{ range .Params.tiers }}
+    <article class="tier">
+      <h3>{{ .name }}</h3>
+      <p class="tier-inclus">{{ .inclus }}</p>
+      <p class="tier-price">
+        <span class="early">{{ .early_bird }}</span>
+        <span class="standard">→ {{ .courant }}</span>
+      </p>
+      <p class="tier-affiliation"><em>Affiliation : {{ .affiliation }}</em></p>
+    </article>
+    {{ end }}
+  </section>
+
+  <section class="early-bird">
+    <p>Places fondatrices restantes : <span id="early-bird-counter" data-max="{{ .Params.early_bird_max }}">{{ .Params.early_bird_max }}</span> / {{ .Params.early_bird_max }}</p>
+  </section>
+</article>
+{{ end }}
