@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>testimonial — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="testimonial.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: .75rem;
+  }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div>
+    <div class="specimen__label">— Default (teal — crédibilité)</div>
+    <blockquote class="testimonial">
+      <p class="testimonial__quote">Luc a passé 5 jours dans notre atelier. Il est reparti avec la méthode de notre régleur retraité, structurée. C'est ce qu'on n'avait jamais réussi à écrire en 12 ans.</p>
+      <p class="testimonial__author">P. Bernard
+        <span class="testimonial__author-role">Directeur industriel · PMI usinage 80 personnes</span>
+      </p>
+    </blockquote>
+  </div>
+
+  <div>
+    <div class="specimen__label">— Variant accent (verbatim performance)</div>
+    <blockquote class="testimonial testimonial--accent">
+      <p class="testimonial__quote">On gagne 3 jours par révision plan. Trace7 a payé sa licence sur le premier projet.</p>
+      <p class="testimonial__author">M. Dubois
+        <span class="testimonial__author-role">Responsable BE · sous-traitant aéronautique</span>
+      </p>
+    </blockquote>
+  </div>
+
+  <div>
+    <div class="specimen__label">— Variant critical (verbatim douleur)</div>
+    <blockquote class="testimonial testimonial--critical">
+      <p class="testimonial__quote">On a toujours fait comme ça. C'est ce que nous a dit le chef d'atelier, et c'est exactement ce qui a fait perdre 280k€ sur la dernière série.</p>
+      <p class="testimonial__author">— Échantillon audit undust 2024</p>
+    </blockquote>
+  </div>
+
+  <div>
+    <div class="specimen__label">— Variant --lg (quote en h3)</div>
+    <blockquote class="testimonial testimonial--teal testimonial--lg">
+      <p class="testimonial__quote">L'audit a duré une journée. On a passé six mois à réparer ce qu'il a vu en une matinée.</p>
+      <p class="testimonial__author">A. Lefèvre
+        <span class="testimonial__author-role">CEO · ETI mécanique de précision</span>
+      </p>
+    </blockquote>
+  </div>
+
+  <div class="tone-soft">
+    <div class="specimen__label">— Tone-soft (trace7)</div>
+    <blockquote class="testimonial">
+      <p class="testimonial__quote">Trace7 est devenu la source de vérité pour nos cotations. Plus de débat sur "qui a changé quoi".</p>
+      <p class="testimonial__author">C. Roux
+        <span class="testimonial__author-role">Méthodes · sous-traitant auto</span>
+      </p>
+    </blockquote>
+  </div>
+
+</body>
+</html>

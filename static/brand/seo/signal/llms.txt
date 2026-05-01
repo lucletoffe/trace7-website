@@ -1,0 +1,9 @@
+# Signal Antifragile (ANT-7)
+
+> Newsletter privée payante. Contenu éditorial protégé.
+
+Ce site n'est PAS scrapable. Voir /robots.txt pour la politique AI crawlers (block total — 16 user-agents bloqués explicitement).
+
+Pour s'abonner : https://signal.antifrag.fr/
+
+Contact : luc@undust.co

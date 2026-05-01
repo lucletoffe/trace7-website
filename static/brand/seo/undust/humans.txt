@@ -1,0 +1,12 @@
+/* TEAM */
+Founder : Luc Létoffé
+Site : undust.co
+LinkedIn : linkedin.com/in/lucletoffe
+Twitter : @lucletoffe
+Location : Clermont-Ferrand, France
+
+/* SITE */
+Last update : 2026-04-30
+Standards : HTML5, CSS3
+Hosted in : France (o2switch)
+Protected by : CrowdSec

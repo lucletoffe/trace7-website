@@ -1,0 +1,68 @@
+/* undust hero-composed — v1.1
+   Pattern hero en 4 strates (équivalent .these du DESIGN-SYSTEM.md).
+   Moments cognitifs servis : #1 identité + #2 thèse + #3 action + #4 bénéfice.
+   Dépend de tokens.css + typography.css + tones.css.
+*/
+
+.hero-composed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  max-width: 60ch;
+}
+
+.hero-composed__mark {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.hero-composed__l1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.hero-composed__l2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.05;
+  letter-spacing: var(--letter-spacing-display);
+  color: var(--accent);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.hero-composed--teal     .hero-composed__l2 { color: var(--teal); }
+.hero-composed--critical .hero-composed__l2 { color: var(--critical); }
+
+.hero-composed__l3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: var(--fw-light);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--teal);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Variant ship : toutes strates (default = ship) */
+.hero-composed--ship .hero-composed__mark,
+.hero-composed--ship .hero-composed__l1,
+.hero-composed--ship .hero-composed__l2,
+.hero-composed--ship .hero-composed__l3 { display: block; }
+
+/* Variant simple : l2 seul (slap pur) */
+.hero-composed--simple .hero-composed__mark,
+.hero-composed--simple .hero-composed__l1,
+.hero-composed--simple .hero-composed__l3 { display: none; }

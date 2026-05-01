@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Cards LinkedIn — undust V1 (audits) · gabarit safe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#1a1a1a; --ink:#e5e7eb; --muted:#9ca3af;
+    --orange:#ff6b35; --teal:#4a7f8a; --critical:#b84848; --neutral:#4a4a4a;
+    --line:#2a2a2a;
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:#0a0a0a; color:var(--ink); font-family:"Titillium Web",sans-serif; }
+  .page { padding:48px 48px 80px; max-width:1600px; margin:0 auto; }
+  .page-title { font-size:32px; font-weight:700; margin:0 0 4px; letter-spacing:-0.5px; }
+  .page-title .dot { color:var(--orange); }
+  .page-sub { font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:40px; }
+
+  /* ============================================================
+     LEGEND : zone safe explainer
+     ============================================================ */
+  .legend {
+    display:flex; gap:32px; align-items:flex-start; margin:24px 0 56px;
+    padding:24px; background:#141414; border:1px solid #222; border-radius:8px;
+  }
+  .legend-card {
+    width:240px; height:240px; flex-shrink:0;
+    position:relative;
+    background:var(--bg);
+    border:1px solid #2a2a2a;
+  }
+  .legend-card .ring {
+    position:absolute;
+    border:1px dashed;
+    pointer-events:none;
+    display:flex; align-items:flex-start; justify-content:flex-start;
+    font-family:"JetBrains Mono",monospace; font-size:9px;
+    padding:3px 5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .legend-card .ring.bleed   { inset:0; border-color:#444; color:#777; }
+  .legend-card .ring.safe    { inset:26px; border-color:var(--teal); color:var(--teal); }
+  .legend-card .ring.hot     { inset:44px; border-color:var(--orange); color:var(--orange); }
+  .legend-text { font-size:14px; line-height:1.65; color:#cbd5e1; max-width:760px; }
+  .legend-text h3 { font-size:16px; margin:0 0 8px; color:var(--ink); }
+  .legend-text code { font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--orange); background:#222; padding:2px 6px; border-radius:3px; }
+  .legend-text ul { margin:8px 0 0; padding-left:20px; }
+  .legend-text li { margin-bottom:4px; }
+
+  /* ============================================================
+     CARD GRID
+     ============================================================ */
+  h2.section-h {
+    font-family:"Titillium Web",sans-serif;
+    font-size:14px; font-weight:600;
+    letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--muted);
+    margin:48px 0 24px;
+    padding-bottom:12px; border-bottom:1px solid #222;
+  }
+
+  .grid {
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;
+    margin-bottom:48px;
+  }
+  .card-wrap { display:flex; flex-direction:column; gap:16px; }
+  .card-meta { font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--muted); letter-spacing:0.12em; text-transform:uppercase; }
+  .card-meta strong { color:var(--ink); font-weight:500; }
+
+  .card-frame {
+    width:100%; aspect-ratio:1/1; position:relative;
+    background:#000;
+  }
+  .card-frame .scale {
+    width:1080px; height:1080px;
+    transform-origin:top left;
+    position:absolute; top:0; left:0;
+  }
+
+  /* Overlay zone safe (toggleable)
+     Deux modes de crop LinkedIn mesurés sur capture :
+       - GRILLE (2+ cards par expérience) : 105×105 carré, image complète visible
+       - ISOLÉE (1 card seule)            : 212×143 paysage 3:2, haut/bas coupés
+     Zone safe universelle = intersection = rectangle 840×720 centré */
+  .card-frame .overlay {
+    position:absolute; inset:0; pointer-events:none; z-index:5;
+    opacity:0; transition:opacity 0.18s;
+  }
+  body.show-safe .card-frame .overlay { opacity:1; }
+  .card-frame .overlay .ring {
+    position:absolute;
+    border:1px dashed;
+  }
+  /* Ring "isolée" : la bande visible en mode card unique (1080×720, marges 180px haut/bas) */
+  .card-frame .overlay .ring.isolated {
+    top:16.67%; bottom:16.67%; left:0; right:0;
+    border-color:rgba(184,72,72,0.85);
+  }
+  /* Ring "safe universel" : 840×680 centré, survit aux DEUX modes */
+  .card-frame .overlay .ring.universal {
+    top:18.5%; bottom:18.5%; left:11.11%; right:11.11%;
+    border-color:rgba(255,107,53,0.95);
+    border-width:2px;
+  }
+  .card-frame .overlay .label {
+    position:absolute;
+    font-family:"JetBrains Mono",monospace;
+    font-size:9px; letter-spacing:0.1em; text-transform:uppercase;
+    padding:2px 5px; border-radius:2px;
+    white-space:nowrap;
+  }
+  .card-frame .overlay .label.isolated  { top:16.67%; left:0;      transform:translate(0,-100%); background:var(--critical); color:#fff; }
+  .card-frame .overlay .label.universal { top:18.5%;  left:11.11%; transform:translate(0,-100%); background:var(--orange);   color:#000; }
+
+  /* ============================================================
+     THUMBNAIL ROW
+     Deux modes de rendu mesurés sur capture LinkedIn (689×630, dark mode):
+       - GRILLE : ~105×105 carré (image complète, à l'échelle 1:1)
+       - ISOLÉE : ~212×143 paysage (image étirée, haut/bas coupés)
+     ============================================================ */
+  .thumb-row {
+    display:flex; gap:18px; align-items:center;
+    padding:16px; background:#232629; border:1px solid #2c2f33; border-radius:6px;
+  }
+  /* Thumb GRILLE — carré 105×105, scale uniforme */
+  .thumb-grille {
+    width:105px; height:105px; flex-shrink:0;
+    position:relative; overflow:hidden;
+    background:#000;
+  }
+  .thumb-grille .scale {
+    width:1080px; height:1080px;
+    transform-origin:top left;
+    transform:scale(0.09722);  /* 105/1080 */
+    position:absolute; top:0; left:0;
+  }
+  /* Thumb ISOLÉE — paysage 212×143, image scalée + cropée centralement */
+  .thumb-isolee {
+    width:212px; height:143px; flex-shrink:0;
+    position:relative; overflow:hidden;
+    background:#000;
+  }
+  .thumb-isolee .scale {
+    /* On scale la card 1080→212 sur la largeur (≈0.1963)
+       Hauteur projetée : 1080 × 0.1963 ≈ 212px → on centre verticalement
+       et on crop pour ne montrer que 143px (bande centrale) */
+    width:1080px; height:1080px;
+    transform-origin:top left;
+    transform:scale(0.1963);
+    position:absolute;
+    top:-34px;   /* (212 - 143) / 2 = 34.5, on remonte la card pour centrer */
+    left:0;
+  }
+  .thumb-info { font-family:"JetBrains Mono",monospace; font-size:10px; color:var(--muted); letter-spacing:0.08em; line-height:1.5; }
+  .thumb-info strong { color:var(--ink); font-weight:500; display:block; margin-bottom:2px; font-size:10px; letter-spacing:0.1em; }
+  .thumb-info .ko { color:var(--critical); }
+  .thumb-info .ok { color:#7fc88f; }
+
+  /* Toolbar */
+  .toolbar {
+    position:fixed; top:16px; right:16px; z-index:100;
+    display:flex; gap:8px;
+    padding:8px;
+    background:#141414;
+    border:1px solid #2a2a2a;
+    border-radius:6px;
+  }
+  .toolbar button {
+    background:#222; color:var(--ink);
+    border:1px solid #333;
+    padding:8px 14px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    border-radius:4px;
+  }
+  .toolbar button.active { background:var(--orange); color:#000; border-color:var(--orange); }
+  .toolbar button:hover { border-color:var(--orange); }
+
+  /* ============================================================
+     CARD — gabarit nouveau (zone safe stricte)
+     ============================================================ */
+  .card {
+    width:1080px; height:1080px;
+    background:var(--bg);
+    position:relative;
+    overflow:hidden;
+    font-family:"Titillium Web",sans-serif;
+    color:var(--ink);
+  }
+
+  /* Décor : grille teal coin haut-droit, plus dense + plus gras */
+  .card .corner-grid {
+    position:absolute; top:0; right:0;
+    width:560px; height:560px;
+    background-image:
+      linear-gradient(to right, rgba(74,127,138,0.6) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(74,127,138,0.6) 2px, transparent 2px);
+    background-size:64px 64px;
+    -webkit-mask-image: radial-gradient(circle at top right, #000 0%, #000 30%, transparent 75%);
+            mask-image: radial-gradient(circle at top right, #000 0%, #000 30%, transparent 75%);
+    pointer-events:none;
+  }
+  /* Glyphe d'angle — DANS la zone safe (pas dans le bleed)
+     Position fixe : x=880 (= safe right - 60), y=200 (= safe top + 20) */
+  .card .glyph {
+    position:absolute;
+    top:200px; right:140px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:56px;
+    font-weight:700;
+    color:var(--orange);
+    line-height:1;
+    z-index:2;
+  }
+
+  /* Layout interne — GRILLE FIXE
+     Safe universelle : x=120→960 (840px), y=180→900 (720px)
+     Badge : top-aligned dans la safe, y=200
+     Punchline : démarre y=320, max 5 lignes
+     Wordmark : bas, y=950 (peut être croppé en mode isolée — OK) */
+  .card .inner {
+    position:absolute; inset:0;
+    z-index:3;
+  }
+  /* Badge : position FIXE en haut de la safe */
+  .card .badge {
+    position:absolute;
+    top:200px; left:140px;
+    padding:18px 28px;
+    font-family:"JetBrains Mono",monospace;
+    font-weight:700;
+    font-size:30px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:#fff;
+    border-radius:6px;
+  }
+  .badge.teal     { background:var(--teal); }
+  .badge.critical { background:var(--critical); }
+  .badge.neutral  { background:var(--neutral); }
+
+  /* Punchline : position FIXE, démarre y=350 (sous le badge avec gap), alignée à gauche */
+  .card h2.punch {
+    position:absolute;
+    top:350px; left:140px; right:140px;
+    font-family:"Titillium Web",sans-serif;
+    font-weight:700;
+    font-size:128px;
+    line-height:0.96;
+    letter-spacing:-3px;
+    margin:0;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .card h2.punch .accent { color:var(--orange); }
+  /* size-md/sm/xs : 4-5 lignes possibles, doivent tenir dans 540px de hauteur (350→890) */
+  .card h2.punch.size-md { font-size:118px; letter-spacing:-2.6px; }
+  .card h2.punch.size-sm { font-size:104px; letter-spacing:-2.2px; }
+  .card h2.punch.size-xs { font-size:92px;  letter-spacing:-1.8px; }
+
+  /* Subline : optionnelle, position fixe juste sous la punchline (max 1 ligne pour rester dans safe) */
+  .card .subline {
+    position:absolute;
+    left:140px; right:140px;
+    bottom:160px;
+    font-family:"Titillium Web",sans-serif;
+    font-weight:400;
+    font-size:34px;
+    line-height:1.25;
+    letter-spacing:-0.4px;
+    color:var(--ink);
+  }
+  .card .subline .accent { color:var(--orange); font-weight:600; }
+  .card .subline.italic { font-style:italic; }
+
+  /* Wordmark — BLEED bas, peut être croppé en mode ISOLÉE (assumé) */
+  .card .signature {
+    position:absolute;
+    left:120px; right:120px;
+    bottom:60px;
+    display:flex; align-items:baseline;
+  }
+  .card .wordmark {
+    font-family:"Titillium Web",sans-serif;
+    font-weight:700;
+    font-size:34px;
+    letter-spacing:-0.6px;
+    color:var(--ink);
+  }
+  .card .wordmark .dot { color:var(--orange); }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button id="btn-safe">Zones safe</button>
+  <button id="btn-thumbs" class="active">Thumbnails LinkedIn</button>
+</div>
+
+<div class="page">
+  <h1 class="page-title">Cards LinkedIn — gabarit safe mesuré<span class="dot">.</span></h1>
+  <div class="page-sub">3 audits · 1080×1080 · zone universelle 840×720</div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-card">
+      <div class="ring bleed">BLEED</div>
+      <div class="ring safe" style="inset:13.5% 11%; border-color:var(--critical); color:var(--critical);">ISOLÉE 3:2</div>
+      <div class="ring hot" style="inset:18% 11%; border-color:var(--orange); color:var(--orange);">SAFE</div>
+    </div>
+    <div class="legend-text">
+      <h3>Mesuré sur capture LinkedIn (689×630)</h3>
+      <p>Deux modes de crop détectés en analysant les pixels colorés des images originales (800×800) vs leur rendu dans le feed Expérience.</p>
+      <ul>
+        <li><strong style="color:#7fc88f">GRILLE</strong> (2+ cards par expérience) · ~<code>105×105px carré</code> — image entière visible, juste downscalée. Ratio X/Y mesuré : 0.97–1.06.</li>
+        <li><strong style="color:var(--critical)">ISOLÉE</strong> (1 seule card) · ~<code>212×143px paysage</code> — ratio 1.48 (≈3:2). LinkedIn coupe ~16.7% en haut ET en bas du carré pour fitter une bande horizontale.</li>
+        <li><strong style="color:var(--orange)">ZONE UNIVERSELLE</strong> · rectangle <code>840×720</code> centré (marges 120px H, 180px V) — survit aux DEUX modes. Tout le contenu critique (badge, punchline, signature) doit y tenir.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-h">Vague 1 — Audits · 3 cards</h2>
+  <div class="grid">
+
+    <!-- ===== A1 ===== -->
+    <div class="card-wrap">
+      <div class="card-meta"><strong>A1</strong> · audit · continuité</div>
+      <div class="card-frame">
+        <div class="scale" data-card="A1"><div class="card">
+          <div class="corner-grid"></div>
+          <div class="glyph">^</div>
+          <div class="inner">
+            <span class="badge teal">AUDIT · CONTINUITÉ</span>
+            <h2 class="punch size-md">
+              VOTRE EXPERT PART<br/>
+              <span class="accent">DANS 6 MOIS.</span>
+            </h2>
+            <span class="wordmark">undust<span class="dot">.</span></span>
+          </div>
+        </div></div>
+        <div class="overlay">
+          <div class="ring isolated"></div>
+          <div class="ring universal"></div>
+          <div class="label isolated">ISOLÉE 1080×720</div>
+          <div class="label universal">SAFE UNIVERSEL 840×720</div>
+        </div>
+      </div>
+      <div class="thumb-row">
+        <div class="thumb-grille"><div class="scale">
+          <div class="card">
+            <div class="corner-grid"></div>
+            <div class="glyph">^</div>
+            <div class="inner">
+              <span class="badge teal">AUDIT · CONTINUITÉ</span>
+              <h2 class="punch size-md">VOTRE EXPERT PART<br/><span class="accent">DANS 6 MOIS.</span></h2>
+              <span class="wordmark">undust<span class="dot">.</span></span>
+            </div>
+          </div>
+        </div></div>
+        <div class="thumb-isolee"><div class="scale">
+          <div class="card">
+            <div class="corner-grid"></div>
+            <div class="glyph">^</div>
+            <div class="inner">
+              <span class="badge teal">AUDIT · CONTINUITÉ</span>
+              <h2 class="punch size-md">VOTRE EXPERT PART<br/><span class="accent">DANS 6 MOIS.</span></h2>
+              <span class="wordmark">undust<span class="dot">.</span></span>
+            </div>
+          </div>
+        </div></div>
+        <div class="thumb-info">
+          <strong class="ok">GRILLE 105²</strong>2+ cards/exp<br/><strong class="ko" style="margin-top:6px;">ISOLÉE 212×143</strong>1 seule card
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== A2 ===== -->
+    <div class="card-wrap">
+      <div class="card-meta"><strong>A2</strong> · audit · efficience</div>
+      <div class="card-frame">
+        <div class="scale" data-card="A2"><div class="card">
+          <div class="corner-grid"></div>
+          <div class="glyph">+</div>
+          <div class="inner">
+            <span class="badge teal">AUDIT · EFFICIENCE</span>
+            <h2 class="punch size-sm">
+              ON DÉBUSQUE VOS<br/>
+              <span class="accent">MARGES CACHÉES,</span><br/>
+              SANS PITIÉ.
+            </h2>
+            <span class="wordmark">undust<span class="dot">.</span></span>
+          </div>
+        </div></div>
+        <div class="overlay">
+          <div class="ring isolated"></div>
+          <div class="ring universal"></div>
+          <div class="label isolated">ISOLÉE 1080×720</div>
+          <div class="label universal">SAFE UNIVERSEL 840×720</div>
+        </div>
+      </div>
+      <div class="thumb-row">
+        <div class="thumb-grille"><div class="scale">
+          <div class="card">
+            <div class="corner-grid"></div>
+            <div class="glyph">+</div>
+            <div class="inner">
+              <span class="badge teal">AUDIT · EFFICIENCE</span>
+              <h2 class="punch size-sm">ON DÉBUSQUE VOS<br/><span class="accent">MARGES CACHÉES,</span><br/>SANS PITIÉ.</h2>
+              <span class="wordmark">undust<span class="dot">.</span></span>
+            </div>
+          </div>
+        </div></div>
+        <div class="thumb-isolee"><div class="scale">
+          <div class="card">
+            <div class="corner-grid"></div>
+            <div class="glyph">+</div>
+            <div class="inner">
+              <span class="badge teal">AUDIT · EFFICIENCE</span>
+              <h2 class="punch size-sm">ON DÉBUSQUE VOS<br/><span class="accent">MARGES CACHÉES,</span><br/>SANS PITIÉ.</h2>
+              <span class="wordmark">undust<span class="dot">.</span></span>
+            </div>
+          </div>
+        </div></div>
+        <div class="thumb-info">
+          <strong class="ok">GRILLE 105²</strong>2+ cards/exp<br/><strong class="ko" style="margin-top:6px;">ISOLÉE 212×143</strong>1 seule card
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== A3 ===== -->
+    <div class="card-wrap">
+      <div class="card-meta"><strong>A3</strong> · audit · conformité</div>
+      <div class="card-frame">
+        <div class="scale" data-card="A3"><div class="card">
+          <div class="corner-grid"></div>
+          <div class="glyph">⌀</div>
+          <div class="inner">
+            <span class="badge teal">AUDIT · CONFORMITÉ</span>
+            <h2 class="punch size-sm">
+              VOTRE DOSSIER<br/>
+              NE PASSE PAS.<br/>
+              <span class="accent">ON LE FAIT PASSER.</span>
+            </h2>
+            <span class="wordmark">undust<span class="dot">.</span></span>
+          </div>
+        </div></div>
+        <div class="overlay">
+          <div class="ring isolated"></div>
+          <div class="ring universal"></div>
+          <div class="label isolated">ISOLÉE 1080×720</div>
+          <div class="label universal">SAFE UNIVERSEL 840×720</div>
+        </div>
+      </div>
+      <div class="thumb-row">
+        <div class="thumb-grille"><div class="scale">
+          <div class="card">
+            <div class="corner-grid"></div>
+            <div class="glyph">⌀</div>
+            <div class="inner">
+              <span class="badge teal">AUDIT · CONFORMITÉ</span>
+              <h2 class="punch size-sm">VOTRE DOSSIER<br/>NE PASSE PAS.<br/><span class="accent">ON LE FAIT PASSER.</span></h2>
+              <span class="wordmark">undust<span class="dot">.</span></span>
+            </div>
+          </div>
+        </div></div>
+        <div class="thumb-isolee"><div class="scale">
+          <div class="card">
+            <div class="corner-grid"></div>
+            <div class="glyph">⌀</div>
+            <div class="inner">
+              <span class="badge teal">AUDIT · CONFORMITÉ</span>
+              <h2 class="punch size-sm">VOTRE DOSSIER<br/>NE PASSE PAS.<br/><span class="accent">ON LE FAIT PASSER.</span></h2>
+              <span class="wordmark">undust<span class="dot">.</span></span>
+            </div>
+          </div>
+        </div></div>
+        <div class="thumb-info">
+          <strong class="ok">GRILLE 105²</strong>2+ cards/exp<br/><strong class="ko" style="margin-top:6px;">ISOLÉE 212×143</strong>1 seule card
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Scale chaque .card-frame > .scale pour fit son parent
+  function fit() {
+    document.querySelectorAll('.card-frame').forEach(f => {
+      const w = f.clientWidth;
+      const s = f.querySelector(':scope > .scale');
+      if (!s) return;
+      s.style.transform = 'scale(' + (w/1080) + ')';
+      f.style.height = w + 'px';
+    });
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // Toolbar
+  const btnSafe = document.getElementById('btn-safe');
+  const btnThumbs = document.getElementById('btn-thumbs');
+  btnSafe.addEventListener('click', () => {
+    document.body.classList.toggle('show-safe');
+    btnSafe.classList.toggle('active');
+  });
+  btnThumbs.addEventListener('click', () => {
+    document.body.classList.toggle('hide-thumbs');
+    btnThumbs.classList.toggle('active');
+    document.querySelectorAll('.thumb-row').forEach(t => {
+      t.style.display = document.body.classList.contains('hide-thumbs') ? 'none' : 'flex';
+    });
+  });
+</script>
+</body>
+</html>

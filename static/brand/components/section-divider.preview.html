@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>section-divider — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="section-divider.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 1100px; margin: 0 auto; }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: .5rem;
+  }
+  .specimen-content {
+    font-family: var(--font-mono); color: var(--text-muted); font-size: var(--fs-body-sm);
+    text-align: center; padding: 1rem 0;
+  }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div class="specimen__label">— 5 registres : accent / teal / green / critical / muted</div>
+
+  <div class="specimen-content">[ contenu — registre douceur ]</div>
+  <div class="section-divider section-divider--accent">
+    <span class="section-divider__label">Action arrive</span>
+  </div>
+  <div class="specimen-content">[ contenu — registre action ]</div>
+
+  <div class="section-divider section-divider--teal">
+    <span class="section-divider__label">Bénéfice arrive</span>
+  </div>
+  <div class="specimen-content">[ contenu — registre bénéfice ]</div>
+
+  <div class="section-divider section-divider--green">
+    <span class="section-divider__label">Live · ce qui bouge</span>
+  </div>
+  <div class="specimen-content">[ contenu — registre live ]</div>
+
+  <div class="section-divider section-divider--critical">
+    <span class="section-divider__label">Douleur · le réel</span>
+  </div>
+  <div class="specimen-content">[ contenu — registre douleur ]</div>
+
+  <div class="section-divider section-divider--muted">
+    <span class="section-divider__label">Transition</span>
+  </div>
+  <div class="specimen-content">[ contenu — neutre ]</div>
+
+  <div class="section-divider section-divider--bare"></div>
+  <div class="specimen-content">[ après divider --bare ]</div>
+
+  <div class="tone-soft" style="margin-top: 4rem;">
+    <div class="specimen__label">— Tone-soft (letter-spacing réduit)</div>
+    <div class="specimen-content">[ contenu trace7 ]</div>
+    <div class="section-divider section-divider--teal">
+      <span class="section-divider__label">Modules · ce qui bouge</span>
+    </div>
+    <div class="specimen-content">[ liste modules ]</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+# undust
+
+> Continuité cognitive industrielle pour PME hardware critique.
+
+## Doctrine
+La performance de vos experts devient l'intelligence de votre entreprise.
+On dépoussière l'expertise. On la rend transmissible.
+Filiation, pas disruption.
+
+## Pages clés
+- [Accueil](https://undust.co/) — promesse + 5 étages canoniques
+- [Manifeste](https://undust.co/manifeste/) — doctrine
+- [Méthode](https://undust.co/methode/) — APTE 1964 → ISO GPS → Hitachi 2016
+- [Composants](https://undust.co/composants/) — Trace7, Fractal7, Atlas7, Forge7
+
+## Contact
+luc@undust.co

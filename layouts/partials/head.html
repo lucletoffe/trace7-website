@@ -8,5 +8,24 @@
 <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="website">
+<!-- ===== Brand kit v1.1 — undust ===== -->
+<link rel="stylesheet" href="/brand/tokens/tokens.css">
+<link rel="stylesheet" href="/brand/typography/typography.css">
+<link rel="stylesheet" href="/brand/tones/tones.css">
+<link rel="stylesheet" href="/brand/patterns/bg-dotgrid.css">
+<link rel="stylesheet" href="/brand/patterns/bg-gradient-radial.css">
+<link rel="stylesheet" href="/brand/patterns/section-types.css">
+<link rel="stylesheet" href="/brand/components/components.css">
+<link rel="stylesheet" href="/brand/components/hero-composed.css">
+<link rel="stylesheet" href="/brand/components/feature-card.css">
+<link rel="stylesheet" href="/brand/components/module-card.css">
+<link rel="stylesheet" href="/brand/components/proof-card.css">
+<link rel="stylesheet" href="/brand/components/testimonial.css">
+<link rel="stylesheet" href="/brand/components/section-divider.css">
+<link rel="stylesheet" href="/brand/components/tact-number.css">
+<link rel="stylesheet" href="/brand/components/status-badge.css">
+<link rel="stylesheet" href="/brand/components/faq-item.css">
+<link rel="stylesheet" href="/brand/components/form-embed.css">
+<!-- site-specific (overrides brand) -->
 <link rel="stylesheet" href="/css/main.css">
 {{ partial "json-ld.html" . }}

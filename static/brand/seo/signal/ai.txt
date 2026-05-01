@@ -1,0 +1,5 @@
+# Politique IA — Signal Antifragile
+# Newsletter payante — contenu éditorial protégé
+# Voir aussi /llms.txt et /robots.txt
+Disallow: *
+Contact: luc@undust.co

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Famille Datum — preview v2 (S candidates + Luc fix + simplifiées)</title>
+<style>
+  :root {
+    --paper: #fafaf7;
+    --ink: #1a1a1a;
+    --ink-dim: #6b6b6b;
+    --line: #e6e6e0;
+    --orange: #ff6b35;
+    --teal: #4a7f8a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  h1 {
+    font-family: "Titillium Web", ui-sans-serif, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  h1 .dot { color: var(--orange); }
+  h2 {
+    font-family: "Titillium Web", ui-sans-serif, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 48px 0 16px;
+  }
+  .lede { color: var(--ink-dim); margin: 0 0 32px; max-width: 760px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 220px repeat(3, 1fr) 220px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .grid > * {
+    padding: 24px 16px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid > *:nth-child(5n) { border-right: none; }
+  .grid .head {
+    background: #f5f5f0;
+    font-family: ui-monospace, "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-dim);
+    padding: 12px 16px;
+  }
+  .grid .label, .grid .meta {
+    justify-content: flex-start;
+    font-family: "Titillium Web", ui-sans-serif, sans-serif;
+    font-weight: 600;
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .grid .label .sub, .grid .meta .sub {
+    font-family: ui-monospace, "JetBrains Mono", monospace;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .grid .meta .pick {
+    color: var(--orange);
+    font-family: ui-monospace, monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  .swatch-64 { width: 64px; height: 64px; }
+  .swatch-32 { width: 32px; height: 32px; }
+  .swatch-16 { width: 16px; height: 16px; }
+
+  .note {
+    background: #fff8f0;
+    border-left: 3px solid var(--orange);
+    padding: 12px 16px;
+    font-size: 13px;
+    margin: 12px 0 24px;
+    color: var(--ink);
+    font-family: ui-monospace, "JetBrains Mono", monospace;
+  }
+</style>
+</head>
+<body>
+
+<h1>Famille Datum<span class="dot">.</span> — preview v2</h1>
+<p class="lede">Itération : 3 candidats <strong>S</strong> pour Signal · Luc corrigé (collimateur intra-cadre) · 2<sup>e</sup> grille avec variantes simplifiées « lettres + marqueur sans cadre » pour les 4 marques (= ce qu'on utilisera pour favicon 16×16 et app icons compactes).</p>
+
+<!-- ============================================================ -->
+<!-- GRILLE 1 — Monogrammes complets avec cadre datum            -->
+<!-- ============================================================ -->
+
+<h2>Grille A — Monogrammes complets (cadre datum 2 cases)</h2>
+
+<div class="grid">
+  <div class="head">Marque</div>
+  <div class="head">64×64</div>
+  <div class="head">32×32</div>
+  <div class="head">16×16</div>
+  <div class="head">Notes</div>
+
+  <!-- undust référence -->
+  <div class="label">undust<span class="sub">[U·] · ref canonique</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 26 V 34 a 6 6 0 0 0 12 0 V 26" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="4" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 26 V 34 a 6 6 0 0 0 12 0 V 26" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="4" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 26 V 34 a 6 6 0 0 0 12 0 V 26" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="4" fill="#ff6b35"/>
+  </svg></div>
+  <div class="meta"><span class="sub">Référence</span></div>
+
+  <!-- AFHW validé -->
+  <div class="label">Antifragile Hardware<span class="sub">[A·] · #4a7f8a · validé</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 40 L 20 26 L 26 40 M 16.5 34 L 23.5 34" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="4" fill="#4a7f8a"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 40 L 20 26 L 26 40 M 16.5 34 L 23.5 34" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="4" fill="#4a7f8a"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 40 L 20 26 L 26 40 M 16.5 34 L 23.5 34" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="4" fill="#4a7f8a"/>
+  </svg></div>
+  <div class="meta"><span class="sub">Inchangé</span></div>
+
+  <!-- ANCIEN α1 retiré -->
+
+  <!-- Signal validé : S-α2 + rouge #b84848 -->
+  <div class="label">Signal — validé<span class="sub">S-α2 · #b84848 critical</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 26 27 C 26 23, 14 23, 14 28 C 14 33, 26 32, 26 37 C 26 42, 14 42, 14 38" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#b84848" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#b84848"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 26 27 C 26 23, 14 23, 14 28 C 14 33, 26 32, 26 37 C 26 42, 14 42, 14 38" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#b84848" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#b84848"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 26 27 C 26 23, 14 23, 14 28 C 14 33, 26 32, 26 37 C 26 42, 14 42, 14 38" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#b84848" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#b84848"/>
+  </svg></div>
+  <div class="meta"><span class="sub">Bézier α2 + accent rouge charte (palette --critical).</span></div>
+
+  <!-- ANCIEN segment-7 conservé pour comparaison -->
+  <div class="label" style="opacity:0.45">Signal — S-β<span class="sub">(rejeté — comparaison)</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 25 27 H 16 V 31 H 24 V 36 H 14" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#ff6b35" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 25 27 H 16 V 31 H 24 V 36 H 14" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#ff6b35" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 25 27 H 16 V 31 H 24 V 36 H 14" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#ff6b35" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#ff6b35"/>
+  </svg></div>
+  <div class="meta"><span class="pick">★ ma reco</span><span class="sub">Instrumentation/LCD. Cohérent ANT-7. Hyper lisible 16px.</span></div>
+
+  <!-- ANCIEN onde radio conservé pour comparaison -->
+  <div class="label" style="opacity:0.45">Signal — S-γ<span class="sub">(rejeté — comparaison)</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 28 a 5 5 0 0 1 5 -3 M 14 32 a 9 9 0 0 1 9 -7 M 14 36 a 5 5 0 0 0 5 3 M 14 32 a 9 9 0 0 0 9 7" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="14" cy="32" r="2" fill="#1a1a1a"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#ff6b35" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 28 a 5 5 0 0 1 5 -3 M 14 32 a 9 9 0 0 1 9 -7 M 14 36 a 5 5 0 0 0 5 3 M 14 32 a 9 9 0 0 0 9 7" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="14" cy="32" r="2" fill="#1a1a1a"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#ff6b35" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 14 28 a 5 5 0 0 1 5 -3 M 14 32 a 9 9 0 0 1 9 -7 M 14 36 a 5 5 0 0 0 5 3 M 14 32 a 9 9 0 0 0 9 7" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="14" cy="32" r="2" fill="#1a1a1a"/>
+    <circle cx="44" cy="32" r="5.5" fill="none" stroke="#ff6b35" stroke-width="2"/>
+    <circle cx="44" cy="32" r="1.8" fill="#ff6b35"/>
+  </svg></div>
+  <div class="meta"><span class="sub">Émetteur. Sacrifie l'initiale S, mais radar pur.</span></div>
+
+  <!-- Luc recentré : LL centrés sur axe x=20 (centre case gauche) -->
+  <div class="label">Luc Létoffé — recentré<span class="sub">LL centré x=20</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 15 26 V 38 H 21 M 21 26 V 38 H 27" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="5" fill="none" stroke="#4a7f8a" stroke-width="2"/>
+    <line x1="44" y1="25" x2="44" y2="39" stroke="#4a7f8a" stroke-width="2" stroke-linecap="round"/>
+    <line x1="37" y1="32" x2="51" y2="32" stroke="#4a7f8a" stroke-width="2" stroke-linecap="round"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 15 26 V 38 H 21 M 21 26 V 38 H 27" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="5" fill="none" stroke="#4a7f8a" stroke-width="2"/>
+    <line x1="44" y1="25" x2="44" y2="39" stroke="#4a7f8a" stroke-width="2" stroke-linecap="round"/>
+    <line x1="37" y1="32" x2="51" y2="32" stroke="#4a7f8a" stroke-width="2" stroke-linecap="round"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+    <path d="M 15 26 V 38 H 21 M 21 26 V 38 H 27" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="32" r="5" fill="none" stroke="#4a7f8a" stroke-width="2"/>
+    <line x1="44" y1="25" x2="44" y2="39" stroke="#4a7f8a" stroke-width="2" stroke-linecap="round"/>
+    <line x1="37" y1="32" x2="51" y2="32" stroke="#4a7f8a" stroke-width="2" stroke-linecap="round"/>
+  </svg></div>
+  <div class="meta"><span class="sub">LL ∈ [15,27] · centre x=21 ≈ centre case (20). 2<sup>e</sup> L partage le jambage 21.</span></div>
+
+</div>
+
+<div class="note">★ Choix S Bézier : S-α1 (compact, 3 boucles dans 27→41) ou S-α2 (plus étendu, 23→42). Les deux sont symétriques rotation 180°.</div>
+
+
+<!-- ============================================================ -->
+<!-- GRILLE 2 — Variantes simplifiées (sans cadre)               -->
+<!-- ============================================================ -->
+
+<h2>Grille B — Variantes simplifiées « sans cadre » (favicon 16, app icons compactes)</h2>
+<p class="lede">Même règle que undust : à 16×16 le cadre devient bruit. On garde uniquement <strong>lettre + marqueur</strong>, alignés sur la même grille de coords pour cohérence famille. Marqueur à droite, lettre(s) à gauche, séparation 32 (ligne médiane virtuelle).</p>
+
+<div class="grid">
+  <div class="head">Marque</div>
+  <div class="head">64×64</div>
+  <div class="head">32×32</div>
+  <div class="head">16×16</div>
+  <div class="head">Notes</div>
+
+  <!-- undust simplifié -->
+  <div class="label">undust<span class="sub">U + ·</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <path d="M 14 22 V 36 a 8 8 0 0 0 16 0 V 22" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="6" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <path d="M 14 22 V 36 a 8 8 0 0 0 16 0 V 22" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="6" fill="#ff6b35"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <path d="M 14 22 V 36 a 8 8 0 0 0 16 0 V 22" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="6" fill="#ff6b35"/>
+  </svg></div>
+  <div class="meta"><span class="sub">Stroke 4, point r=6 — épaissis pour tenir à 16px</span></div>
+
+  <!-- AFHW simplifié -->
+  <div class="label">Antifragile Hardware<span class="sub">A + ·</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <path d="M 12 42 L 22 20 L 32 42 M 16 34 L 28 34" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="6" fill="#4a7f8a"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <path d="M 12 42 L 22 20 L 32 42 M 16 34 L 28 34" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="6" fill="#4a7f8a"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <path d="M 12 42 L 22 20 L 32 42 M 16 34 L 28 34" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="6" fill="#4a7f8a"/>
+  </svg></div>
+  <div class="meta"><span class="sub">A complet (apex 22,20)</span></div>
+
+  <!-- Signal simplifié — même path que grille A + rouge -->
+  <div class="label">Signal<span class="sub">S-α2 (path identique grille A)</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <path d="M 30 26 C 30 22, 12 22, 12 27 C 12 32, 30 31, 30 37 C 30 42, 12 42, 12 38" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="46" cy="32" r="8" fill="none" stroke="#b84848" stroke-width="3"/>
+    <circle cx="46" cy="32" r="2.5" fill="#b84848"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <path d="M 30 26 C 30 22, 12 22, 12 27 C 12 32, 30 31, 30 37 C 30 42, 12 42, 12 38" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="46" cy="32" r="8" fill="none" stroke="#b84848" stroke-width="3"/>
+    <circle cx="46" cy="32" r="2.5" fill="#b84848"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <path d="M 30 26 C 30 22, 12 22, 12 27 C 12 32, 30 31, 30 37 C 30 42, 12 42, 12 38" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="46" cy="32" r="8" fill="none" stroke="#b84848" stroke-width="3"/>
+    <circle cx="46" cy="32" r="2.5" fill="#b84848"/>
+  </svg></div>
+  <div class="meta"><span class="sub">Path scaled ×1.5 horizontal · hauteur 22→42 alignée A/LL</span></div>
+
+  <!-- Luc simplifié -->
+  <div class="label">Luc Létoffé<span class="sub">LL + ⌖</span></div>
+  <div><svg class="swatch-64" viewBox="0 0 64 64">
+    <path d="M 10 22 V 42 H 18 M 22 22 V 42 H 30" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="7" fill="none" stroke="#4a7f8a" stroke-width="3"/>
+    <line x1="46" y1="22" x2="46" y2="42" stroke="#4a7f8a" stroke-width="3" stroke-linecap="round"/>
+    <line x1="36" y1="32" x2="56" y2="32" stroke="#4a7f8a" stroke-width="3" stroke-linecap="round"/>
+  </svg></div>
+  <div><svg class="swatch-32" viewBox="0 0 64 64">
+    <path d="M 10 22 V 42 H 18 M 22 22 V 42 H 30" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="7" fill="none" stroke="#4a7f8a" stroke-width="3"/>
+    <line x1="46" y1="22" x2="46" y2="42" stroke="#4a7f8a" stroke-width="3" stroke-linecap="round"/>
+    <line x1="36" y1="32" x2="56" y2="32" stroke="#4a7f8a" stroke-width="3" stroke-linecap="round"/>
+  </svg></div>
+  <div><svg class="swatch-16" viewBox="0 0 64 64">
+    <path d="M 10 22 V 42 H 18 M 22 22 V 42 H 30" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="46" cy="32" r="7" fill="none" stroke="#4a7f8a" stroke-width="3"/>
+    <line x1="46" y1="22" x2="46" y2="42" stroke="#4a7f8a" stroke-width="3" stroke-linecap="round"/>
+    <line x1="36" y1="32" x2="56" y2="32" stroke="#4a7f8a" stroke-width="3" stroke-linecap="round"/>
+  </svg></div>
+  <div class="meta"><span class="sub">Collimateur ⌖ stroke 3 (place dispo sans cadre)</span></div>
+
+</div>
+
+<div class="note">Une fois ce preview validé : je gèle les 4 SVG officiels + variantes mono noir/blanc, je crée les sous-dossiers brand/family-datum/{undust,antifrag,signal,lucletoffe}/, puis on attaque les variants B argumentés et le pack favicon. Ensuite seulement on touche au social kit.</div>
+
+</body>
+</html>

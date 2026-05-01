@@ -1,0 +1,27 @@
+/* undust tact-number — v1.1
+   Utility numéros tactiques 01-99 semi-transparents.
+   Moment cognitif servi : hiérarchie silencieuse — comptage scannable sans lire.
+   Règle : structurent sans concurrencer le titre. Toujours en gros, jamais en petit.
+*/
+
+.tact-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text-muted);
+  opacity: 0.25;
+  user-select: none;
+  pointer-events: none;
+  margin: 0;
+}
+
+.tact-number--soft   { opacity: 0.15; }
+.tact-number--strong { opacity: 0.35; }
+
+.tact-number.color-accent   { color: var(--accent); }
+.tact-number.color-teal     { color: var(--teal); }
+.tact-number.color-critical { color: var(--critical); }
+.tact-number.color-text     { color: var(--text); }

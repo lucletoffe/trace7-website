@@ -1,0 +1,50 @@
+/* undust status-badge — v1.1
+   Badge statut avec variante live pulsante.
+   Moment cognitif servi : #7 qu'est-ce qui bouge (axe C sémantique).
+   3 statuts canoniques (live / wip / archive) + planned (exception SaaS produit).
+*/
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid currentColor;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.status-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* Variantes — couleur héritée par currentColor */
+.status-badge--live    { color: var(--green);   background: var(--green-dim); }
+.status-badge--wip,
+.status-badge--active  { color: var(--accent);  background: var(--accent-dim); }
+.status-badge--planned { color: var(--teal);    background: var(--teal-dim); }
+.status-badge--archive { color: var(--text-muted); background: var(--bg-elev); border-color: var(--border-dim); }
+
+/* Pulse live */
+.status-badge--live::before {
+  animation: status-pulse 1.4s ease-in-out infinite;
+}
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-badge--live::before { animation: none; }
+}

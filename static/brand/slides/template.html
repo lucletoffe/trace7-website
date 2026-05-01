@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, initial-scale=1.0">
+<title>undust — Slide template 1920×1080</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ============================================================
+     TOKENS — alignés sur le pitch master existant
+     ============================================================ */
+  :root {
+    /* Light mode (par défaut) */
+    --bg:           #faf8f3;
+    --bg-elev:      #f3efe5;
+    --bg-section:   #1a1a1a;
+    --section-text: #e5e7eb;
+    --text:         #1a1a1a;
+    --text-soft:    #4a4a4a;
+    --text-muted:   #8a8478;
+    --accent:       #ff6b35;
+    --accent-dim:   #ffe4d6;
+    --teal:         #4A7F8A;
+    --teal-dim:     #d8e6e9;
+    --green:        #16a34a;
+    --critical:     #B84848;
+    --border:       #d4cfc1;
+    --border-dim:   #e8e3d4;
+    --pattern-dot:  rgba(26,26,26,0.07);
+    --pattern-orange: rgba(255,107,53,0.06);
+    --pattern-teal: rgba(74,127,138,0.05);
+    --nav-bg:       #ffffff;
+    --font-display: 'Titillium Web', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg:           #1a1a1a;
+    --bg-elev:      #242424;
+    --bg-section:   #0d0d0d;
+    --text:         #e5e7eb;
+    --text-soft:    #b8b8b0;
+    --text-muted:   #888880;
+    --accent:       #ff7a4a;
+    --accent-dim:   rgba(255,107,53,0.18);
+    --teal:         #6BA3B0;
+    --teal-dim:     rgba(74,127,138,0.22);
+    --green:        #4ade80;
+    --critical:     #e57373;
+    --border:       #4a4a4a;
+    --border-dim:   #2a2a2a;
+    --pattern-dot:  rgba(229,231,235,0.06);
+    --pattern-orange: rgba(255,107,53,0.05);
+    --pattern-teal: rgba(74,127,138,0.05);
+    --nav-bg:       #242424;
+  }
+
+  /* ============================================================
+     STAGE — 1920×1080 fixé, scrollable verticalement
+     ============================================================ */
+  html, body { height: 100%; overflow-x: hidden; }
+  body {
+    font-family: var(--font-mono);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
+  html { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  body::-webkit-scrollbar { width: 8px; }
+  body::-webkit-scrollbar-track { background: transparent; }
+  body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  body::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  .deck { width: 100%; }
+  .slide {
+    width: 1920px; height: 1080px;
+    margin: 0 auto;
+    padding: 80px 100px;
+    position: relative;
+    background: var(--bg);
+    border-bottom: 2px solid var(--border-dim);
+    scroll-snap-align: start;
+    display: flex; flex-direction: column; justify-content: center;
+    overflow: hidden;
+    transform-origin: top center;
+  }
+  /* Pattern de fond — dot grid + radials accent (subtil) */
+  .slide::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(ellipse at top left, var(--pattern-orange), transparent 50%),
+      radial-gradient(ellipse at bottom right, var(--pattern-teal), transparent 50%),
+      radial-gradient(circle, var(--pattern-dot) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 24px 24px;
+    pointer-events: none; z-index: 0;
+  }
+  .slide > * { position: relative; z-index: 1; }
+
+  /* ============================================================
+     TYPO
+     ============================================================ */
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -1px; line-height: 1.05; }
+  h1 { font-size: 96px; margin-bottom: 32px; }
+  h2 { font-size: 64px; margin-bottom: 32px; }
+  h3 { font-size: 28px; margin-bottom: 14px; }
+
+  p, li { font-family: var(--font-mono); font-size: 24px; line-height: 1.55; color: var(--text-soft); margin-bottom: 18px; max-width: 1500px; }
+  p.lead { font-size: 32px; color: var(--text); font-weight: 500; line-height: 1.4; }
+
+  .accent { color: var(--accent); }
+  .strong { color: var(--text); font-weight: 600; }
+  .teal { color: var(--teal); }
+
+  /* Kicker (eyebrow au-dessus des titres) */
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .kicker::before {
+    content: ''; width: 24px; height: 2px; background: var(--accent);
+  }
+
+  /* ============================================================
+     CHROME : meta haut-droite, footer bas, wordmark
+     ============================================================ */
+  .slide-meta {
+    position: absolute; top: 32px; right: 40px;
+    font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+    color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;
+    z-index: 2;
+  }
+  .slide-meta .num { color: var(--accent); font-weight: 700; }
+
+  .slide-footer {
+    position: absolute; bottom: 32px; left: 100px;
+    font-family: var(--font-display); font-size: 16px;
+    color: var(--text-muted); letter-spacing: -0.3px;
+    z-index: 2;
+  }
+  .slide-footer .wordmark { color: var(--text); font-weight: 700; }
+  .slide-footer .dot { color: var(--accent); }
+  .slide-footer .sep { margin: 0 12px; color: var(--border); }
+
+  .pagenum {
+    position: absolute; bottom: 32px; right: 40px;
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--text-muted); letter-spacing: 0.1em;
+    z-index: 2;
+  }
+  .pagenum .current { color: var(--accent); font-weight: 700; }
+
+  /* Logo cover */
+  .logo {
+    font-family: var(--font-display);
+    font-size: 88px; font-weight: 700; letter-spacing: -2px;
+    color: var(--text);
+  }
+  .logo .dot { color: var(--accent); }
+
+  /* ============================================================
+     SLIDE TYPE A — COVER
+     ============================================================ */
+  .slide.cover { justify-content: flex-start; padding-top: 140px; }
+  .cover .tagline {
+    font-family: var(--font-mono); font-size: 18px;
+    color: var(--text-muted); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-top: 16px;
+  }
+  .cover h1 {
+    margin-top: 80px; max-width: 1700px;
+    font-size: 104px; line-height: 1.0;
+  }
+  .cover .lead-line { font-size: 32px; color: var(--text-soft); font-style: italic; margin-top: 28px; max-width: 1600px; }
+  .cover .accent-rule {
+    width: 96px; height: 3px; background: var(--accent);
+    margin-top: 56px; margin-bottom: 32px;
+  }
+  .cover .meta-row {
+    display: flex; gap: 64px; margin-top: 24px;
+    font-family: var(--font-mono); font-size: 14px;
+    color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .cover .meta-row span strong { color: var(--text); }
+
+  /* ============================================================
+     SLIDE TYPE B — SECTION DIVIDER
+     ============================================================ */
+  .slide.section {
+    background: var(--bg-section);
+    color: var(--section-text);
+    justify-content: center; align-items: flex-start;
+    padding: 80px 140px;
+  }
+  .slide.section::before { opacity: 0.4; }
+  .slide.section .section-num {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 28px; color: var(--accent);
+    letter-spacing: 0.15em; margin-bottom: 32px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .slide.section .section-num::after {
+    content: ''; flex: 1; max-width: 360px; height: 1px;
+    background: rgba(255,107,53,0.4);
+  }
+  .slide.section h1 {
+    color: var(--section-text); font-size: 144px;
+    line-height: 0.95; max-width: 1500px; letter-spacing: -3px;
+  }
+  .slide.section h1 .accent { color: var(--accent); }
+  .slide.section .pagenum, .slide.section .slide-meta { color: rgba(229,231,235,0.5); }
+  .slide.section .slide-footer { color: rgba(229,231,235,0.6); }
+  .slide.section .slide-footer .wordmark { color: #fff; }
+
+  /* ============================================================
+     SLIDE TYPE C — BULLETS
+     ============================================================ */
+  ul.bullets { list-style: none; padding: 0; margin: 24px 0; }
+  ul.bullets li {
+    font-size: 28px; color: var(--text);
+    padding: 14px 0 14px 48px;
+    position: relative; max-width: 1600px;
+    border-bottom: 1px solid var(--border-dim);
+  }
+  ul.bullets li:last-child { border-bottom: none; }
+  ul.bullets li::before {
+    content: '▸'; position: absolute; left: 0;
+    color: var(--accent); font-weight: 700; font-size: 24px;
+    top: 18px;
+  }
+  ul.bullets li .label {
+    display: block; font-family: var(--font-mono); font-size: 13px;
+    color: var(--text-muted); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  /* ============================================================
+     SLIDE TYPE D — STAT HERO
+     ============================================================ */
+  .stat-hero { text-align: left; margin-top: 24px; }
+  .stat-hero .num-huge {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 360px; line-height: 0.85;
+    color: var(--accent); letter-spacing: -10px;
+  }
+  .stat-hero .num-huge .unit {
+    font-size: 120px; color: var(--text); letter-spacing: -3px;
+    margin-left: 16px;
+  }
+  .stat-hero .stat-caption {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: 56px; color: var(--text);
+    line-height: 1.05; max-width: 1500px; margin-top: 32px;
+    letter-spacing: -1px;
+  }
+  .stat-hero .stat-source {
+    font-family: var(--font-mono); font-size: 16px;
+    color: var(--text-muted); letter-spacing: 0.1em;
+    margin-top: 24px; text-transform: uppercase;
+  }
+
+  /* ============================================================
+     SLIDE TYPE E — COMPARATIF 2 COLONNES
+     ============================================================ */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; margin-top: 32px;
+  }
+  .compare .col {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    padding: 40px; border-radius: 8px;
+    position: relative;
+  }
+  .compare .col.before {
+    border-left: 4px solid var(--critical);
+  }
+  .compare .col.after {
+    border-left: 4px solid var(--accent);
+    background: var(--accent-dim);
+  }
+  .compare .col-label {
+    font-family: var(--font-mono); font-size: 14px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 16px; font-weight: 600;
+  }
+  .compare .before .col-label { color: var(--critical); }
+  .compare .after .col-label { color: var(--accent); }
+  .compare .col h3 { font-size: 36px; margin-bottom: 16px; color: var(--text); }
+  .compare .col p { font-size: 22px; color: var(--text-soft); }
+  .compare .col ul { list-style: none; padding: 0; margin-top: 16px; }
+  .compare .col ul li {
+    font-size: 20px; padding: 8px 0 8px 24px;
+    position: relative; color: var(--text-soft);
+    border-bottom: none; margin-bottom: 0;
+  }
+  .compare .before ul li::before {
+    content: '×'; position: absolute; left: 0; color: var(--critical); font-weight: 700;
+  }
+  .compare .after ul li::before {
+    content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700;
+  }
+
+  /* ============================================================
+     SLIDE TYPE F — IMAGE FULL BLEED
+     ============================================================ */
+  .slide.fullbleed { padding: 0; }
+  .slide.fullbleed::before { display: none; }
+  .fullbleed .bg-image {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    /* placeholder visuel — pattern industriel */
+    background-image:
+      linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%),
+      repeating-linear-gradient(45deg, transparent 0 60px, rgba(255,107,53,0.05) 60px 61px);
+    background-blend-mode: overlay;
+  }
+  .fullbleed .caption {
+    position: absolute; bottom: 100px; left: 100px; right: 100px;
+    z-index: 2;
+  }
+  .fullbleed .caption .kicker { color: var(--accent); }
+  .fullbleed .caption h2 { color: #fff; font-size: 88px; max-width: 1400px; }
+  .fullbleed .caption .credit {
+    font-family: var(--font-mono); font-size: 13px;
+    color: rgba(255,255,255,0.5); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-top: 16px;
+  }
+  .fullbleed .pagenum, .fullbleed .slide-meta {
+    color: rgba(255,255,255,0.5);
+  }
+  .fullbleed .slide-footer { color: rgba(255,255,255,0.6); }
+  .fullbleed .slide-footer .wordmark { color: #fff; }
+
+  /* ============================================================
+     SLIDE TYPE G — QUOTE
+     ============================================================ */
+  .slide.quote { justify-content: center; align-items: flex-start; padding-left: 200px; padding-right: 200px; }
+  .quote-mark {
+    font-family: var(--font-display); font-size: 240px;
+    color: var(--accent); line-height: 0.7;
+    margin-bottom: 24px; opacity: 0.4;
+  }
+  .quote-text {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 72px; line-height: 1.15; color: var(--text);
+    max-width: 1500px; letter-spacing: -1.5px;
+    margin-bottom: 48px;
+  }
+  .quote-text .accent { font-weight: 600; }
+  .quote-attrib {
+    display: flex; align-items: center; gap: 24px;
+    font-family: var(--font-mono); font-size: 18px;
+    color: var(--text-muted); letter-spacing: 0.05em;
+  }
+  .quote-attrib .name { color: var(--text); font-weight: 600; }
+  .quote-attrib::before {
+    content: ''; width: 48px; height: 2px; background: var(--accent);
+  }
+
+  /* ============================================================
+     SLIDE TYPE H — CREDENTIALS (photo + bio)
+     ============================================================ */
+  .slide.credentials { padding-left: 100px; padding-right: 100px; }
+  .creds-grid {
+    display: grid; grid-template-columns: 480px 1fr; gap: 80px;
+    align-items: center;
+  }
+  .creds-photo {
+    width: 480px; height: 600px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    position: relative;
+    display: flex; align-items: flex-end; justify-content: center;
+    color: var(--text-muted);
+    font-family: var(--font-mono); font-size: 12px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding-bottom: 24px;
+    background-image:
+      linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%),
+      repeating-linear-gradient(45deg, var(--bg-elev) 0 20px, var(--border-dim) 20px 21px);
+  }
+  .creds-info h2 { font-size: 72px; margin-bottom: 8px; }
+  .creds-info .role {
+    font-family: var(--font-mono); font-size: 22px;
+    color: var(--accent); letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 32px;
+  }
+  .creds-info .bio { font-size: 22px; color: var(--text-soft); margin-bottom: 40px; max-width: 1100px; }
+  .creds-info .highlights { list-style: none; padding: 0; }
+  .creds-info .highlights li {
+    font-size: 20px; padding: 14px 0 14px 32px;
+    position: relative; border-bottom: 1px solid var(--border-dim);
+    color: var(--text); margin-bottom: 0;
+  }
+  .creds-info .highlights li:last-child { border-bottom: none; }
+  .creds-info .highlights li::before {
+    content: '◆'; position: absolute; left: 0;
+    color: var(--accent); font-size: 14px; top: 18px;
+  }
+  .creds-info .highlights li .meta {
+    color: var(--text-muted); font-size: 14px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    display: block; margin-bottom: 4px;
+  }
+
+  /* ============================================================
+     UI : nav, timer, theme-toggle
+     ============================================================ */
+  .nav, .timer-box, .theme-toggle {
+    position: fixed;
+    background: var(--nav-bg); border: 1px solid var(--border);
+    padding: 10px 18px;
+    font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+    border-radius: 4px; z-index: 9999;
+    color: var(--text);
+  }
+  .theme-toggle {
+    top: 16px; right: 16px;
+    cursor: pointer; padding: 8px 14px;
+    user-select: none;
+  }
+  .theme-toggle:hover { color: var(--accent); }
+  .nav { bottom: 16px; right: 16px; color: var(--text-soft); }
+  .nav .current { color: var(--accent); font-weight: 700; }
+  .nav .help { font-size: 10px; color: var(--text-muted); margin-left: 12px; letter-spacing: 0.15em; text-transform: uppercase; }
+  .timer-box { bottom: 16px; left: 16px; cursor: pointer; user-select: none; }
+  .timer-box.running { color: var(--accent); }
+  .timer-box.warn { color: var(--critical); }
+
+  /* ============================================================
+     PRINT (export PDF / PowerPoint screenshots)
+     ============================================================ */
+  @media print {
+    body { background: white; scroll-snap-type: none; overflow: visible; }
+    .slide {
+      page-break-after: always;
+      width: 1920px; height: 1080px;
+      transform: none !important;
+      border-bottom: none;
+    }
+    .nav, .timer-box, .theme-toggle { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- UI fixe -->
+<div class="theme-toggle" id="themeToggle" title="Toggle dark/light (D)">◐ THEME</div>
+<div class="timer-box" id="timer" title="Click=start/pause · Dblclick=reset (T)">⏱ 00:00</div>
+<div class="nav">
+  <span class="current" id="navCurrent">01</span> / <span id="navTotal">8</span>
+  <span class="help">← → space · F · D · T</span>
+</div>
+
+<div class="deck">
+
+<!-- ============================================================
+     SLIDE 01 — COVER
+     ============================================================ -->
+<section class="slide cover" id="s1">
+  <div class="slide-meta"><span class="num">01</span> · COVER</div>
+
+  <div class="logo">undust<span class="dot">.</span></div>
+  <div class="tagline">Continuité cognitive industrielle</div>
+
+  <h1>Nous dépoussiérons l'industrie<br>qui conçoit le <span class="accent">hardware critique</span>.</h1>
+
+  <div class="accent-rule"></div>
+
+  <p class="lead-line">Vingt ans de métier captés, structurés, transmissibles — sans que ça prenne dix ans.</p>
+
+  <div class="meta-row">
+    <span><strong>Luc Létoffé</strong> · Fondateur</span>
+    <span>Pitch CI · <strong>05 mai 2026</strong></span>
+    <span>v.<strong>2026.04</strong></span>
+  </div>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span></div>
+  <div class="pagenum"><span class="current">01</span> / 08</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 02 — SECTION DIVIDER
+     ============================================================ -->
+<section class="slide section" id="s2">
+  <div class="slide-meta"><span class="num">02</span> · SECTION</div>
+
+  <div class="section-num">PARTIE 01 — LE PROBLÈME</div>
+  <h1>Vingt ans<br>de métier.<br><span class="accent">Deux semaines<br>pour partir.</span></h1>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span></div>
+  <div class="pagenum"><span class="current">02</span> / 08</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 03 — BULLETS
+     ============================================================ -->
+<section class="slide" id="s3">
+  <div class="slide-meta"><span class="num">03</span> · BULLETS</div>
+
+  <div class="kicker">Ce qu'undust capte</div>
+  <h2>Quatre gestes,<br>une <span class="accent">méthode</span>.</h2>
+
+  <ul class="bullets">
+    <li>
+      <span class="label">01 · Capter</span>
+      Interviews structurées avec l'expert avant son départ — captation orale, schémas, tours d'usine.
+    </li>
+    <li>
+      <span class="label">02 · Structurer</span>
+      Découpage en briques cognitives transmissibles : règles métier, heuristiques, pièges connus.
+    </li>
+    <li>
+      <span class="label">03 · Indexer</span>
+      Mise en base souveraine, hébergée en France. Pas de LLM américain sur votre savoir.
+    </li>
+    <li>
+      <span class="label">04 · Transmettre</span>
+      Restitution aux successeurs : copilote interne, fiches méthodes, parcours d'onboarding.
+    </li>
+  </ul>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span><span class="sep">·</span>03 · Méthode</div>
+  <div class="pagenum"><span class="current">03</span> / 08</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 04 — STAT HERO
+     ============================================================ -->
+<section class="slide" id="s4">
+  <div class="slide-meta"><span class="num">04</span> · STAT HERO</div>
+
+  <div class="kicker">Le chiffre qui change tout</div>
+
+  <div class="stat-hero">
+    <div class="num-huge">20<span class="unit">→2</span></div>
+    <div class="stat-caption">
+      Vingt ans de métier transmissibles<br>
+      en <span class="accent">deux minutes de requête.</span>
+    </div>
+    <div class="stat-source">Source — pilotes undust 2025 · 14 BE industriels · n=42 experts captés</div>
+  </div>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span><span class="sep">·</span>04 · Promesse</div>
+  <div class="pagenum"><span class="current">04</span> / 08</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 05 — COMPARATIF
+     ============================================================ -->
+<section class="slide" id="s5">
+  <div class="slide-meta"><span class="num">05</span> · COMPARATIF</div>
+
+  <div class="kicker">Avant vs. après</div>
+  <h2>Le départ d'un expert,<br>aujourd'hui et avec <span class="accent">undust</span>.</h2>
+
+  <div class="compare">
+    <div class="col before">
+      <div class="col-label">▲ AVANT — sans undust</div>
+      <h3>Le savoir part avec lui.</h3>
+      <ul>
+        <li>Doublure 6-12 mois (souvent moins)</li>
+        <li>Documentation morte, mal indexée</li>
+        <li>Erreurs récurrentes sur projets nouveaux</li>
+        <li>Re-formation coûteuse du successeur</li>
+        <li>Perte sèche pour le BE</li>
+      </ul>
+    </div>
+    <div class="col after">
+      <div class="col-label">▼ APRÈS — avec undust</div>
+      <h3>Le savoir devient patrimoine.</h3>
+      <ul>
+        <li>Captation 4-8 semaines, structurée</li>
+        <li>Base requêtable par les successeurs</li>
+        <li>Heuristiques accessibles en contexte</li>
+        <li>Onboarding accéléré × 3</li>
+        <li>Capital cognitif consolidé</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span><span class="sep">·</span>05 · Avant/Après</div>
+  <div class="pagenum"><span class="current">05</span> / 08</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 06 — IMAGE FULL BLEED
+     ============================================================ -->
+<section class="slide fullbleed" id="s6">
+  <div class="bg-image"></div>
+  <div class="slide-meta"><span class="num">06</span> · IMAGE</div>
+
+  <div class="caption">
+    <div class="kicker">Terrain</div>
+    <h2>Bureaux d'études,<br>chez nos clients.</h2>
+    <div class="credit">Photo : atelier conception · PME industrielle · 2025</div>
+  </div>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span><span class="sep">·</span>06 · Terrain</div>
+  <div class="pagenum"><span class="current">06</span> / 08</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 07 — QUOTE
+     ============================================================ -->
+<section class="slide quote" id="s7">
+  <div class="slide-meta"><span class="num">07</span> · QUOTE</div>
+
+  <div class="quote-mark">«</div>
+  <div class="quote-text">
+    Avant undust, on perdait <span class="accent">trente ans de métier</span> à chaque retraite.
+    Maintenant, on les transmet.
+  </div>
+  <div class="quote-attrib">
+    <span class="name">Pierre M.</span> · Directeur BE · Acteys (équipementier auto, 280 ETP)
+  </div>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span><span class="sep">·</span>07 · Témoignage</div>
+  <div class="pagenum"><span class="current">07</span> / 08</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 08 — CREDENTIALS
+     ============================================================ -->
+<section class="slide credentials" id="s8">
+  <div class="slide-meta"><span class="num">08</span> · CREDENTIALS</div>
+
+  <div class="kicker">Qui parle</div>
+
+  <div class="creds-grid">
+    <div class="creds-photo">photo · 480 × 600</div>
+    <div class="creds-info">
+      <h2>Luc Létoffé</h2>
+      <div class="role">Fondateur · undust</div>
+      <p class="bio">
+        Quinze ans en bureau d'études industriels — conception mécanique,
+        hardware critique, transfert de savoir. Fondateur d'undust pour
+        rendre transmissible ce qui s'oubliait.
+      </p>
+      <ul class="highlights">
+        <li>
+          <span class="meta">2010 — 2018 · Industrie</span>
+          Ingénieur concepteur · projets aéronautique, énergie, mobilité.
+        </li>
+        <li>
+          <span class="meta">2018 — 2024 · Conseil</span>
+          Mission de transfert de savoir · 14 BE accompagnés · 42 experts captés.
+        </li>
+        <li>
+          <span class="meta">2024 — · undust</span>
+          Méthodologie + plateforme souveraine · pilotes en cours.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide-footer"><span class="wordmark">undust<span class="dot">.</span></span><span class="sep">·</span>08 · Qui parle</div>
+  <div class="pagenum"><span class="current">08</span> / 08</div>
+</section>
+
+</div>
+
+<script>
+/* ============================================================
+   Scaling — fit slide 1920×1080 to viewport
+   ============================================================ */
+function scaleSlides() {
+  const slides = document.querySelectorAll('.slide');
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const scale = Math.min(w / 1920, h / 1080);
+  slides.forEach(s => { s.style.transform = `scale(${scale})`; });
+  // Adjust deck height to total scaled
+  document.querySelector('.deck').style.height = (slides.length * 1080 * scale) + 'px';
+}
+window.addEventListener('resize', scaleSlides);
+window.addEventListener('load', scaleSlides);
+
+/* ============================================================
+   Active slide tracking + nav
+   ============================================================ */
+const slides = [...document.querySelectorAll('.slide')];
+const navCurrent = document.getElementById('navCurrent');
+document.getElementById('navTotal').textContent = String(slides.length).padStart(2, '0');
+
+let activeIdx = 0;
+function updateActive() {
+  const scrollY = window.scrollY + window.innerHeight / 2;
+  let bestIdx = 0, bestDist = Infinity;
+  slides.forEach((s, i) => {
+    const r = s.getBoundingClientRect();
+    const center = window.scrollY + r.top + r.height / 2;
+    const d = Math.abs(center - scrollY);
+    if (d < bestDist) { bestDist = d; bestIdx = i; }
+  });
+  activeIdx = bestIdx;
+  navCurrent.textContent = String(activeIdx + 1).padStart(2, '0');
+  // Notify host (for speaker notes if any)
+  if (window.parent) window.parent.postMessage({ slideIndexChanged: activeIdx }, '*');
+}
+window.addEventListener('scroll', updateActive, { passive: true });
+
+function goTo(i) {
+  i = Math.max(0, Math.min(slides.length - 1, i));
+  slides[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'j') { e.preventDefault(); goTo(activeIdx + 1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'k') { e.preventDefault(); goTo(activeIdx - 1); }
+  else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+  else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+  else if (e.key === 'f' || e.key === 'F') {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  }
+  else if (e.key === 'd' || e.key === 'D') { toggleTheme(); }
+  else if (e.key === 't' || e.key === 'T') { toggleTimer(); }
+});
+
+/* ============================================================
+   Theme toggle (dark/light)
+   ============================================================ */
+function toggleTheme() {
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('undust-theme', next);
+}
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+const savedTheme = localStorage.getItem('undust-theme');
+if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+/* ============================================================
+   Timer (presentation)
+   ============================================================ */
+const timerEl = document.getElementById('timer');
+let timerStart = null, timerElapsed = 0, timerInt = null;
+function fmt(s) { const m = Math.floor(s / 60); const ss = s % 60; return `⏱ ${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`; }
+function tick() {
+  const elapsed = Math.floor((Date.now() - timerStart) / 1000) + timerElapsed;
+  timerEl.textContent = fmt(elapsed);
+  if (elapsed > 600) timerEl.classList.add('warn');
+}
+function toggleTimer() {
+  if (timerStart) {
+    timerElapsed += Math.floor((Date.now() - timerStart) / 1000);
+    timerStart = null; clearInterval(timerInt);
+    timerEl.classList.remove('running');
+  } else {
+    timerStart = Date.now(); timerInt = setInterval(tick, 1000);
+    timerEl.classList.add('running');
+  }
+}
+timerEl.addEventListener('click', toggleTimer);
+timerEl.addEventListener('dblclick', () => {
+  timerElapsed = 0; timerStart = null; clearInterval(timerInt);
+  timerEl.textContent = '⏱ 00:00'; timerEl.classList.remove('running', 'warn');
+});
+
+updateActive();
+</script>
+
+</body>
+</html>

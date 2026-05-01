@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>patterns — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="bg-dotgrid.css">
+<link rel="stylesheet" href="bg-gradient-radial.css">
+<link rel="stylesheet" href="section-types.css">
+<style>
+  body { margin: 0; }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin: 0 0 1rem;
+  }
+  h2 { font-family: var(--font-display); font-weight: var(--fw-bold); margin: 0 0 .5rem; }
+  p  { font-family: var(--font-mono); color: var(--text-muted); margin: 0; line-height: var(--lh-relaxed); }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <section class="section bg-dotgrid">
+    <div class="section__inner">
+      <p class="specimen__label">— bg-dotgrid · default (tone-tactical = 3.5%)</p>
+      <h2>Section avec dot grid</h2>
+      <p>24px de pas, opacity 3.5%. Scan zone, pas décoration.</p>
+    </div>
+  </section>
+
+  <section class="section section--elev bg-dotgrid bg-dotgrid--strong">
+    <div class="section__inner">
+      <p class="specimen__label">— bg-dotgrid--strong (5%) sur bg-elev</p>
+      <h2>Variante --strong</h2>
+      <p>5% — utiliser avec parcimonie.</p>
+    </div>
+  </section>
+
+  <section class="section bg-gradient-radial">
+    <div class="section__inner">
+      <p class="specimen__label">— bg-gradient-radial · default tactical</p>
+      <h2>Radial chaud + froid</h2>
+      <p>Ellipse top-left orange 4.5%. Ellipse bottom-right teal 3.5%. Jamais &gt; 6%.</p>
+    </div>
+  </section>
+
+  <section class="section bg-dotgrid bg-gradient-radial">
+    <div class="section__inner">
+      <p class="specimen__label">— Combo dotgrid + radial</p>
+      <h2>Les deux ensemble</h2>
+      <p>La référence visuelle undust.co — texture + atmosphère.</p>
+    </div>
+  </section>
+
+  <section class="section section--hero bg-gradient-radial">
+    <div class="section__inner section__inner--narrow">
+      <p class="specimen__label">— section--hero (max-height 80vh)</p>
+      <h2 style="font-size: 3rem;">Hero section</h2>
+      <p>Padding top 3rem, bottom 5rem, jamais full viewport.</p>
+    </div>
+  </section>
+
+  <section class="section section--bordered">
+    <div class="section__inner">
+      <p class="specimen__label">— section--bordered</p>
+      <h2>Bordered section</h2>
+      <p>Border-top + border-bottom. Cadre un bloc dans la page.</p>
+    </div>
+  </section>
+
+  <section class="section section--cta bg-gradient-radial bg-gradient-radial--accent-only">
+    <div class="section__inner">
+      <p class="specimen__label">— section--cta + radial accent-only</p>
+      <h2>Prêt à dépoussiérer ?</h2>
+      <p>Section cta centrée, max-width 640px.</p>
+    </div>
+  </section>
+
+  <div class="tone-soft">
+    <section class="section bg-dotgrid bg-gradient-radial">
+      <div class="section__inner">
+        <p class="specimen__label">— Tone-soft : dotgrid 2% + radial 2.5%/2%</p>
+        <h2>Le même combo en tone-soft</h2>
+        <p>Trace7 SaaS — registre posé, pas tactical.</p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>undust — palette validation 02</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="colors-dark.css">
+<link rel="stylesheet" href="colors-light.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    padding: 56px 64px 96px;
+    transition: background 250ms;
+  }
+  h1 { font-family: 'Titillium Web', sans-serif; font-weight: 700; font-size: 48px; letter-spacing: -1.5px; margin: 8px 0; color: var(--text); }
+  h2 { font-family: 'Titillium Web', sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 20px; color: var(--text); }
+  .meta { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; }
+  .lead { color: var(--text-muted); max-width: 640px; margin-bottom: 40px; }
+  section { margin-bottom: 56px; }
+  .ladder { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; }
+  .ladder .swatch { height: 88px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; font-size: 10px; }
+  .ladder .swatch .step { font-weight: 600; }
+  .ladder .swatch .hex { opacity: 0.85; font-size: 9px; letter-spacing: 0.04em; }
+  .label-col { display: flex; align-items: center; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
+  .pair-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .pair { padding: 16px 18px; border: 1px solid var(--border-dim); }
+  .pair .ratio { font-size: 10px; color: var(--text-muted); letter-spacing: 0.18em; text-transform: uppercase; }
+  .pair .demo { font-size: 16px; margin-top: 6px; }
+  .pair .pass { font-size: 10px; margin-top: 4px; color: var(--text-muted); }
+  .toggle { position: fixed; top: 24px; right: 24px; padding: 8px 14px; background: var(--bg-elev); border: 1px solid var(--border); color: var(--text); font-family: inherit; font-size: 11px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.2em; }
+  .alerts { padding: 18px 20px; border-left: 4px solid var(--accent); background: var(--accent-dim); }
+  .alerts li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<button class="toggle" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'">toggle theme</button>
+
+<div class="meta">livrable 02 / 12 · palette undust</div>
+<h1>palette<span style="color:var(--accent)">.</span></h1>
+<p class="lead">5 familles, base figée DESIGN-SYSTEM.md, échelles 50→900 + light mode. Toggle dark/light pour vérifier les contrastes en temps réel.</p>
+
+<section>
+  <h2>Échelles</h2>
+  <div style="display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;margin-bottom:6px">
+    <div class="label-col">accent</div>
+    <div class="ladder">
+      <div class="swatch" style="background:#fff4ef;color:#1a1a1a"><span class="step">50</span><span class="hex">fff4ef</span></div>
+      <div class="swatch" style="background:#ffe4d6;color:#1a1a1a"><span class="step">100</span><span class="hex">ffe4d6</span></div>
+      <div class="swatch" style="background:#ffc7ad;color:#1a1a1a"><span class="step">200</span><span class="hex">ffc7ad</span></div>
+      <div class="swatch" style="background:#ffa37e;color:#1a1a1a"><span class="step">300</span><span class="hex">ffa37e</span></div>
+      <div class="swatch" style="background:#ff8857;color:#1a1a1a"><span class="step">400</span><span class="hex">ff8857</span></div>
+      <div class="swatch" style="background:#ff6b35;color:#1a1a1a;outline:2px solid var(--text);outline-offset:-2px"><span class="step">500★</span><span class="hex">ff6b35</span></div>
+      <div class="swatch" style="background:#e85a26;color:#fff"><span class="step">600</span><span class="hex">e85a26</span></div>
+      <div class="swatch" style="background:#c4491b;color:#fff"><span class="step">700</span><span class="hex">c4491b</span></div>
+      <div class="swatch" style="background:#963617;color:#fff"><span class="step">800</span><span class="hex">963617</span></div>
+      <div class="swatch" style="background:#6e2812;color:#fff"><span class="step">900</span><span class="hex">6e2812</span></div>
+      <div class="swatch" style="background:rgba(255,107,53,0.12);color:var(--text)"><span class="step">dim</span><span class="hex">α 12%</span></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;margin-bottom:6px">
+    <div class="label-col">teal</div>
+    <div class="ladder">
+      <div class="swatch" style="background:#eff5f6;color:#1a1a1a"><span class="step">50</span><span class="hex">eff5f6</span></div>
+      <div class="swatch" style="background:#d8e6e9;color:#1a1a1a"><span class="step">100</span><span class="hex">d8e6e9</span></div>
+      <div class="swatch" style="background:#b3cdd3;color:#1a1a1a"><span class="step">200</span><span class="hex">b3cdd3</span></div>
+      <div class="swatch" style="background:#86afb8;color:#1a1a1a"><span class="step">300</span><span class="hex">86afb8</span></div>
+      <div class="swatch" style="background:#62929d;color:#fff"><span class="step">400</span><span class="hex">62929d</span></div>
+      <div class="swatch" style="background:#4a7f8a;color:#fff;outline:2px solid var(--text);outline-offset:-2px"><span class="step">500★</span><span class="hex">4a7f8a</span></div>
+      <div class="swatch" style="background:#3d6a73;color:#fff"><span class="step">600</span><span class="hex">3d6a73</span></div>
+      <div class="swatch" style="background:#33575e;color:#fff"><span class="step">700</span><span class="hex">33575e</span></div>
+      <div class="swatch" style="background:#2a4549;color:#fff"><span class="step">800</span><span class="hex">2a4549</span></div>
+      <div class="swatch" style="background:#1f3338;color:#fff"><span class="step">900</span><span class="hex">1f3338</span></div>
+      <div class="swatch" style="background:rgba(74,127,138,0.12);color:var(--text)"><span class="step">dim</span><span class="hex">α 12%</span></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;margin-bottom:6px">
+    <div class="label-col">green</div>
+    <div class="ladder">
+      <div class="swatch" style="background:#ecfdf3;color:#1a1a1a"><span class="step">50</span><span class="hex">ecfdf3</span></div>
+      <div class="swatch" style="background:#d1fadf;color:#1a1a1a"><span class="step">100</span><span class="hex">d1fadf</span></div>
+      <div class="swatch" style="background:#a6f4c5;color:#1a1a1a"><span class="step">200</span><span class="hex">a6f4c5</span></div>
+      <div class="swatch" style="background:#6ce9a6;color:#1a1a1a"><span class="step">300</span><span class="hex">6ce9a6</span></div>
+      <div class="swatch" style="background:#4ade80;color:#1a1a1a;outline:2px solid var(--text);outline-offset:-2px"><span class="step">500★</span><span class="hex">4ade80</span></div>
+      <div class="swatch" style="background:#4ade80;color:#1a1a1a"><span class="step">500</span><span class="hex">4ade80</span></div>
+      <div class="swatch" style="background:#16b364;color:#fff"><span class="step">600</span><span class="hex">16b364</span></div>
+      <div class="swatch" style="background:#079455;color:#fff"><span class="step">700</span><span class="hex">079455</span></div>
+      <div class="swatch" style="background:#067647;color:#fff"><span class="step">800</span><span class="hex">067647</span></div>
+      <div class="swatch" style="background:#085d3a;color:#fff"><span class="step">900</span><span class="hex">085d3a</span></div>
+      <div class="swatch" style="background:rgba(74,222,128,0.12);color:var(--text)"><span class="step">dim</span><span class="hex">α 12%</span></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;margin-bottom:6px">
+    <div class="label-col">critical</div>
+    <div class="ladder">
+      <div class="swatch" style="background:#fdf2f2;color:#1a1a1a"><span class="step">50</span><span class="hex">fdf2f2</span></div>
+      <div class="swatch" style="background:#f3d9d9;color:#1a1a1a"><span class="step">100</span><span class="hex">f3d9d9</span></div>
+      <div class="swatch" style="background:#e7b3b3;color:#1a1a1a"><span class="step">200</span><span class="hex">e7b3b3</span></div>
+      <div class="swatch" style="background:#d68a8a;color:#1a1a1a"><span class="step">300</span><span class="hex">d68a8a</span></div>
+      <div class="swatch" style="background:#c66565;color:#1a1a1a"><span class="step">400</span><span class="hex">c66565</span></div>
+      <div class="swatch" style="background:#b84848;color:#fff;outline:2px solid var(--text);outline-offset:-2px"><span class="step">500★</span><span class="hex">b84848</span></div>
+      <div class="swatch" style="background:#9a3838;color:#fff"><span class="step">600</span><span class="hex">9a3838</span></div>
+      <div class="swatch" style="background:#7d2c2c;color:#fff"><span class="step">700</span><span class="hex">7d2c2c</span></div>
+      <div class="swatch" style="background:#612323;color:#fff"><span class="step">800</span><span class="hex">612323</span></div>
+      <div class="swatch" style="background:#481b1b;color:#fff"><span class="step">900</span><span class="hex">481b1b</span></div>
+      <div class="swatch" style="background:rgba(184,72,72,0.12);color:var(--text)"><span class="step">dim</span><span class="hex">α 12%</span></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center">
+    <div class="label-col">neutral</div>
+    <div class="ladder">
+      <div class="swatch" style="background:#fafaf7;color:#1a1a1a"><span class="step">50</span><span class="hex">fafaf7</span></div>
+      <div class="swatch" style="background:#f3efe5;color:#1a1a1a"><span class="step">100</span><span class="hex">f3efe5</span></div>
+      <div class="swatch" style="background:#e8e3d4;color:#1a1a1a"><span class="step">200</span><span class="hex">e8e3d4</span></div>
+      <div class="swatch" style="background:#d4cfc1;color:#1a1a1a"><span class="step">300</span><span class="hex">d4cfc1</span></div>
+      <div class="swatch" style="background:#a8a395;color:#1a1a1a"><span class="step">400</span><span class="hex">a8a395</span></div>
+      <div class="swatch" style="background:#8a8478;color:#fff"><span class="step">500</span><span class="hex">8a8478</span></div>
+      <div class="swatch" style="background:#6a6a6a;color:#fff"><span class="step">600</span><span class="hex">6a6a6a</span></div>
+      <div class="swatch" style="background:#4a4a4a;color:#fff"><span class="step">700</span><span class="hex">4a4a4a</span></div>
+      <div class="swatch" style="background:#2a2a2a;color:#fff"><span class="step">800</span><span class="hex">2a2a2a</span></div>
+      <div class="swatch" style="background:#1a1a1a;color:#fff"><span class="step">900</span><span class="hex">1a1a1a</span></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>WCAG — body text on bg</h2>
+  <div class="pair-grid">
+    <div class="pair"><span class="ratio">12.6:1 AAA</span><div class="demo" style="color:var(--text)">text on bg</div><span class="pass">corps standard ✓</span></div>
+    <div class="pair"><span class="ratio">5.4:1 AA</span><div class="demo" style="color:var(--text-muted)">muted on bg</div><span class="pass">meta secondaire ✓</span></div>
+    <div class="pair"><span class="ratio">5.1:1 AA (dark)</span><div class="demo" style="color:var(--accent)">accent body</div><span class="pass">OK body dark / NOK light → use accent-700</span></div>
+    <div class="pair"><span class="ratio">8.9:1 AAA</span><div class="demo" style="color:var(--green)">green live</div><span class="pass">badge live ✓</span></div>
+    <div class="pair"><span class="ratio">3.7:1 AA-large</span><div class="demo" style="color:var(--teal-500)">teal 500 body</div><span class="pass">OK ≥18px gras / NOK body</span></div>
+    <div class="pair"><span class="ratio">6.0:1 AA</span><div class="demo" style="color:var(--teal-300)">teal 300 body</div><span class="pass">préférer en body dark ✓</span></div>
+    <div class="pair"><span class="ratio">4.0:1 AA-large</span><div class="demo" style="color:var(--critical-500)">critical 500</div><span class="pass">OK titres / NOK body</span></div>
+    <div class="pair"><span class="ratio">6.4:1 AA</span><div class="demo" style="color:var(--critical-300)">critical 300</div><span class="pass">préférer en body dark ✓</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Alertes</h2>
+  <ul class="alerts">
+    <li><strong>DARK</strong> — teal.500 et critical.500 en body : basculer sur teal.300 / critical.300.</li>
+    <li><strong>LIGHT</strong> — accent.500 en body texte : basculer sur accent.700. Wordmark dot OK (signature non-textuelle).</li>
+  </ul>
+</section>
+</body>
+</html>

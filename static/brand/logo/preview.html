@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>undust — logo validation 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f3;
+    --bg-elev: #f3efe5;
+    --bg-dark: #1a1a1a;
+    --bg-dark-elev: #141414;
+    --text: #1a1a1a;
+    --text-soft: #4a4a4a;
+    --text-muted: #8a8478;
+    --text-dark: #e5e7eb;
+    --text-dark-muted: #9ca3af;
+    --accent: #ff6b35;
+    --border: #d4cfc1;
+    --border-dim: #e8e3d4;
+    --border-dark: #2a2a2a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 56px 64px 96px;
+  }
+  .meta { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; }
+  h1 { font-family: 'Titillium Web', sans-serif; font-weight: 700; font-size: 56px; letter-spacing: -2px; margin: 8px 0 8px; }
+  h2 { font-family: 'Titillium Web', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.5px; margin: 0 0 16px; }
+  .lead { color: var(--text-soft); font-size: 15px; max-width: 720px; margin: 0 0 48px; }
+  section { margin-bottom: 64px; }
+  .section-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .grid { display: grid; gap: 24px; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .tile { border: 1px solid var(--border); background: var(--bg-elev); padding: 32px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; }
+  .tile.dark { background: var(--bg-dark); border-color: var(--border-dark); }
+  .tile.dark .label, .tile.dark .file { color: var(--text-dark-muted); }
+  .tile .preview { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 120px; }
+  .tile .preview.lg { min-height: 180px; }
+  .tile .preview img { max-width: 100%; height: auto; }
+  .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
+  .file { font-size: 12px; color: var(--text-muted); word-break: break-all; }
+  .scale-row { display: flex; align-items: center; gap: 32px; padding: 24px 28px; border: 1px solid var(--border); background: var(--bg-elev); }
+  .scale-row .size-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.18em; min-width: 56px; }
+  .swatch-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .swatch { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid var(--border); }
+  .chip { width: 18px; height: 18px; border: 1px solid rgba(0,0,0,0.1); }
+  .legend { font-size: 12px; color: var(--text-soft); margin-top: 12px; max-width: 640px; }
+  .pill { display: inline-block; padding: 3px 9px; border: 1px solid var(--border); font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); }
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="meta">livrable 01 / 12 · logo undust</div>
+  <h1>undust<span style="color:var(--accent)">.</span></h1>
+  <p class="lead">Wordmark Titillium Web 700 (statu quo confirmé) + monogramme principal Position ⌖ ISO 1101 + alternative Datum [U]. Tous les SVG sont dans <code>brand/logo/</code>. Cette page est purement de validation visuelle, pas un livrable.</p>
+
+  <section>
+    <div class="section-head">
+      <span class="pill accent">A</span>
+      <h2>Wordmark — 3 variants + stacked</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="tile">
+        <span class="label">Color · fond clair</span>
+        <div class="preview"><img src="wordmark-color.svg" alt="" style="width:280px"></div>
+        <span class="file">wordmark-color.svg</span>
+      </div>
+      <div class="tile dark">
+        <span class="label">Mono white · fond sombre</span>
+        <div class="preview"><img src="wordmark-mono-white.svg" alt="" style="width:280px"></div>
+        <span class="file">wordmark-mono-white.svg</span>
+      </div>
+      <div class="tile">
+        <span class="label">Mono black · print N&B</span>
+        <div class="preview"><img src="wordmark-mono-black.svg" alt="" style="width:280px"></div>
+        <span class="file">wordmark-mono-black.svg</span>
+      </div>
+      <div class="tile">
+        <span class="label">Stacked + tagline · footer / cover</span>
+        <div class="preview"><img src="wordmark-stacked.svg" alt="" style="width:340px"></div>
+        <span class="file">wordmark-stacked.svg</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="pill accent">B</span>
+      <h2>Monogramme — Datum [U] + point orange</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="tile">
+        <span class="label">Color</span>
+        <div class="preview lg"><img src="monogram-color.svg" alt="" style="width:128px;height:128px"></div>
+        <span class="file">monogram-color.svg</span>
+      </div>
+      <div class="tile">
+        <span class="label">Mono black</span>
+        <div class="preview lg"><img src="monogram-mono-black.svg" alt="" style="width:128px;height:128px"></div>
+        <span class="file">monogram-mono-black.svg</span>
+      </div>
+      <div class="tile dark">
+        <span class="label">Mono white</span>
+        <div class="preview lg"><img src="monogram-mono-white.svg" alt="" style="width:128px;height:128px"></div>
+        <span class="file">monogram-mono-white.svg</span>
+      </div>
+    </div>
+    <p class="legend">Cadre <strong>Datum ISO 5459</strong> à deux cases carrées 24×24. Case gauche : lettre <code>U</code> centrée. Case droite : point orange centré (signature qui fait écho au point final du wordmark). Lecture : <em>« undust = ta référence »</em>.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="pill">C</span>
+      <h2>Tests d'échelle — wordmark</h2>
+    </div>
+    <div class="scale-row" style="margin-bottom:14px">
+      <span class="size-label">256 px</span>
+      <img src="wordmark-color.svg" alt="" style="width:256px">
+    </div>
+    <div class="scale-row" style="margin-bottom:14px">
+      <span class="size-label">160 px</span>
+      <img src="wordmark-color.svg" alt="" style="width:160px">
+    </div>
+    <div class="scale-row" style="margin-bottom:14px">
+      <span class="size-label">96 px</span>
+      <img src="wordmark-color.svg" alt="" style="width:96px">
+    </div>
+    <div class="scale-row">
+      <span class="size-label">48 px</span>
+      <img src="wordmark-color.svg" alt="" style="width:48px">
+      <span class="legend" style="margin:0">Sous 80px le `.` orange devient un grain — wordmark à éviter sous cette taille, basculer sur monogramme.</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="pill">D</span>
+      <h2>Tests d'échelle — monogramme (favicon down to 16px)</h2>
+    </div>
+    <div class="scale-row">
+      <span class="size-label">128 px</span>
+      <img src="monogram-color.svg" alt="" style="width:128px;height:128px">
+      <span class="size-label">64 px</span>
+      <img src="monogram-color.svg" alt="" style="width:64px;height:64px">
+      <span class="size-label">32 px</span>
+      <img src="monogram-color.svg" alt="" style="width:32px;height:32px">
+      <span class="size-label">16 px</span>
+      <img src="monogram-color.svg" alt="" style="width:16px;height:16px">
+    </div>
+    <p class="legend">Lisibilité 16px : le cadre Datum reste identifiable, le U et le point peuvent fusionner — fallback simplifié à prévoir au prompt 11 si nécessaire.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="pill">E</span>
+      <h2>Couleurs utilisées</h2>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch"><span class="chip" style="background:#1a1a1a"></span> ink #1a1a1a</div>
+      <div class="swatch"><span class="chip" style="background:#ffffff"></span> white #ffffff</div>
+      <div class="swatch"><span class="chip" style="background:#ff6b35"></span> accent #ff6b35</div>
+    </div>
+  </section>
+</body>
+</html>

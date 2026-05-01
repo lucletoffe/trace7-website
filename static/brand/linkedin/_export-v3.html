@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>undust — banner export</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #0a0a0a; }
+    #root { display: flex; flex-direction: column; gap: 24px; padding: 24px; }
+    .lbl { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #888; letter-spacing: 0.1em; text-transform: uppercase; }
+  </style>
+  <script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+/* global React, ReactDOM */
+const C = '#ff6b35';
+const FOUR = ['Audit', 'Sprints', 'SaaS', 'Media'];
+const SLOGAN_LEFT = 430;
+const RIGHT_PAD = 80;
+
+const TealCornerGrid = () => (
+  <svg style={{ position: 'absolute', top: 0, right: 0, opacity: 0.7 }}
+       width="500" height="280" viewBox="0 0 500 280">
+    <defs>
+      <pattern id="tg" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4a7f8a" strokeWidth="1.2"/>
+      </pattern>
+      <linearGradient id="fg" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#1a1a1a" stopOpacity="1"/>
+        <stop offset="60%" stopColor="#1a1a1a" stopOpacity="0"/>
+      </linearGradient>
+      <mask id="gm"><rect width="500" height="280" fill="white"/><rect width="500" height="280" fill="url(#fg)"/></mask>
+    </defs>
+    <rect width="500" height="280" fill="url(#tg)" mask="url(#gm)"/>
+  </svg>
+);
+
+const V3 = () => (
+  <div id="banner" style={{
+    width: 1584, height: 396, background: '#1a1a1a',
+    fontFamily: '"Titillium Web", sans-serif', color: '#e5e7eb',
+    position: 'relative', overflow: 'hidden'
+  }}>
+    <TealCornerGrid/>
+
+    {/* Badge top-left */}
+    <div style={{
+      position: 'absolute', top: 38, left: SLOGAN_LEFT, zIndex: 2,
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 21, fontWeight: 500,
+      letterSpacing: '0.18em', textTransform: 'uppercase',
+      color: C, display: 'inline-flex', alignItems: 'center', gap: 12,
+      padding: '8px 16px', border: `1.5px solid ${C}`, borderRadius: 4
+    }}>
+      <span style={{ width: 8, height: 8, background: C, borderRadius: '50%' }}/>
+      ia · industrie · hardware · france
+    </div>
+
+    {/* Slogan */}
+    <div style={{
+      position: 'absolute', top: 100, left: SLOGAN_LEFT,
+      fontSize: 84, fontWeight: 700, lineHeight: 0.98, letterSpacing: '-2.4px', zIndex: 2
+    }}>
+      <div style={{ color: '#e5e7eb' }}>VOTRE EXPERT PART.</div>
+      <div style={{ color: C }}>SON SAVOIR RESTE.</div>
+    </div>
+
+    {/* Sous-titre 1 ligne */}
+    <div style={{
+      position: 'absolute', bottom: 50, left: SLOGAN_LEFT, zIndex: 2,
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 26, fontWeight: 400,
+      color: '#cbd0d6', letterSpacing: '0.04em', lineHeight: 1.2, whiteSpace: 'nowrap'
+    }}>
+      On audite. On outille. On transmet.
+    </div>
+
+    {/* Wordmark */}
+    <div style={{
+      position: 'absolute', top: 38, right: RIGHT_PAD,
+      fontFamily: '"Titillium Web", sans-serif',
+      fontWeight: 700, fontSize: 46, letterSpacing: '-0.8px',
+      color: '#e5e7eb', zIndex: 3, lineHeight: 1, textAlign: 'right'
+    }}>undust<span style={{ color: C }}>.</span></div>
+
+    {/* 4 verbes */}
+    <div style={{
+      position: 'absolute', top: 118, right: RIGHT_PAD, zIndex: 3,
+      display: 'flex', flexDirection: 'column', gap: 16,
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 22, fontWeight: 500,
+      letterSpacing: '0.16em', textTransform: 'uppercase', textAlign: 'right'
+    }}>
+      {FOUR.map(v => (
+        <div key={v} style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 14
+        }}>
+          <span style={{ color: '#e5e7eb' }}>{v}</span>
+          <span style={{
+            width: 8, height: 8, background: C, borderRadius: '50%',
+            display: 'inline-block', flexShrink: 0
+          }}/>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<V3/>);
+
+// Auto-export via postMessage (works cross-origin)
+window.addEventListener('message', async (ev) => {
+  if (ev.data !== 'EXPORT_NOW') return;
+  await document.fonts.ready;
+  await new Promise(r => setTimeout(r, 500));
+  const banner = document.getElementById('banner');
+  const dataUrl = await window.htmlToImage.toPng(banner, {
+    width: 1584, height: 396, pixelRatio: 1, cacheBust: true,
+  });
+  // Send back in chunks via postMessage
+  const b64 = dataUrl.split(',')[1];
+  const CHUNK = 30000;
+  ev.source.postMessage({ type: 'EXPORT_START', total: b64.length }, '*');
+  for (let i = 0; i < b64.length; i += CHUNK) {
+    ev.source.postMessage({ type: 'EXPORT_CHUNK', data: b64.slice(i, i+CHUNK) }, '*');
+  }
+  ev.source.postMessage({ type: 'EXPORT_END' }, '*');
+});
+  </script>
+</body>
+</html>

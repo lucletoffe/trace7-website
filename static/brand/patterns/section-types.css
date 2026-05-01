@@ -1,0 +1,52 @@
+/* undust section-types — v1.1
+   Variantes de section avec spacing canonique.
+   Pas de min-height: 100vh par défaut (cassait l'UX scroll trace7).
+*/
+
+.section {
+  padding: var(--tone-section-padding-y) clamp(1rem, 4vw, 1.5rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.section__inner--narrow { max-width: 760px; }
+.section__inner--wide   { max-width: 1440px; }
+
+.section--compact {
+  padding-top: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.section--hero {
+  padding-top: clamp(2rem, 6vw, 3rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+  /* min-height plafonné — jamais 100vh */
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.section--cta {
+  text-align: center;
+  padding-top: clamp(3rem, 7vw, 5rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+.section--cta .section__inner { max-width: 640px; }
+
+.section--bordered {
+  border-top: var(--border-strength-dim);
+  border-bottom: var(--border-strength-dim);
+}
+
+.section--elev {
+  background: var(--bg-elev);
+}
+
+/* Spacing entre sections */
+.section + .section { padding-top: 0; }
+.section--bordered + .section { padding-top: var(--tone-section-padding-y); }

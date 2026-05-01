@@ -1,0 +1,64 @@
+/* undust bg-gradient-radial — v1.1
+   Dégradés radial chaud (accent) + froid (teal), opacité pilotée par tonalité.
+   Règle stricte : opacité ne JAMAIS dépasser 6%. C'est un scan zone, pas une déco.
+*/
+
+.bg-gradient-radial {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at top left,
+      rgba(255, 107, 53, var(--bg-radial-opacity-warm)) 0%,
+      transparent 60%),
+    radial-gradient(ellipse at bottom right,
+      rgba(74, 127, 138, var(--bg-radial-opacity-cool)) 0%,
+      transparent 55%);
+  background-attachment: fixed;
+}
+
+.bg-gradient-radial--accent-only {
+  background-image: radial-gradient(ellipse at top left,
+    rgba(255, 107, 53, var(--bg-radial-opacity-warm)) 0%,
+    transparent 60%);
+}
+.bg-gradient-radial--teal-only {
+  background-image: radial-gradient(ellipse at bottom right,
+    rgba(74, 127, 138, var(--bg-radial-opacity-cool)) 0%,
+    transparent 55%);
+}
+
+/* Variantes intensité — overrident les vars de tonalité localement */
+.bg-gradient-radial--soft {
+  --bg-radial-opacity-warm: 0.025;
+  --bg-radial-opacity-cool: 0.020;
+}
+.bg-gradient-radial--strong {
+  --bg-radial-opacity-warm: 0.060;
+  --bg-radial-opacity-cool: 0.050;
+}
+
+/* Combo : dotgrid + radial */
+.bg-dotgrid.bg-gradient-radial {
+  background-image:
+    radial-gradient(circle at 1px 1px,
+      rgba(229, 231, 235, var(--bg-dotgrid-opacity)) 1px,
+      transparent 0),
+    radial-gradient(ellipse at top left,
+      rgba(255, 107, 53, var(--bg-radial-opacity-warm)) 0%,
+      transparent 60%),
+    radial-gradient(ellipse at bottom right,
+      rgba(74, 127, 138, var(--bg-radial-opacity-cool)) 0%,
+      transparent 55%);
+  background-size: 24px 24px, auto, auto;
+}
+[data-theme="light"] .bg-dotgrid.bg-gradient-radial {
+  background-image:
+    radial-gradient(circle at 1px 1px,
+      rgba(26, 26, 26, var(--bg-dotgrid-opacity)) 1px,
+      transparent 0),
+    radial-gradient(ellipse at top left,
+      rgba(255, 107, 53, var(--bg-radial-opacity-warm)) 0%,
+      transparent 60%),
+    radial-gradient(ellipse at bottom right,
+      rgba(74, 127, 138, var(--bg-radial-opacity-cool)) 0%,
+      transparent 55%);
+}

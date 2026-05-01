@@ -1,0 +1,30 @@
+/* undust bg-dotgrid — v1.1
+   Dot grid SVG inline, opacité pilotée par --bg-dotgrid-opacity (tonalité).
+   Règle stricte : dot OU rien. Jamais de line-grid.
+*/
+
+.bg-dotgrid {
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(229, 231, 235, var(--bg-dotgrid-opacity)) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+  background-position: 0 0;
+}
+
+[data-theme="light"] .bg-dotgrid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(26, 26, 26, var(--bg-dotgrid-opacity)) 1px,
+    transparent 0
+  );
+}
+
+.bg-dotgrid--soft   { --bg-dotgrid-opacity: 0.020; }
+.bg-dotgrid--strong { --bg-dotgrid-opacity: 0.050; }
+
+/* Densité variantes */
+.bg-dotgrid--dense  { background-size: 16px 16px; }
+.bg-dotgrid--loose  { background-size: 32px 32px; }

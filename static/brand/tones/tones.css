@@ -1,0 +1,92 @@
+/* undust tones — v1.1
+   Mécanisme de tonalité visuelle pour moduler le registre des composants.
+   Posé via classe sur <body> : <body class="tone-tactical"> ou <body class="tone-soft">.
+
+   Tactical : registre full chamfer, dot grid 3.5%, letter-spacing fort, borders nets.
+              Sites cibles : undust.co (holding), antifrag.fr (média/manifeste).
+   Soft     : registre posé, chamfer optionnel, dot grid 2%, letter-spacing modéré.
+              Sites cibles : trace7.fr (SaaS produit B2B PME industrielles).
+
+   Toutes les v1.1 molécules consomment EXCLUSIVEMENT ces variables — jamais
+   de valeurs en dur — afin que le switch .tone-* propage sans fuite.
+*/
+
+/* ============= DEFAULT (= tactical) =============
+   Si aucune classe n'est posée, on hérite du registre tactical (cohérence holding undust). */
+:root {
+  --chamfer:                  6px;
+  --chamfer-lg:                12px;
+  --bg-dotgrid-opacity:       0.035;
+  --bg-radial-opacity-warm:   0.045;
+  --bg-radial-opacity-cool:   0.035;
+  --letter-spacing-eyebrow:   0.22em;
+  --letter-spacing-label:     0.18em;
+  --letter-spacing-display:  -0.02em;
+  --border-strength:          1px solid var(--border);
+  --border-strength-dim:      1px solid var(--border-dim);
+  --tone-card-padding:        1.75rem;
+  --tone-section-padding-y:   clamp(3rem, 8vw, 5rem);
+  --tone-divider-tracking:    0.22em;
+}
+
+/* ============= TONE TACTICAL ============= */
+.tone-tactical {
+  --chamfer:                  6px;
+  --chamfer-lg:                12px;
+  --bg-dotgrid-opacity:       0.035;
+  --bg-radial-opacity-warm:   0.045;
+  --bg-radial-opacity-cool:   0.035;
+  --letter-spacing-eyebrow:   0.22em;
+  --letter-spacing-label:     0.18em;
+  --letter-spacing-display:  -0.02em;
+  --border-strength:          1px solid var(--border);
+  --border-strength-dim:      1px solid var(--border-dim);
+  --tone-card-padding:        1.75rem;
+  --tone-section-padding-y:   clamp(3rem, 8vw, 5rem);
+  --tone-divider-tracking:    0.22em;
+}
+
+/* ============= TONE SOFT ============= */
+.tone-soft {
+  --chamfer:                  0;          /* coupe d'angle off par défaut */
+  --chamfer-lg:                0;
+  --bg-dotgrid-opacity:       0.020;
+  --bg-radial-opacity-warm:   0.025;
+  --bg-radial-opacity-cool:   0.020;
+  --letter-spacing-eyebrow:   0.16em;
+  --letter-spacing-label:     0.14em;
+  --letter-spacing-display:  -0.015em;
+  --border-strength:          1px solid var(--border-dim);
+  --border-strength-dim:      1px solid var(--border-dim);
+  --tone-card-padding:        2rem;
+  --tone-section-padding-y:   clamp(3rem, 7vw, 4.5rem);
+  --tone-divider-tracking:    0.14em;
+}
+
+/* ============= UTILITY .chamfer =============
+   Coupe d'angle plaque blindée (top-left + bottom-right). Hérite de --chamfer.
+   Ne s'applique que si --chamfer > 0 ; en tone-soft, devient un radius classique. */
+.chamfer {
+  clip-path: polygon(
+    var(--chamfer) 0,
+    100% 0,
+    100% calc(100% - var(--chamfer)),
+    calc(100% - var(--chamfer)) 100%,
+    0 100%,
+    0 var(--chamfer)
+  );
+}
+.chamfer-lg {
+  clip-path: polygon(
+    var(--chamfer-lg) 0,
+    100% 0,
+    100% calc(100% - var(--chamfer-lg)),
+    calc(100% - var(--chamfer-lg)) 100%,
+    0 100%,
+    0 var(--chamfer-lg)
+  );
+}
+
+/* En tone-soft, .chamfer = simple radius-md (le clip-path à 0 perd son sens) */
+.tone-soft .chamfer    { clip-path: none; border-radius: var(--radius-md); }
+.tone-soft .chamfer-lg { clip-path: none; border-radius: var(--radius-lg); }

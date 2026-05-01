@@ -1,0 +1,55 @@
+{{/*
+  SEO meta partial — Hugo
+  Usage : {{ partial "seo-meta.html" . }} dans le <head>
+  Variables attendues dans .Site.Params :
+    - title (fallback)
+    - description (fallback)
+    - twitter (handle, ex: "lucletoffe")
+    - locale (ex: "fr_FR")
+  Variables attendues dans .Page.Params (override par page) :
+    - title, description, ogImage, ogType (article|website), jsonld (chaîne JSON-LD)
+*/}}
+
+{{ $title := default .Site.Params.title .Page.Title }}
+{{ $description := default .Site.Params.description .Page.Params.description }}
+{{ $canonical := .Permalink }}
+{{ $ogImage := default (printf "%sog-default.png" .Site.BaseURL) .Page.Params.ogImage }}
+{{ $ogType := default "website" .Page.Params.ogType }}
+{{ $siteName := .Site.Title }}
+{{ $locale := default "fr_FR" .Site.Params.locale }}
+{{ $twitter := default "lucletoffe" .Site.Params.twitter }}
+
+<title>{{ $title }} — {{ $siteName }}</title>
+<meta name="description" content="{{ $description }}">
+<link rel="canonical" href="{{ $canonical }}">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta http-equiv="content-language" content="fr-FR">
+
+<!-- Open Graph -->
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ $canonical }}">
+<meta property="og:site_name" content="{{ $siteName }}">
+<meta property="og:locale" content="{{ $locale }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ $title }} — {{ $siteName }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ $twitter }}">
+<meta name="twitter:creator" content="@{{ $twitter }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
+<!-- JSON-LD (slot par page via .Page.Params.jsonld, ou fallback site-level) -->
+{{ with .Page.Params.jsonld }}
+<script type="application/ld+json">{{ . | safeJS }}</script>
+{{ else }}
+{{ with .Site.Params.jsonld }}
+<script type="application/ld+json">{{ . | safeJS }}</script>
+{{ end }}
+{{ end }}

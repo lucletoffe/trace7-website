@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>undust — components 05</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  .page { padding: 56px 64px 96px; max-width: 1200px; margin: 0 auto; }
+  .meta { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; }
+  .h-page { font-family: var(--font-display); font-weight: 700; font-size: 48px; letter-spacing: -1.5px; margin: 8px 0 8px; }
+  .h-page .dot { color: var(--accent); }
+  .lead { color: var(--text-muted); max-width: 640px; margin: 0 0 48px; font-family: var(--font-mono); font-size: 15px; line-height: 1.55; }
+  .section-h { display: flex; align-items: baseline; gap: 12px; margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border-dim); }
+  .section-h h2 { margin: 0; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 16px 0 24px; }
+  .label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 8px; }
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 12px; }
+  .demo-frame { border: 1px solid var(--border-dim); border-radius: var(--radius-md); overflow: hidden; margin-top: 12px; }
+  .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 100; }
+</style>
+</head>
+<body>
+<div class="theme-toggle">
+  <button class="btn btn--ghost btn--sm" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'">toggle theme</button>
+</div>
+
+<div class="page">
+  <div class="meta">livrable 05 / 12 · composants ui</div>
+  <h1 class="h-page">components<span class="dot">.</span></h1>
+  <p class="lead">Buttons, cards, badges, inputs, header, footer. Dépend de <code style="color:var(--accent)">tokens.css</code>. Toggle theme en haut à droite.</p>
+
+  <!-- BUTTONS -->
+  <div class="section-h"><h2>Buttons</h2></div>
+  <div class="label">variants — primary / ghost / quiet / critical</div>
+  <div class="row">
+    <button class="btn btn--primary">Demander une intervention</button>
+    <button class="btn btn--ghost">En savoir plus</button>
+    <button class="btn btn--quiet">Annuler</button>
+    <button class="btn btn--critical">Supprimer</button>
+  </div>
+  <div class="label">sizes — sm / md / lg</div>
+  <div class="row">
+    <button class="btn btn--primary btn--sm">small</button>
+    <button class="btn btn--primary">medium</button>
+    <button class="btn btn--primary btn--lg">large</button>
+  </div>
+  <div class="label">avec icône</div>
+  <div class="row">
+    <button class="btn btn--primary"><span style="font-family:var(--font-mono)">→</span> Continuer</button>
+    <button class="btn btn--ghost">Télécharger <span style="font-family:var(--font-mono)">↓</span></button>
+  </div>
+
+  <!-- CARDS -->
+  <div class="section-h"><h2>Cards</h2></div>
+  <div class="grid-cards">
+    <article class="card card--hover">
+      <div class="card__eyebrow">card · neutre</div>
+      <h3 class="card__title">Forge7 — référentiel d'expertise</h3>
+      <p class="card__body">Capture la décision technique, ses critères et ses arbitrages. Re-jouable, transmissible.</p>
+    </article>
+    <article class="card card--hover card--accent">
+      <div class="card__eyebrow" style="color:var(--accent)">accent · cas client</div>
+      <h3 class="card__title">Valeo — chaîne d'inspection</h3>
+      <p class="card__body">12 mois, 3 sites. Réduction du retravail de 38% sur les sous-ensembles critiques.</p>
+    </article>
+    <article class="card card--hover card--teal">
+      <div class="card__eyebrow" style="color:var(--teal)">teal · méthode</div>
+      <h3 class="card__title">Trace7 — audit logiciel</h3>
+      <p class="card__body">Le logiciel qui transforme les notes terrain en patrimoine documentaire défendable.</p>
+    </article>
+    <article class="card card--hover card--critical">
+      <div class="card__eyebrow" style="color:var(--critical)">critical · avertissement</div>
+      <h3 class="card__title">Risque non tracé</h3>
+      <p class="card__body">38% des décisions techniques de 2023 n'ont pas de propriétaire identifié à 12 mois.</p>
+    </article>
+  </div>
+
+  <!-- BADGES -->
+  <div class="section-h"><h2>Badges</h2></div>
+  <div class="row">
+    <span class="badge badge--accent">en cours</span>
+    <span class="badge badge--teal">méthode</span>
+    <span class="badge badge--green">validé</span>
+    <span class="badge badge--critical">bloquant</span>
+    <span class="badge badge--muted">archive</span>
+  </div>
+
+  <!-- INPUTS -->
+  <div class="section-h"><h2>Inputs</h2></div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 760px;">
+    <div class="field">
+      <label class="field__label" for="email">email professionnel</label>
+      <input class="input" id="email" type="email" placeholder="vous@entreprise.fr">
+      <div class="field__hint">Réponse sous 24h ouvrées.</div>
+    </div>
+    <div class="field">
+      <label class="field__label" for="role">fonction</label>
+      <select class="select" id="role">
+        <option>Directeur BE</option>
+        <option>Responsable industrialisation</option>
+        <option>Directeur qualité</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="field" style="grid-column: 1 / -1">
+      <label class="field__label" for="msg">contexte</label>
+      <textarea class="textarea" id="msg" rows="4" placeholder="Décrire brièvement le périmètre — produit, équipes concernées, contrainte temps."></textarea>
+      <div class="field__error">obligatoire — 20 caractères minimum</div>
+    </div>
+  </div>
+
+  <!-- LINKS + EYEBROWS -->
+  <div class="section-h"><h2>Links & eyebrows</h2></div>
+  <div style="font-family: var(--font-mono); line-height: 2; max-width: 640px;">
+    Voici un <a href="#" class="link">lien standard</a> dans une phrase, et un <a href="#" class="link link--accent">lien accent</a> pour les CTA inline.
+    Le <a href="#" class="link link--mono">lien mono</a> pour pied de page et URLs techniques.
+  </div>
+  <div class="row" style="gap: 32px; margin-top: 32px;">
+    <span class="eyebrow">these · observation 01</span>
+    <span class="eyebrow eyebrow--accent">accent — cas client</span>
+    <span class="eyebrow eyebrow--teal">teal — méthode</span>
+  </div>
+
+  <!-- HEADER -->
+  <div class="section-h"><h2>Site header</h2></div>
+  <div class="demo-frame">
+    <header class="site-header">
+      <a href="#" class="site-header__brand">undust<span class="dot">.</span></a>
+      <nav class="site-header__nav">
+        <a href="#" aria-current="page">manifeste</a>
+        <a href="#">méthode</a>
+        <a href="#">cas</a>
+        <a href="#">trace7</a>
+        <a href="#">contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section-h"><h2>Site footer</h2></div>
+  <div class="demo-frame">
+    <footer class="site-footer">
+      <div class="site-footer__col">
+        <h5>cabinet</h5>
+        <ul>
+          <li><a href="#">Manifeste</a></li>
+          <li><a href="#">Méthode</a></li>
+          <li><a href="#">Cas client</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h5>logiciel</h5>
+        <ul>
+          <li><a href="#">Trace7</a></li>
+          <li><a href="#">EC²R+</a></li>
+          <li><a href="#">Forge7</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h5>contact</h5>
+        <ul>
+          <li><a href="mailto:luc@undust.co">luc@undust.co</a></li>
+          <li><a href="#">+33 6 XX XX XX XX</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h5>légal</h5>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">CGV / CGU</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__legal">
+        <span>© 2026 undust — Hébergé en France · Protégé par CrowdSec</span>
+        <span>SIREN 000 000 000 · TVA FR00 000000000</span>
+      </div>
+    </footer>
+  </div>
+
+</div>
+</body>
+</html>

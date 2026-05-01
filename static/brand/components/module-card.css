@@ -1,0 +1,73 @@
+/* undust module-card — v1.1
+   Card produit avec status badge intégré.
+   Moments cognitifs servis : #6 fonctionnalité + statut.
+   Dépend de tokens.css + typography.css + tones.css + status-badge.css (utilisé en composition).
+*/
+
+.module-card {
+  background: var(--bg-elev);
+  border: var(--border-strength-dim);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--text-muted);
+  padding: var(--tone-card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color var(--t-base), transform var(--t-base), box-shadow var(--t-base);
+}
+
+.module-card--hover:hover,
+a.module-card:hover {
+  border-color: var(--border);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Border-left coloré selon status */
+.module-card--active     { border-left-color: var(--accent); }
+.module-card--planned    { border-left-color: var(--teal); }
+.module-card--archive    { border-left-color: var(--text-muted); opacity: 0.85; }
+.module-card--highlight  {
+  border-left-color: var(--accent);
+  border-left-width: 4px;
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.module-card__status {
+  align-self: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.module-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+  color: var(--text);
+  margin: 0;
+}
+
+.module-card__body {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.module-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: var(--border-strength-dim);
+}
+
+a.module-card { text-decoration: none; color: inherit; }

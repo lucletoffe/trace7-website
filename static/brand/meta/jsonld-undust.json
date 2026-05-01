@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://undust.co/#organization",
+      "name": "undust",
+      "alternateName": "undust.",
+      "url": "https://undust.co",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://undust.co/brand/logo/wordmark-color.svg",
+        "width": 282,
+        "height": 88
+      },
+      "founder": {
+        "@id": "https://lucletoffe.com/#person"
+      },
+      "description": "Continuité cognitive industrielle pour PME hardware critique.",
+      "knowsAbout": [
+        "Continuité cognitive industrielle",
+        "Mémoire d'expertise industrielle",
+        "Knowledge transfer",
+        "GD&T (Geometric Dimensioning and Tolerancing)",
+        "Méthode Hitachi",
+        "Hardware critique"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Clermont-Ferrand",
+        "addressCountry": "FR"
+      },
+      "taxID": "792722449",
+      "vatID": "{{TBD: VAT}}",
+      "sameAs": [
+        "https://www.linkedin.com/in/lucletoffe",
+        "https://twitter.com/lucletoffe",
+        "https://antifrag.fr",
+        "https://signal.antifrag.fr",
+        "https://lucletoffe.com"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "luc@undust.co",
+        "contactType": "customer support",
+        "availableLanguage": ["French", "English"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://undust.co/#website",
+      "url": "https://undust.co",
+      "name": "undust",
+      "publisher": { "@id": "https://undust.co/#organization" },
+      "inLanguage": "fr-FR"
+    }
+  ]
+}

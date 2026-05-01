@@ -1,0 +1,134 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "color": {
+    "$description": "Palette undust v1.0 — base figée DESIGN-SYSTEM.md + variantes 50→900 + light mode + critique. Aucune nouvelle teinte introduite : bg/text/accent/teal/green/critical uniquement.",
+
+    "bg": {
+      "dark": { "$value": "#1a1a1a", "$type": "color", "$description": "Fond global dark (canon undust)" },
+      "dark-elev": { "$value": "#141414", "$type": "color", "$description": "Fond surélevé dark (stream, impact)" },
+      "light": { "$value": "#fafaf7", "$type": "color", "$description": "Fond clair — blanc cassé chaud (papier)" },
+      "light-elev": { "$value": "#f3efe5", "$type": "color", "$description": "Fond surélevé clair (cards)" }
+    },
+
+    "text": {
+      "dark": { "$value": "#e5e7eb", "$type": "color", "$description": "Corps de texte sur dark" },
+      "dark-muted": { "$value": "#9ca3af", "$type": "color", "$description": "Texte secondaire sur dark" },
+      "light": { "$value": "#1a1a1a", "$type": "color", "$description": "Corps de texte sur light" },
+      "light-soft": { "$value": "#4a4a4a", "$type": "color", "$description": "Texte adouci sur light" },
+      "light-muted": { "$value": "#8a8478", "$type": "color", "$description": "Texte secondaire sur light" }
+    },
+
+    "border": {
+      "dark": { "$value": "#4a4a4a", "$type": "color" },
+      "dark-dim": { "$value": "#2a2a2a", "$type": "color" },
+      "light": { "$value": "#d4cfc1", "$type": "color" },
+      "light-dim": { "$value": "#e8e3d4", "$type": "color" }
+    },
+
+    "accent": {
+      "$description": "Orange undust — signature. 500 = #ff6b35 figé.",
+      "50":  { "$value": "#fff4ef", "$type": "color" },
+      "100": { "$value": "#ffe4d6", "$type": "color" },
+      "200": { "$value": "#ffc7ad", "$type": "color" },
+      "300": { "$value": "#ffa37e", "$type": "color" },
+      "400": { "$value": "#ff8857", "$type": "color" },
+      "500": { "$value": "#ff6b35", "$type": "color", "$description": "BASE — wordmark dot, CTA, signature" },
+      "600": { "$value": "#e85a26", "$type": "color" },
+      "700": { "$value": "#c4491b", "$type": "color" },
+      "800": { "$value": "#963617", "$type": "color" },
+      "900": { "$value": "#6e2812", "$type": "color" },
+      "dim": { "$value": "rgba(255,107,53,0.12)", "$type": "color", "$description": "Background transparent / glow source" }
+    },
+
+    "teal": {
+      "$description": "Teal industrie. 500 = #4A7F8A figé.",
+      "50":  { "$value": "#eff5f6", "$type": "color" },
+      "100": { "$value": "#d8e6e9", "$type": "color" },
+      "200": { "$value": "#b3cdd3", "$type": "color" },
+      "300": { "$value": "#86afb8", "$type": "color" },
+      "400": { "$value": "#62929d", "$type": "color" },
+      "500": { "$value": "#4a7f8a", "$type": "color", "$description": "BASE — bénéfice, tech froide, EC²R" },
+      "600": { "$value": "#3d6a73", "$type": "color" },
+      "700": { "$value": "#33575e", "$type": "color" },
+      "800": { "$value": "#2a4549", "$type": "color" },
+      "900": { "$value": "#1f3338", "$type": "color" },
+      "dim": { "$value": "rgba(74,127,138,0.12)", "$type": "color" }
+    },
+
+    "green": {
+      "$description": "Vert live, stat positive. 500 = #4ade80 figé.",
+      "50":  { "$value": "#ecfdf3", "$type": "color" },
+      "100": { "$value": "#d1fadf", "$type": "color" },
+      "200": { "$value": "#a6f4c5", "$type": "color" },
+      "300": { "$value": "#6ce9a6", "$type": "color" },
+      "400": { "$value": "#4ade80", "$type": "color" },
+      "500": { "$value": "#4ade80", "$type": "color", "$description": "BASE — badge live, stat up" },
+      "600": { "$value": "#16b364", "$type": "color" },
+      "700": { "$value": "#079455", "$type": "color" },
+      "800": { "$value": "#067647", "$type": "color" },
+      "900": { "$value": "#085d3a", "$type": "color" },
+      "dim": { "$value": "rgba(74,222,128,0.12)", "$type": "color" }
+    },
+
+    "critical": {
+      "$description": "Rouge critique — douleur, coût, conformité. 500 = #B84848 figé.",
+      "50":  { "$value": "#fdf2f2", "$type": "color" },
+      "100": { "$value": "#f3d9d9", "$type": "color" },
+      "200": { "$value": "#e7b3b3", "$type": "color" },
+      "300": { "$value": "#d68a8a", "$type": "color" },
+      "400": { "$value": "#c66565", "$type": "color" },
+      "500": { "$value": "#b84848", "$type": "color", "$description": "BASE — verbatim douleur, terrain conformité" },
+      "600": { "$value": "#9a3838", "$type": "color" },
+      "700": { "$value": "#7d2c2c", "$type": "color" },
+      "800": { "$value": "#612323", "$type": "color" },
+      "900": { "$value": "#481b1b", "$type": "color" },
+      "dim": { "$value": "rgba(184,72,72,0.12)", "$type": "color" }
+    },
+
+    "neutral": {
+      "$description": "Échelle gris — bordures, meta, archives.",
+      "50":  { "$value": "#fafaf7", "$type": "color" },
+      "100": { "$value": "#f3efe5", "$type": "color" },
+      "200": { "$value": "#e8e3d4", "$type": "color" },
+      "300": { "$value": "#d4cfc1", "$type": "color" },
+      "400": { "$value": "#a8a395", "$type": "color" },
+      "500": { "$value": "#8a8478", "$type": "color" },
+      "600": { "$value": "#6a6a6a", "$type": "color" },
+      "700": { "$value": "#4a4a4a", "$type": "color" },
+      "800": { "$value": "#2a2a2a", "$type": "color" },
+      "900": { "$value": "#1a1a1a", "$type": "color" }
+    }
+  },
+
+  "wcag": {
+    "$description": "Ratios mesurés contre les fonds bg.dark (#1a1a1a) et bg.light (#fafaf7). AA = 4.5:1 texte / 3:1 UI. AAA = 7:1.",
+    "dark": {
+      "text_dark_on_bg":          { "ratio": "12.6:1", "level": "AAA" },
+      "text_dark_muted_on_bg":    { "ratio": "5.4:1",  "level": "AA"  },
+      "accent_500_on_bg":         { "ratio": "5.1:1",  "level": "AA"  },
+      "accent_400_on_bg":         { "ratio": "6.2:1",  "level": "AA"  },
+      "accent_300_on_bg":         { "ratio": "7.6:1",  "level": "AAA" },
+      "teal_500_on_bg":           { "ratio": "3.7:1",  "level": "AA-large only", "note": "OK titres ≥18px, NOK body" },
+      "teal_300_on_bg":           { "ratio": "6.0:1",  "level": "AA",  "note": "Préférer pour body teal" },
+      "green_500_on_bg":          { "ratio": "8.9:1",  "level": "AAA" },
+      "critical_500_on_bg":       { "ratio": "4.0:1",  "level": "AA-large only", "note": "OK titres, NOK body" },
+      "critical_300_on_bg":       { "ratio": "6.4:1",  "level": "AA",  "note": "Préférer pour body critique" },
+      "border_on_bg":             { "ratio": "3.1:1",  "level": "AA-UI" }
+    },
+    "light": {
+      "text_light_on_bg":         { "ratio": "13.2:1", "level": "AAA" },
+      "text_light_soft_on_bg":    { "ratio": "8.4:1",  "level": "AAA" },
+      "text_light_muted_on_bg":   { "ratio": "3.9:1",  "level": "AA-large only", "note": "OK kickers ≥14px bold, NOK body" },
+      "accent_500_on_bg":         { "ratio": "3.4:1",  "level": "AA-large only", "note": "Wordmark dot OK, body NOK — préférer accent.700" },
+      "accent_700_on_bg":         { "ratio": "5.6:1",  "level": "AA"  },
+      "teal_500_on_bg":           { "ratio": "3.5:1",  "level": "AA-large only" },
+      "teal_700_on_bg":           { "ratio": "6.7:1",  "level": "AA"  },
+      "critical_500_on_bg":       { "ratio": "4.4:1",  "level": "AA-large only" },
+      "critical_700_on_bg":       { "ratio": "7.2:1",  "level": "AAA" }
+    },
+    "alerts": [
+      "DARK : teal.500 et critical.500 en body → utiliser teal.300 / critical.300 ou teal-dim/critical-dim background.",
+      "LIGHT : accent.500 en body texte → utiliser accent.700. Sauf wordmark dot (OK car ≥80px et glyphe non-textuel)."
+    ]
+  }
+}

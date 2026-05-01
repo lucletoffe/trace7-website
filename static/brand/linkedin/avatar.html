@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Avatar LinkedIn — undust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root { --bg:#0e0e0e; --panel:#1a1a1a; --line:#2a2a2a; --ink:#e5e7eb; --muted:#9ca3af; --orange:#ff6b35; --teal:#4a7f8a; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:"Titillium Web",sans-serif; padding:48px; }
+  h1 { font-size:32px; font-weight:700; letter-spacing:-0.5px; margin:0 0 8px; }
+  h1 .dot { color:var(--orange); }
+  .subtitle { font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:48px; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-bottom:64px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:32px; }
+  .card h2 { font-size:18px; font-weight:600; margin:0 0 4px; }
+  .card .desc { font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--muted); letter-spacing:0.08em; margin-bottom:24px; line-height:1.5; }
+  .sizes { display:flex; gap:24px; align-items:flex-end; justify-content:center; padding:24px; background:#0a0a0a; border-radius:6px; margin-bottom:16px; }
+  .size-block { text-align:center; }
+  .size-block img { display:block; border-radius:50%; }
+  .size-block .label { font-family:"JetBrains Mono",monospace; font-size:9px; color:var(--muted); letter-spacing:0.15em; margin-top:8px; text-transform:uppercase; }
+  .tiny-row { display:flex; gap:12px; align-items:center; padding:16px; background:#0a0a0a; border-radius:6px; }
+  .tiny-row img { border-radius:50%; }
+  .tiny-row .label { font-family:"JetBrains Mono",monospace; font-size:10px; color:var(--muted); }
+
+  /* Mockup bannière */
+  .mockup-section { margin-top:64px; }
+  .mockup-section h2 { font-size:22px; font-weight:600; margin:0 0 24px; }
+  .banner-mockup { position:relative; width:1584px; max-width:100%; aspect-ratio:1584/396; background:url('photos/photo-banner-1584x396.png') center/cover, var(--panel); border:1px solid var(--line); border-radius:8px 8px 0 0; overflow:visible; margin-bottom:140px; }
+  .avatar-on-banner { position:absolute; left:80px; bottom:-76px; width:152px; height:152px; border-radius:50%; border:4px solid #fff; }
+  .triple-mockup { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .mini-mockup { position:relative; aspect-ratio:1584/396; background:url('photos/photo-banner-1584x396.png') center/cover, #1a1a1a; border-radius:6px; overflow:visible; margin-bottom:60px; border:1px solid var(--line); }
+  .mini-mockup .mini-avatar { position:absolute; left:8%; bottom:-30%; width:30%; aspect-ratio:1; border-radius:50%; border:3px solid #fff; }
+  .mini-mockup .label { position:absolute; bottom:-50px; left:0; right:0; text-align:center; font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; }
+
+  .recap { margin-top:64px; padding:32px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+  .recap h2 { font-size:18px; font-weight:600; margin:0 0 16px; }
+  .recap ul { font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted); line-height:1.8; padding-left:20px; }
+  .recap ul li strong { color:var(--ink); }
+  .recap ul li code { color:var(--orange); }
+</style>
+</head>
+<body>
+
+<h1>Avatar LinkedIn<span class="dot">.</span></h1>
+<div class="subtitle">3 variantes · 400px (web) + 1000px (HD) · luc létoffé</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>A — Photo pure</h2>
+    <div class="desc">Crop centré, fond original conservé.<br/>Recommandé : la photo source porte déjà la brand (grille teal + glyphes orange).</div>
+    <div class="sizes">
+      <div class="size-block">
+        <img src="avatar-A-400.png" width="200" height="200" alt="A 400"/>
+        <div class="label">400 / display</div>
+      </div>
+      <div class="size-block">
+        <img src="avatar-A-400.png" width="80" height="80" alt="A feed"/>
+        <div class="label">80 / feed</div>
+      </div>
+      <div class="size-block">
+        <img src="avatar-A-400.png" width="48" height="48" alt="A 48"/>
+        <div class="label">48 / list</div>
+      </div>
+    </div>
+    <div class="tiny-row">
+      <img src="avatar-A-400.png" width="32" height="32"/>
+      <img src="avatar-A-400.png" width="24" height="24"/>
+      <img src="avatar-A-400.png" width="16" height="16"/>
+      <span class="label">32 · 24 · 16 (commentaires)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>B — Bordure orange 4px</h2>
+    <div class="desc">Cadre #ff6b35 4px (10px en HD).<br/>Signal brand discret — pop dans un feed gris.</div>
+    <div class="sizes">
+      <div class="size-block">
+        <img src="avatar-B-400.png" width="200" height="200" alt="B 400"/>
+        <div class="label">400 / display</div>
+      </div>
+      <div class="size-block">
+        <img src="avatar-B-400.png" width="80" height="80" alt="B feed"/>
+        <div class="label">80 / feed</div>
+      </div>
+      <div class="size-block">
+        <img src="avatar-B-400.png" width="48" height="48" alt="B 48"/>
+        <div class="label">48 / list</div>
+      </div>
+    </div>
+    <div class="tiny-row">
+      <img src="avatar-B-400.png" width="32" height="32"/>
+      <img src="avatar-B-400.png" width="24" height="24"/>
+      <img src="avatar-B-400.png" width="16" height="16"/>
+      <span class="label">32 · 24 · 16 (commentaires)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>C — Atelier (contraste +8%)</h2>
+    <div class="desc">Sharpening léger, contraste poussé.<br/>Ton "industriel" — visage plus marqué.</div>
+    <div class="sizes">
+      <div class="size-block">
+        <img src="avatar-C-400.png" width="200" height="200" alt="C 400"/>
+        <div class="label">400 / display</div>
+      </div>
+      <div class="size-block">
+        <img src="avatar-C-400.png" width="80" height="80" alt="C feed"/>
+        <div class="label">80 / feed</div>
+      </div>
+      <div class="size-block">
+        <img src="avatar-C-400.png" width="48" height="48" alt="C 48"/>
+        <div class="label">48 / list</div>
+      </div>
+    </div>
+    <div class="tiny-row">
+      <img src="avatar-C-400.png" width="32" height="32"/>
+      <img src="avatar-C-400.png" width="24" height="24"/>
+      <img src="avatar-C-400.png" width="16" height="16"/>
+      <span class="label">32 · 24 · 16 (commentaires)</span>
+    </div>
+  </div>
+</div>
+
+<div class="mockup-section">
+  <h2>Avatar superposé sur la bannière</h2>
+  <div class="triple-mockup">
+    <div class="mini-mockup">
+      <div class="mini-avatar" style="background:url('avatar-A-1000.png') center/cover;"></div>
+      <div class="label">A — pure</div>
+    </div>
+    <div class="mini-mockup">
+      <div class="mini-avatar" style="background:url('avatar-B-1000.png') center/cover; border-color:#ff6b35;"></div>
+      <div class="label">B — bordure orange</div>
+    </div>
+    <div class="mini-mockup">
+      <div class="mini-avatar" style="background:url('avatar-C-1000.png') center/cover;"></div>
+      <div class="label">C — atelier</div>
+    </div>
+  </div>
+</div>
+
+<div class="recap">
+  <h2>Notes</h2>
+  <ul>
+    <li><strong>Crop appliqué :</strong> source 1000×1000 → crop 920×920 décalé +30px haut, pour centrer le visage à <code>~45%</code> de la hauteur (règle portrait).</li>
+    <li><strong>Visage à ~70%</strong> du diamètre du cercle LinkedIn — marges 12-15% respectées (épaules, oreilles, menton préservés au crop circulaire).</li>
+    <li><strong>La photo source porte déjà la brand</strong> — fond anthracite, grille teal en arrière-plan, glyphes <code>^</code> et <code>+</code> orange. Aucun habillage ajouté nécessaire.</li>
+    <li><strong>Variante B</strong> : bordure orange visible à 400px, devient un anneau fin à 48px — fonctionne bien.</li>
+    <li><strong>Variante C</strong> : contraste +8%, brightness −2% — appliqué via CSS filter sur le canvas. Si tu veux plus poussé, à refaire dans Affinity/Photoshop.</li>
+    <li><strong>Recommandation :</strong> A pour démarrer (zéro ajout, photo respectée). B si tu veux signaler "compte pro brandé" sans que ce soit lourd.</li>
+  </ul>
+</div>
+
+</body>
+</html>

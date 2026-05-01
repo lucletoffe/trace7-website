@@ -1,0 +1,14 @@
+/* TEAM */
+Editor : Luc Létoffé
+Site : signal.antifrag.fr
+LinkedIn : linkedin.com/in/lucletoffe
+Twitter : @lucletoffe
+Location : Clermont-Ferrand, France
+
+/* SITE */
+Last update : 2026-04-30
+Standards : HTML5, CSS3
+Stack : Ghost
+Hosted in : France (o2switch)
+Protected by : CrowdSec
+ISSN : à venir (demande BnF en cours — voir ISSN-TODO.md)

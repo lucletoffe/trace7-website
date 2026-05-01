@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>undust — favicon set preview</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#ff6b35">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#ff6b35">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --paper: #fafaf7;
+      --ink: #1a1a1a;
+      --ink-2: #4a4a4a;
+      --line: #d8d4c8;
+      --orange: #ff6b35;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--paper); color: var(--ink); font-family: 'Titillium Web', sans-serif; }
+    body { padding: 64px 48px; max-width: 1200px; margin: 0 auto; }
+    .head { display: flex; align-items: baseline; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+    .head h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+    .head .meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-2); letter-spacing: 0.04em; text-transform: uppercase; }
+    h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 24px; }
+    section { margin-bottom: 64px; }
+    .grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); align-items: end; }
+    .card { display: flex; flex-direction: column; gap: 12px; }
+    .canvas { background: var(--paper); border: 1px solid var(--line); padding: 24px; display: grid; place-items: center; min-height: 140px; position: relative; }
+    .canvas.dark { background: var(--ink); border-color: var(--ink); }
+    .canvas.orange { background: var(--orange); border-color: var(--orange); }
+    .canvas img { display: block; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-2); display: flex; justify-content: space-between; }
+    .label strong { color: var(--ink); font-weight: 500; }
+    .row-actual { display: flex; align-items: center; gap: 24px; padding: 16px 24px; border: 1px solid var(--line); background: white; }
+    .row-actual .pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 8px; background: var(--paper); color: var(--ink-2); }
+    .row-actual img { display: block; }
+    .browser-mock { background: white; border: 1px solid var(--line); border-radius: 8px; padding: 0; overflow: hidden; max-width: 480px; }
+    .browser-mock .bar { background: #ececec; padding: 8px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--line); }
+    .browser-mock .dots { display: flex; gap: 6px; }
+    .browser-mock .dot { width: 10px; height: 10px; border-radius: 50%; background: #d4d4d4; }
+    .browser-mock .tab { background: white; padding: 6px 12px; display: flex; align-items: center; gap: 6px; font-size: 12px; border-radius: 6px 6px 0 0; }
+    .browser-mock .tab img { width: 16px; height: 16px; }
+    .browser-mock .body { padding: 24px; height: 80px; }
+    .ios-mock { background: var(--ink); border-radius: 24px; padding: 24px; max-width: 280px; }
+    .ios-mock .icon-row { display: flex; gap: 24px; flex-wrap: wrap; }
+    .ios-mock .ios-icon { width: 60px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .ios-mock .ios-icon img { width: 60px; height: 60px; border-radius: 14px; }
+    .ios-mock .ios-icon span { font-size: 11px; color: white; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--paper); padding: 2px 6px; border: 1px solid var(--line); }
+    pre { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--ink); color: var(--paper); padding: 24px; overflow-x: auto; line-height: 1.6; border: 1px solid var(--ink); }
+    pre .c { color: #888; }
+    pre .t { color: #ffb38a; }
+    pre .a { color: #d8d4c8; }
+    .footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+
+  <div class="head">
+    <h1>undust — favicon set</h1>
+    <div class="meta">prompt 11 · 13 fichiers</div>
+  </div>
+
+  <!-- ============== Tailles réelles ============== -->
+  <section>
+    <h2>Tailles réelles · pixel-exact</h2>
+    <div class="row-actual">
+      <span class="pill">16×16</span>
+      <img src="favicon-16x16.png" width="16" height="16" alt="16">
+      <span style="color: var(--ink-2); font-size: 12px;">browser tab — variante simplifiée U + point</span>
+    </div>
+    <div style="height: 8px;"></div>
+    <div class="row-actual">
+      <span class="pill">32×32</span>
+      <img src="favicon-32x32.png" width="32" height="32" alt="32">
+      <span style="color: var(--ink-2); font-size: 12px;">bookmark — monogram complet</span>
+    </div>
+    <div style="height: 8px;"></div>
+    <div class="row-actual">
+      <span class="pill">48×48</span>
+      <img src="favicon-48x48.png" width="48" height="48" alt="48">
+      <span style="color: var(--ink-2); font-size: 12px;">Windows site icon</span>
+    </div>
+  </section>
+
+  <!-- ============== Mock browser tab ============== -->
+  <section>
+    <h2>Browser tab · rendu réel</h2>
+    <div class="browser-mock">
+      <div class="bar">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div style="background: #ececec; padding: 0 12px;">
+        <div class="tab">
+          <img src="favicon-16x16.png" alt="">
+          <span>undust — cognition souveraine</span>
+        </div>
+      </div>
+      <div class="body" style="font-size: 13px; color: var(--ink-2);">Page content…</div>
+    </div>
+  </section>
+
+  <!-- ============== Mock iOS home ============== -->
+  <section>
+    <h2>iOS home screen · 60px display @180px source</h2>
+    <div class="ios-mock">
+      <div class="icon-row">
+        <div class="ios-icon">
+          <img src="apple-touch-icon.png" alt="">
+          <span>undust</span>
+        </div>
+        <div class="ios-icon">
+          <img src="apple-touch-icon-orange.png" alt="">
+          <span>undust</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 12px; font-size: 12px; color: var(--ink-2);">Variante paper (par défaut) · variante orange (alternative)</p>
+  </section>
+
+  <!-- ============== Toutes les tailles ============== -->
+  <section>
+    <h2>PNG set · fond paper</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="canvas"><img src="favicon-16x16.png" width="64" alt=""></div>
+        <div class="label"><strong>favicon-16x16</strong><span>16 px</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas"><img src="favicon-32x32.png" width="96" alt=""></div>
+        <div class="label"><strong>favicon-32x32</strong><span>32 px</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas"><img src="favicon-48x48.png" width="96" alt=""></div>
+        <div class="label"><strong>favicon-48x48</strong><span>48 px</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas"><img src="favicon-96x96.png" width="96" alt=""></div>
+        <div class="label"><strong>favicon-96x96</strong><span>96 px</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas"><img src="favicon-192x192.png" width="120" alt=""></div>
+        <div class="label"><strong>favicon-192x192</strong><span>192 px</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas"><img src="favicon-512x512.png" width="120" alt=""></div>
+        <div class="label"><strong>favicon-512x512</strong><span>512 px</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== Fond sombre ============== -->
+  <section>
+    <h2>Test fond sombre · le SVG s'adapte automatiquement</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="canvas dark"><img src="favicon.svg" width="96" alt=""></div>
+        <div class="label"><strong>favicon.svg</strong><span>adaptive</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas dark"><img src="favicon-512x512.png" width="96" alt=""></div>
+        <div class="label"><strong>PNG transparent</strong><span>512 px</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas dark"><img src="apple-touch-icon.png" width="96" style="border-radius: 18px;" alt=""></div>
+        <div class="label"><strong>apple-touch (paper)</strong><span>180 px</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas dark"><img src="apple-touch-icon-orange.png" width="96" style="border-radius: 18px;" alt=""></div>
+        <div class="label"><strong>apple-touch (orange)</strong><span>180 px</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== Safari pinned tab ============== -->
+  <section>
+    <h2>Safari pinned tab · monochrome (recoloré par CSS)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="canvas" style="background: var(--paper);"><img src="safari-pinned-tab.svg" width="64" alt=""></div>
+        <div class="label"><strong>noir natif</strong><span>SVG</span></div>
+      </div>
+      <div class="card">
+        <div class="canvas" style="background: var(--paper);"><img src="safari-pinned-tab.svg" width="64" style="filter: invert(45%) sepia(99%) saturate(2400%) hue-rotate(346deg) brightness(101%) contrast(101%);" alt=""></div>
+        <div class="label"><strong>orange (Safari mask)</strong><span>SVG</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== Snippet ============== -->
+  <section>
+    <h2>HTML snippet · à coller dans &lt;head&gt;</h2>
+    <pre><span class="c">&lt;!-- Favicon SVG (browsers modernes — adaptatif clair/sombre) --&gt;</span>
+&lt;<span class="t">link</span> <span class="a">rel</span>="icon" <span class="a">type</span>="image/svg+xml" <span class="a">href</span>="/favicon.svg"&gt;
+
+<span class="c">&lt;!-- Fallback PNG --&gt;</span>
+&lt;<span class="t">link</span> <span class="a">rel</span>="icon" <span class="a">type</span>="image/png" <span class="a">sizes</span>="32x32" <span class="a">href</span>="/favicon-32x32.png"&gt;
+&lt;<span class="t">link</span> <span class="a">rel</span>="icon" <span class="a">type</span>="image/png" <span class="a">sizes</span>="16x16" <span class="a">href</span>="/favicon-16x16.png"&gt;
+
+<span class="c">&lt;!-- Legacy ICO --&gt;</span>
+&lt;<span class="t">link</span> <span class="a">rel</span>="shortcut icon" <span class="a">href</span>="/favicon.ico"&gt;
+
+<span class="c">&lt;!-- Apple touch icon --&gt;</span>
+&lt;<span class="t">link</span> <span class="a">rel</span>="apple-touch-icon" <span class="a">sizes</span>="180x180" <span class="a">href</span>="/apple-touch-icon.png"&gt;
+
+<span class="c">&lt;!-- Safari pinned tab --&gt;</span>
+&lt;<span class="t">link</span> <span class="a">rel</span>="mask-icon" <span class="a">href</span>="/safari-pinned-tab.svg" <span class="a">color</span>="#ff6b35"&gt;
+
+<span class="c">&lt;!-- PWA manifest --&gt;</span>
+&lt;<span class="t">link</span> <span class="a">rel</span>="manifest" <span class="a">href</span>="/manifest.webmanifest"&gt;
+
+<span class="c">&lt;!-- Theme color --&gt;</span>
+&lt;<span class="t">meta</span> <span class="a">name</span>="theme-color" <span class="a">content</span>="#ff6b35"&gt;
+&lt;<span class="t">meta</span> <span class="a">name</span>="msapplication-TileColor" <span class="a">content</span>="#ff6b35"&gt;</pre>
+  </section>
+
+  <div class="footer">
+    undust · prompt 11 · 13 fichiers · brand/favicon/
+  </div>
+
+</body>
+</html>

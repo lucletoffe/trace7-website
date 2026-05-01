@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>proof-card — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="proof-card.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 1100px; margin: 0 auto; }
+  .specimen + .specimen { border-top: 1px dashed var(--border-dim); margin-top: 3rem; padding-top: 3rem; }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: 1.5rem;
+  }
+  .grid-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div class="specimen">
+    <div class="specimen__label">— Layout 2 colonnes (default) — 4 registres</div>
+
+    <div class="proof-card proof-card--accent">
+      <div class="proof-card__col-num">
+        <p class="proof-card__number">90<span style="font-size:.5em">%</span></p>
+        <p class="proof-card__label">Plans cotés faux</p>
+      </div>
+      <div class="proof-card__col-context">
+        <p class="proof-card__context">Sur 240 plans audités en 2024-2025, 9 sur 10 contiennent au moins une erreur géométrique exploitable par le fournisseur. Personne ne le voit côté donneur d'ordre.</p>
+        <p class="proof-card__detail">— Échantillon undust · 14 secteurs.</p>
+      </div>
+    </div>
+
+    <div class="proof-card proof-card--critical">
+      <div class="proof-card__col-num">
+        <p class="proof-card__number">3,2<span style="font-size:.5em">M€</span></p>
+        <p class="proof-card__label">Coût caché médian</p>
+      </div>
+      <div class="proof-card__col-context">
+        <p class="proof-card__context">Surcoût annuel par site lié aux plans flous : reprises, litiges, retard série, variabilité fournisseur. Médiane sur PME industrielles 40-200M€ CA.</p>
+        <p class="proof-card__detail">— Estimation undust · benchmark 2024.</p>
+      </div>
+    </div>
+
+    <div class="proof-card proof-card--teal">
+      <div class="proof-card__col-num">
+        <p class="proof-card__number">5<span style="font-size:.5em">j</span></p>
+        <p class="proof-card__label">Sprint capture</p>
+      </div>
+      <div class="proof-card__col-context">
+        <p class="proof-card__context">Une semaine sur site avec votre expert. Le savoir-faire est filmé, dessiné, coté, structuré. Il part avec lui — ou il reste avec vous.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label">— Variante --stack (grille serrée)</div>
+    <div class="grid-stack">
+      <div class="proof-card proof-card--stack proof-card--accent">
+        <div class="proof-card__col-num">
+          <p class="proof-card__number">12</p>
+          <p class="proof-card__label">Entreprises actives</p>
+        </div>
+        <div class="proof-card__col-context"><p class="proof-card__context">Trace7 en prod réelle.</p></div>
+      </div>
+      <div class="proof-card proof-card--stack proof-card--teal">
+        <div class="proof-card__col-num">
+          <p class="proof-card__number">240</p>
+          <p class="proof-card__label">Plans audités</p>
+        </div>
+        <div class="proof-card__col-context"><p class="proof-card__context">2024-2025.</p></div>
+      </div>
+      <div class="proof-card proof-card--stack proof-card--critical">
+        <div class="proof-card__col-num">
+          <p class="proof-card__number">14</p>
+          <p class="proof-card__label">Secteurs couverts</p>
+        </div>
+        <div class="proof-card__col-context"><p class="proof-card__context">Auto, aéro, énergie, agro.</p></div>
+      </div>
+      <div class="proof-card proof-card--stack proof-card--muted">
+        <div class="proof-card__col-num">
+          <p class="proof-card__number">7</p>
+          <p class="proof-card__label">Modules Trace7</p>
+        </div>
+        <div class="proof-card__col-context"><p class="proof-card__context">Live + planifiés.</p></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

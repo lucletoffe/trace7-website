@@ -1,0 +1,81 @@
+<!--
+  Footer block commun aux 4 sites undust.
+  Variables à remplacer par site :
+    {{MONOGRAM}}    : [U·] / [A·] / [S◎] / [LL]+⌖
+    {{ACCENT}}      : #ff6b35 (undust, signal) / #4A7F8A (antifrag, luc)
+    {{TONE_CLASS}}  : "tone-tactical" (undust/antifrag/signal) / "tone-soft" (luc)
+  Le footer suppose que tokens.css est chargé (variables --bg, --text, --text-muted, --border).
+-->
+
+<footer class="site-footer {{TONE_CLASS}}" style="--accent: {{ACCENT}};">
+  <div class="footer-grid">
+
+    <div class="footer-col footer-brand">
+      <div class="footer-monogram">{{MONOGRAM}}</div>
+      <p class="footer-tagline">
+        On dépoussière l'expertise.<br>
+        On la rend transmissible.
+      </p>
+    </div>
+
+    <nav class="footer-col footer-nav" aria-label="Navigation site">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/manifeste/">Manifeste</a></li>
+        <li><a href="/methode/">Méthode</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col footer-social" aria-label="Réseaux">
+      <h3>Réseaux</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/lucletoffe" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://twitter.com/lucletoffe" target="_blank" rel="noopener">X / Twitter</a></li>
+        <li><a href="https://signal.antifrag.fr" target="_blank" rel="noopener">Newsletter</a></li>
+        <li><a href="https://github.com/lucletoffe" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-col footer-trust">
+      <h3>Confiance</h3>
+      <ul>
+        <li>Hébergé en France</li>
+        <li>Protégé par CrowdSec</li>
+        <li>SIREN 792&nbsp;722&nbsp;449</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 undust · Tous droits réservés</p>
+    <ul class="footer-legal">
+      <li><a href="/legal/mentions-legales/">Mentions légales</a></li>
+      <li><a href="/legal/privacy/">Confidentialité</a></li>
+      <li><a href="/legal/cgu/">CGU</a></li>
+      <li><a href="/legal/cookies/">Cookies</a></li>
+    </ul>
+  </div>
+
+</footer>
+
+<style>
+/* Footer styles minimaux — adapter à la grille du site */
+.site-footer { background: var(--bg-elev, #141414); color: var(--text, #e5e7eb); padding: 3rem 1.5rem 2rem; border-top: 1px solid var(--border-dim, #2a2a2a); font-family: 'Titillium Web', system-ui, sans-serif; }
+.site-footer.tone-soft { background: #fafaf7; color: #1a1a1a; }
+.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-dim, #2a2a2a); }
+@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+.footer-monogram { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem; }
+.footer-tagline { color: var(--text-muted, #9ca3af); font-size: 0.9375rem; line-height: 1.5; margin: 0; }
+.footer-col h3 { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; margin: 0 0 1rem; color: var(--text, #e5e7eb); }
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.footer-col a { color: var(--text-muted, #9ca3af); text-decoration: none; font-size: 0.9375rem; transition: color 0.15s; }
+.footer-col a:hover { color: var(--accent); }
+.footer-trust li { color: var(--text-muted, #9ca3af); font-size: 0.9375rem; }
+.footer-bottom { max-width: 1200px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.8125rem; color: var(--text-muted, #9ca3af); }
+.footer-legal { list-style: none; padding: 0; margin: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-legal a { color: var(--text-muted, #9ca3af); text-decoration: none; }
+.footer-legal a:hover { color: var(--accent); }
+</style>

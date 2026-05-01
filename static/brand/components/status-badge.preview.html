@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>status-badge — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="status-badge.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: .5rem;
+  }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div>
+    <div class="specimen__label">— 4 variantes</div>
+    <div class="row">
+      <span class="status-badge status-badge--live">Live</span>
+      <span class="status-badge status-badge--wip">En cours</span>
+      <span class="status-badge status-badge--planned">Planifié</span>
+      <span class="status-badge status-badge--archive">Archive</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="specimen__label">— Alias compatibilité : --active = --wip</div>
+    <div class="row">
+      <span class="status-badge status-badge--active">Actif</span>
+    </div>
+  </div>
+
+  <div class="tone-soft">
+    <div class="specimen__label">— Tone-soft (trace7)</div>
+    <div class="row">
+      <span class="status-badge status-badge--live">Live</span>
+      <span class="status-badge status-badge--wip">En cours</span>
+      <span class="status-badge status-badge--planned">Planifié</span>
+      <span class="status-badge status-badge--archive">Archive</span>
+    </div>
+  </div>
+
+</body>
+</html>

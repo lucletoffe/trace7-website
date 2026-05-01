@@ -1,0 +1,38 @@
+{{!--
+  SEO meta partial — Ghost
+  Usage : {{> seo-meta}} dans default.hbs <head>
+  Charge {{ghost_head}} pour les meta auto Ghost (title, description, og, twitter par défaut)
+  Ce partial AJOUTE : Twitter handle figé, JSON-LD Periodical, dcterms.identifier ISSN
+--}}
+
+{{!-- Locale + canonical (Ghost les fournit déjà via {{ghost_head}}) --}}
+<meta http-equiv="content-language" content="fr-FR">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet" {{!-- Signal = paywall, on demande aux moteurs publics de ne pas indexer ; à ajuster par section publique vs paid --}}>
+
+{{!-- Twitter handle figé sur @lucletoffe (override des défauts Ghost si nécessaire) --}}
+<meta name="twitter:site" content="@lucletoffe">
+<meta name="twitter:creator" content="@lucletoffe">
+
+{{!-- ISSN — slot placeholder, à remplacer une fois la BnF a répondu --}}
+{{!-- <meta name="dcterms.identifier" content="urn:issn:{{ISSN}}"> --}}
+{{!-- <meta name="DC.identifier" content="urn:issn:{{ISSN}}"> --}}
+
+{{!-- JSON-LD Periodical (à intégrer via Code Injection une fois ISSN reçu) --}}
+{{!--
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Periodical",
+  "name": "Signal Antifragile",
+  "alternateName": "ANT-7",
+  "url": "https://signal.antifrag.fr",
+  "issn": "{{ISSN}}",
+  "publisher": { "@id": "https://undust.co/#organization" },
+  "inLanguage": "fr",
+  "frequency": "weekly"
+}
+</script>
+--}}
+
+{{!-- Sur les pages article (post.hbs), Ghost fournit déjà les og:type=article + meta auteur --}}
+{{!-- Vérifier que {{ghost_head}} est bien chargé dans default.hbs avant ce partial --}}

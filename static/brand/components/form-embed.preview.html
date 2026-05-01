@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>form-embed — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="form-embed.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  @media (max-width: 760px) { body { grid-template-columns: 1fr; } }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: .75rem;
+  }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div>
+    <div class="specimen__label">— Default · waitlist Trace7</div>
+    <form class="form-embed" action="{{ENDPOINT_URL}}" method="POST" novalidate>
+      <h2 class="form-embed__title">Rejoindre la liste d'accès</h2>
+      <p class="form-embed__intro">12 entreprises actives. 3 slots ouverts au prochain trimestre.</p>
+
+      <div class="field">
+        <label class="field__label field__label--required" for="email">Email pro</label>
+        <input class="input" type="email" id="email" name="email" placeholder="vous@entreprise.fr" required>
+      </div>
+
+      <div class="field">
+        <label class="field__label field__label--required" for="company">Entreprise</label>
+        <input class="input" type="text" id="company" name="company" placeholder="Raison sociale" required>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="role">Fonction</label>
+        <input class="input" type="text" id="role" name="role" placeholder="Directeur méthodes, BE…">
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="context">Contexte (optionnel)</label>
+        <textarea class="textarea" id="context" name="context" rows="3" placeholder="Pièce concernée, problème principal, échéance…"></textarea>
+        <span class="field__hint">Confidentiel — ne sera lu que par Luc.</span>
+      </div>
+
+      <label class="form-embed__consent">
+        <input type="checkbox" name="consent" required>
+        <span>J'accepte d'être recontacté à propos de Trace7. Pas de newsletter, pas de spam.</span>
+      </label>
+
+      <input class="form-embed__honey" type="text" name="website" tabindex="-1" autocomplete="off">
+
+      <div class="form-embed__actions">
+        <button class="btn btn--primary" type="submit">Demander un accès</button>
+        <span class="field__hint">Réponse sous 48 h.</span>
+      </div>
+    </form>
+  </div>
+
+  <div>
+    <div class="specimen__label">— Tone-soft · waitlist Antifrag</div>
+    <div class="tone-soft">
+      <form class="form-embed" action="{{ENDPOINT_URL}}" method="POST">
+        <h2 class="form-embed__title">Recevoir l'édito Antifrag</h2>
+        <p class="form-embed__intro">Une fois par mois. Manifeste + verbatim atelier + un plan disséqué.</p>
+
+        <div class="field">
+          <label class="field__label field__label--required" for="email2">Email</label>
+          <input class="input" type="email" id="email2" name="email" required>
+        </div>
+
+        <label class="form-embed__consent">
+          <input type="checkbox" name="consent" required>
+          <span>OK pour l'édito mensuel. Désinscription en un clic.</span>
+        </label>
+
+        <div class="form-embed__actions">
+          <button class="btn btn--primary" type="submit">Je m'abonne</button>
+        </div>
+
+        <p class="form-embed__status form-embed__status--success" hidden>Inscription confirmée. À très bientôt.</p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

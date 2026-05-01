@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>undust — Carte de visite (print 85×55mm + bleeds)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  /* ============================================================
+     CARTE DE VISITE — 85 × 55 mm + bleeds 3mm = 91 × 61 mm
+     Zone safe à 5mm des bords du format final (donc 8mm depuis edge bleeds)
+     ============================================================ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #ff6b35;
+    --teal:   #4A7F8A;
+    --ink:    #1a1a1a;
+    --paper:  #fafaf7;
+    --soft:   #4a4a4a;
+    --muted:  #8a8478;
+    --border: #d4cfc1;
+  }
+
+  html, body {
+    background: #2a2a2a;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 24px;
+    color: #fff;
+  }
+
+  h1.section {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #aaa; margin: 32px 0 16px;
+  }
+  h1.section:first-child { margin-top: 0; }
+  h1.section .accent { color: var(--orange); }
+
+  .row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+
+  /* ============= Carte = 91×61mm (avec bleeds 3mm de chaque côté) ============= */
+  .card {
+    width: 91mm; height: 61mm;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  /* Repères de coupe (visibles en preview, restent en print pour l'imprimeur) */
+  .crops::before, .crops::after,
+  .crops > .tl, .crops > .tr, .crops > .bl, .crops > .br {
+    content: ''; position: absolute;
+    background: rgba(255,107,53,0.6);
+    pointer-events: none;
+    z-index: 100;
+  }
+  /* 4 marques de coupe aux 4 coins du format final (à 3mm des bords) */
+  .crops .tl { top: 3mm; left: 0; width: 2mm; height: 0.2mm; }
+  .crops .tl::after { content:''; position:absolute; top: -1.9mm; left: 3mm; width: 0.2mm; height: 2mm; background: rgba(255,107,53,0.6); }
+  .crops .tr { top: 3mm; right: 0; width: 2mm; height: 0.2mm; }
+  .crops .tr::after { content:''; position:absolute; top: -1.9mm; right: 3mm; width: 0.2mm; height: 2mm; background: rgba(255,107,53,0.6); }
+  .crops .bl { bottom: 3mm; left: 0; width: 2mm; height: 0.2mm; }
+  .crops .bl::after { content:''; position:absolute; bottom: -1.9mm; left: 3mm; width: 0.2mm; height: 2mm; background: rgba(255,107,53,0.6); }
+  .crops .br { bottom: 3mm; right: 0; width: 2mm; height: 0.2mm; }
+  .crops .br::after { content:''; position:absolute; bottom: -1.9mm; right: 3mm; width: 0.2mm; height: 2mm; background: rgba(255,107,53,0.6); }
+
+  /* Inner = format final 85×55mm, padding zone safe 5mm */
+  .inner {
+    position: absolute;
+    top: 3mm; left: 3mm;
+    width: 85mm; height: 55mm;
+    padding: 5mm;
+  }
+
+  /* ============= RECTO papier (variante A) ============= */
+  .recto-paper { background: var(--paper); color: var(--ink); }
+  .recto-paper .accent-strip {
+    position: absolute; top: 3mm; left: 3mm;
+    width: 6mm; height: 55mm; background: var(--orange);
+  }
+  .recto-paper .inner { padding-left: 13mm; }
+
+  .recto-paper .name {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14pt; font-weight: 700;
+    letter-spacing: -0.3px; line-height: 1.05;
+    color: var(--ink);
+  }
+  .recto-paper .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt; color: var(--orange);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm; font-weight: 600;
+  }
+  .recto-paper .role::after { content: ' '; }
+  .recto-paper .rule {
+    width: 8mm; height: 0.4mm; background: var(--ink);
+    margin: 3mm 0;
+  }
+  .recto-paper .contacts {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt; line-height: 1.65;
+    color: var(--soft);
+  }
+  .recto-paper .contacts .label {
+    display: inline-block; width: 12mm;
+    color: var(--muted); font-size: 6pt;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .recto-paper .contacts .val { color: var(--ink); font-weight: 500; }
+
+  /* Monogramme U-GD&T en filigrane bas-droite */
+  .recto-paper .mono-watermark {
+    position: absolute;
+    bottom: 4mm; right: 4mm;
+    width: 14mm; height: 14mm;
+    opacity: 0.12;
+  }
+
+  /* ============= RECTO anthracite (variante B) ============= */
+  .recto-dark { background: var(--ink); color: #fff; }
+  .recto-dark .accent-strip {
+    position: absolute; top: 3mm; left: 3mm;
+    width: 6mm; height: 55mm; background: var(--orange);
+  }
+  .recto-dark .inner { padding-left: 13mm; }
+
+  .recto-dark .name {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 14pt; font-weight: 700;
+    letter-spacing: -0.3px; color: #fff;
+  }
+  .recto-dark .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt; color: var(--orange);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-top: 1mm; font-weight: 600;
+  }
+  .recto-dark .rule {
+    width: 8mm; height: 0.4mm; background: #fff;
+    margin: 3mm 0;
+  }
+  .recto-dark .contacts {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt; line-height: 1.65;
+    color: #b8b8b0;
+  }
+  .recto-dark .contacts .label {
+    display: inline-block; width: 12mm;
+    color: #888880; font-size: 6pt;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .recto-dark .contacts .val { color: #fff; font-weight: 500; }
+
+  .recto-dark .mono-watermark {
+    position: absolute;
+    bottom: 4mm; right: 4mm;
+    width: 14mm; height: 14mm;
+    opacity: 0.18;
+  }
+
+  /* ============= VERSO (commun aux deux variantes) ============= */
+  .verso { background: var(--ink); color: #fff; }
+  .verso .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(74,127,138,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,127,138,0.08) 1px, transparent 1px);
+    background-size: 4mm 4mm;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .verso .inner {
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+  }
+  .verso .wordmark {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 38pt; font-weight: 700;
+    letter-spacing: -1.5px; color: #fff; line-height: 1;
+  }
+  .verso .wordmark .dot { color: var(--orange); }
+  .verso .tagline {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 8pt; font-style: italic;
+    color: #b8b8b0; margin-top: 2.5mm;
+    letter-spacing: -0.1px; max-width: 70mm; line-height: 1.4;
+  }
+  .verso .category {
+    position: absolute;
+    bottom: 9mm; left: 0; right: 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6pt; color: var(--orange);
+    letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .verso .category::before, .verso .category::after {
+    content: '·'; margin: 0 6px; color: rgba(255,107,53,0.5);
+  }
+  .verso .legal {
+    position: absolute;
+    bottom: 4mm; left: 0; right: 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 5pt; color: #888880;
+    letter-spacing: 0.08em;
+  }
+  .verso .legal .green { color: #4ade80; }
+
+  /* ============= Specs annotations ============= */
+  .specs {
+    background: #1a1a1a; border: 1px solid #3a3a3a;
+    padding: 16px 20px; border-radius: 6px;
+    font-size: 11px; line-height: 1.7; color: #b8b8b0;
+    max-width: 580px;
+  }
+  .specs strong { color: #fff; }
+  .specs code { color: var(--orange); }
+
+  /* ============= Print ============= */
+  @page {
+    size: 91mm 61mm;
+    margin: 0;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    h1.section, .specs, .row + h1.section, .specs-row { display: none !important; }
+    .card { box-shadow: none; page-break-after: always; margin: 0; }
+    .row { display: block; gap: 0; margin: 0; }
+    .crops > * { background: #000 !important; }
+    .crops > *::after { background: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="section">VARIANTE A <span class="accent">// recto papier — verso anthracite</span></h1>
+<div class="row">
+  <div class="card recto-paper">
+    <div class="crops"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+    <div class="accent-strip"></div>
+    <div class="inner">
+      <div class="name">Luc Létoffé</div>
+      <div class="role">Fondateur undust</div>
+      <div class="rule"></div>
+      <div class="contacts">
+        <div><span class="label">Mail</span><span class="val">luc@undust.co</span></div>
+        <div><span class="label">Tél</span><span class="val">+33 X XX XX XX XX</span></div>
+        <div><span class="label">Linkedin</span><span class="val">/in/lucletoffe</span></div>
+        <div><span class="label">Web</span><span class="val">lucletoffe.com</span></div>
+      </div>
+      <svg class="mono-watermark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="8" y="20" width="48" height="24" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+        <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="3"/>
+        <path d="M 14 26 V 34 a 6 6 0 0 0 12 0 V 26" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="44" cy="32" r="4" fill="#1a1a1a"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="card verso">
+    <div class="crops"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+    <div class="grid-bg"></div>
+    <div class="inner">
+      <div class="wordmark">undust<span class="dot">.</span></div>
+      <div class="tagline">On dépoussière l'expertise.<br>On la rend transmissible.</div>
+    </div>
+    <div class="category">CONTINUITÉ COGNITIVE INDUSTRIELLE</div>
+    <div class="legal">undust.co · <span class="green">Hébergé en France</span> · SIREN XXX XXX XXX</div>
+  </div>
+</div>
+
+<h1 class="section">VARIANTE B <span class="accent">// monolithe anthracite — recto + verso noirs</span></h1>
+<div class="row">
+  <div class="card recto-dark">
+    <div class="crops"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+    <div class="accent-strip"></div>
+    <div class="inner">
+      <div class="name">Luc Létoffé</div>
+      <div class="role">Fondateur undust</div>
+      <div class="rule"></div>
+      <div class="contacts">
+        <div><span class="label">Mail</span><span class="val">luc@undust.co</span></div>
+        <div><span class="label">Tél</span><span class="val">+33 X XX XX XX XX</span></div>
+        <div><span class="label">Linkedin</span><span class="val">/in/lucletoffe</span></div>
+        <div><span class="label">Web</span><span class="val">lucletoffe.com</span></div>
+      </div>
+      <svg class="mono-watermark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="8" y="20" width="48" height="24" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+        <line x1="32" y1="20" x2="32" y2="44" stroke="#fff" stroke-width="3"/>
+        <path d="M 14 26 V 34 a 6 6 0 0 0 12 0 V 26" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="44" cy="32" r="4" fill="#fff"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="card verso">
+    <div class="crops"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+    <div class="grid-bg"></div>
+    <div class="inner">
+      <div class="wordmark">undust<span class="dot">.</span></div>
+      <div class="tagline">On dépoussière l'expertise.<br>On la rend transmissible.</div>
+    </div>
+    <div class="category">CONTINUITÉ COGNITIVE INDUSTRIELLE</div>
+    <div class="legal">undust.co · <span class="green">Hébergé en France</span> · SIREN XXX XXX XXX</div>
+  </div>
+</div>
+
+<h1 class="section">SPECS IMPRIMEUR</h1>
+<div class="specs">
+  <p><strong>Format final :</strong> 85 × 55 mm (paysage standard FR)</p>
+  <p><strong>Format avec bleeds :</strong> 91 × 61 mm (3 mm de fond perdu sur les 4 côtés)</p>
+  <p><strong>Zone de sécurité :</strong> 5 mm depuis le bord du format final</p>
+  <p><strong>Repères de coupe :</strong> traits orange aux 4 coins (deviendront noirs en PDF print)</p>
+  <p><strong>Papier recommandé :</strong> 350 g/m² · finition <strong>soft-touch</strong> (toucher mat velouté) ou mat épais</p>
+  <p><strong>Couleur :</strong> orange Pantone <code>166 C</code> (équivalent CMJN ≈ <code>0/68/85/0</code>) — préciser à l'imprimeur</p>
+  <p><strong>Profil colorimétrique :</strong> CMJN · ISO Coated v2 (Fogra39) · 300 dpi</p>
+  <p><strong>Export :</strong> Cmd+P → Save as PDF → format <code>91×61mm</code> sans marges. Puis upload Pixartprinting / Vistaprint en sélectionnant "carte de visite paysage 85×55 mm avec bleeds 3mm".</p>
+  <p style="margin-top: 8px;"><strong>Variante recommandée :</strong> A (recto papier blanc cassé / verso noir) — plus lisible, plus universel, casse moins en cas d'usure des bords.</p>
+</div>
+
+</body>
+</html>

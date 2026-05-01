@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>tact-number — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="tact-number.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 1100px; margin: 0 auto; }
+  .specimen { display: grid; grid-template-columns: minmax(120px, auto) 1fr; gap: 2rem 3rem; align-items: start; padding: 2rem 0; border-top: 1px dashed var(--border-dim); }
+  .specimen:first-of-type { border-top: 0; }
+  h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: var(--fw-bold); margin: .25rem 0 .5rem; color: var(--text); }
+  p  { font-family: var(--font-mono); color: var(--text-muted); margin: 0; line-height: var(--lh-relaxed); }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: .5rem;
+  }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div class="specimen">
+    <span class="tact-number">01</span>
+    <div>
+      <div class="specimen__label">Default · opacity 0.25</div>
+      <h2>On capte l'expert.</h2>
+      <p>Cinq jours sur site. On filme, on dessine, on cote.</p>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <span class="tact-number tact-number--soft">02</span>
+    <div>
+      <div class="specimen__label">--soft · opacity 0.15</div>
+      <h2>On structure la méthode.</h2>
+      <p>Tout passe en archives auditables : vidéos, croquis, cotes.</p>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <span class="tact-number tact-number--strong color-accent">03</span>
+    <div>
+      <div class="specimen__label">--strong · color-accent</div>
+      <h2>On la transmet.</h2>
+      <p>Bootcamp 3 jours. Vos équipes prennent le relais. Sans dépendance.</p>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <span class="tact-number color-teal">04</span>
+    <div>
+      <div class="specimen__label">color-teal</div>
+      <h2>On verrouille.</h2>
+      <p>Trace7 prend le relais : source de vérité par dimension, traçabilité au lot.</p>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <span class="tact-number color-critical tact-number--strong">99</span>
+    <div>
+      <div class="specimen__label">color-critical · --strong</div>
+      <h2>Sinon ?</h2>
+      <p>Le savoir-faire part à la retraite. Et il ne revient jamais.</p>
+    </div>
+  </div>
+
+</body>
+</html>

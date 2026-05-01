@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>undust — typography validation 03</title>
+<link rel="stylesheet" href="../palette/colors-dark.css">
+<link rel="stylesheet" href="typography.css">
+<style>
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); padding: 56px 64px 96px; margin: 0; }
+  .meta { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; }
+  .lead { color: var(--text-muted); max-width: 640px; margin: 8px 0 48px; font-family: var(--font-mono); font-size: 15px; line-height: 1.55; }
+  .title-line { display: flex; align-items: baseline; gap: 12px; margin: 32px 0 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border-dim); }
+  .title-line h2 { margin: 0; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+  .row { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 18px 0; border-bottom: 1px dashed var(--border-dim); }
+  .row .spec { color: var(--text-muted); font-size: 11px; line-height: 1.6; font-family: var(--font-mono); letter-spacing: 0.04em; }
+  .row .spec b { color: var(--text); font-weight: 500; }
+  .sample { color: var(--text); }
+  .sample.muted { color: var(--text-muted); }
+  .sample.accent { color: var(--accent); }
+  .pair { padding: 28px; border: 1px solid var(--border-dim); background: var(--bg-elev); margin-top: 32px; }
+  .pair-title { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 14px; }
+  em { color: var(--accent); font-style: normal; font-weight: 600; }
+  .em-italic { color: var(--text-muted); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="meta">livrable 03 / 12 · typographie undust</div>
+<h1 style="font-family:var(--font-display);font-weight:700;font-size:48px;letter-spacing:-1.5px;margin:8px 0">type<span style="color:var(--accent)">.</span></h1>
+<p class="lead">Titillium Web pour les titres, JetBrains Mono pour le corps. 11 niveaux, body min 16px, slide body min 22px.</p>
+
+<div class="title-line"><h2>Display family — Titillium Web</h2></div>
+
+<div class="row">
+  <div class="spec"><b>display</b> · 56 / 1.10 / 700<br>tracking -0.02em</div>
+  <div class="sample txt-display">La continuité<br>cognitive industrielle.</div>
+</div>
+<div class="row">
+  <div class="spec"><b>h1</b> · 36 / 1.15 / 700<br>tracking -0.015em</div>
+  <div class="sample txt-h1">Nous dépoussiérons l'industrie qui conçoit du <em>hardware critique</em>.</div>
+</div>
+<div class="row">
+  <div class="spec"><b>h2</b> · 28 / 1.20 / 600<br>tracking -0.01em</div>
+  <div class="sample txt-h2">Les décisions non tracées coûtent plus cher que les erreurs techniques.</div>
+</div>
+<div class="row">
+  <div class="spec"><b>h3</b> · 22 / 1.25 / 600</div>
+  <div class="sample txt-h3">Aligner les équipes, augmenter les marges.</div>
+</div>
+<div class="row">
+  <div class="spec"><b>h4</b> · 18 / 1.30 / 600</div>
+  <div class="sample txt-h4">Card title — Forge7 — Trace7 — EC²R</div>
+</div>
+
+<div class="title-line"><h2>Mono family — JetBrains Mono</h2></div>
+
+<div class="row">
+  <div class="spec"><b>body-lg</b> · 18 / 1.55 / 400</div>
+  <div class="sample txt-body-lg">Transformer ce savoir en patrimoine d'entreprise — auditable, transmissible, défendable. Un référentiel qui survit aux départs en retraite.</div>
+</div>
+<div class="row">
+  <div class="spec"><b>body</b> · 16 / 1.55 / 400</div>
+  <div class="sample txt-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <em>orange em</em> au milieu d'un paragraphe pour signaler une notion clé.</div>
+</div>
+<div class="row">
+  <div class="spec"><b>body-sm</b> · 14 / 1.50 / 400</div>
+  <div class="sample txt-body-sm">Note, footer, meta — Hébergé en France · Protégé par CrowdSec · SIREN XXX XXX XXX</div>
+</div>
+<div class="row">
+  <div class="spec"><b>caption</b> · 12 / 1.40 / 400<br>tracking 0.02em</div>
+  <div class="sample txt-caption muted">2026-04-28 · 12 min · archive</div>
+</div>
+<div class="row">
+  <div class="spec"><b>mono-quote</b> · 14 ital / 400</div>
+  <div class="sample txt-mono-quote">"Une poutre fissurée, on la mesure. Une décision floue, elle coûte 250k€ avant qu'on la voie."</div>
+</div>
+<div class="row">
+  <div class="spec"><b>eyebrow</b> · 12 UPPER / 500<br>tracking 0.22em</div>
+  <div class="sample txt-eyebrow accent">these · observation 01</div>
+</div>
+
+<div class="title-line"><h2>Pairs — composé</h2></div>
+
+<div class="pair">
+  <div class="pair-title">hero — eyebrow + h1 + body-lg</div>
+  <div class="txt-eyebrow accent" style="margin-bottom:12px">these · observation 01</div>
+  <div class="txt-h1" style="margin-bottom:18px">Les décisions non tracées coûtent plus cher que les erreurs techniques.</div>
+  <div class="txt-body-lg muted" style="max-width:760px">Transformer ce savoir en patrimoine d'entreprise — auditable, transmissible, défendable. Un référentiel qui survit aux départs en retraite.</div>
+</div>
+
+<div class="pair">
+  <div class="pair-title">stat — display + eyebrow</div>
+  <div class="txt-display accent" style="margin-bottom:8px">250k€</div>
+  <div class="txt-eyebrow muted">coût moyen d'une décision floue · poutre fissurée 2024</div>
+</div>
+
+<div class="pair">
+  <div class="pair-title">verbatim — mono-quote</div>
+  <blockquote style="border-left:4px solid var(--critical);padding:14px 0 14px 28px;margin:0;font-family:var(--font-mono);font-size:18px;font-style:italic;color:var(--text);max-width:760px;line-height:1.5">
+    Une poutre fissurée, on la mesure. Une décision floue, elle coûte 250k€ avant qu'on la voie.
+    <div style="font-style:normal;font-size:13px;color:var(--text-muted);margin-top:10px;letter-spacing:0.04em">— Directeur BE, ETI hardware critique · 2024</div>
+  </blockquote>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Antifragile Hardware
+
+> Mouvement public undust pour ingénieurs et PME hardware critique. Média + formation + communauté.
+
+## Doctrine
+Hardware critique. Mémoire transmissible.
+On dépoussière l'expertise. On la rend transmissible.
+Filiation, pas disruption.
+
+## Pages clés
+- [Accueil](https://antifrag.fr/) — porte d'entrée mouvement
+- [Le Cercle](https://antifrag.fr/cercle/) — communauté payante 79€/mois
+- [Méthode](https://antifrag.fr/methode/) — patrimoine technique transmissible
+- [Newsletter](https://signal.antifrag.fr/) — Signal Antifragile
+
+## Contact
+luc@undust.co

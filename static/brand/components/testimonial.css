@@ -1,0 +1,58 @@
+/* undust testimonial — v1.1
+   Quote avec auteur, border-left registre.
+   Moment cognitif servi : #5 self-sélection par verbatim.
+   Dépend de tokens.css + typography.css + tones.css.
+*/
+
+.testimonial {
+  background: var(--bg-elev);
+  border: var(--border-strength-dim);
+  border-left: 4px solid var(--teal); /* default = registre crédibilité */
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 64ch;
+}
+
+.testimonial--teal     { border-left-color: var(--teal); }
+.testimonial--accent   { border-left-color: var(--accent); }
+.testimonial--critical { border-left-color: var(--critical); }
+
+.testimonial__quote {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-regular);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+  text-wrap: pretty;
+}
+.testimonial__quote::before { content: '« '; color: var(--text-muted); }
+.testimonial__quote::after  { content: ' »'; color: var(--text-muted); }
+
+.testimonial__author {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.testimonial__author-role {
+  display: block;
+  font-weight: var(--fw-regular);
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-caption);
+  margin-top: 0.25rem;
+}
+
+/* Variante --lg : quote en h3 */
+.testimonial--lg .testimonial__quote { font-size: var(--fs-h3); }
+.testimonial--lg { padding: 2rem 2.25rem; }

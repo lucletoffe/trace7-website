@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Card export</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#1a1a1a; --ink:#e5e7eb; --muted:#9ca3af;
+    --orange:#ff6b35; --teal:#4a7f8a; --critical:#b84848; --neutral:#4a4a4a;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:1080px; height:1080px; background:#000; overflow:hidden; }
+  .card {
+    width:1080px; height:1080px;
+    background:var(--bg);
+    position:relative;
+    overflow:hidden;
+    font-family:"Titillium Web",sans-serif;
+    color:var(--ink);
+  }
+  .card .corner-grid {
+    position:absolute; top:0; right:0;
+    width:560px; height:560px;
+    background-image:
+      linear-gradient(to right, rgba(74,127,138,0.6) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(74,127,138,0.6) 2px, transparent 2px);
+    background-size:64px 64px;
+    -webkit-mask-image: radial-gradient(circle at top right, #000 0%, #000 30%, transparent 75%);
+            mask-image: radial-gradient(circle at top right, #000 0%, #000 30%, transparent 75%);
+    pointer-events:none;
+  }
+  .card .glyph {
+    position:absolute;
+    top:200px; right:140px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:56px;
+    font-weight:700;
+    color:var(--orange);
+    line-height:1;
+    z-index:2;
+  }
+  .card .inner { position:absolute; inset:0; z-index:3; }
+  .card .badge {
+    position:absolute;
+    top:200px; left:140px;
+    padding:18px 28px;
+    font-family:"JetBrains Mono",monospace;
+    font-weight:700;
+    font-size:30px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:#fff;
+    border-radius:6px;
+  }
+  .badge.teal     { background:var(--teal); }
+  .badge.critical { background:var(--critical); }
+  .badge.neutral  { background:var(--neutral); }
+  .card h2.punch {
+    position:absolute;
+    top:350px; left:140px; right:140px;
+    font-family:"Titillium Web",sans-serif;
+    font-weight:700;
+    font-size:128px;
+    line-height:0.96;
+    letter-spacing:-3px;
+    margin:0;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .card h2.punch .accent { color:var(--orange); }
+  .card h2.punch.size-md { font-size:118px; letter-spacing:-2.6px; }
+  .card h2.punch.size-sm { font-size:104px; letter-spacing:-2.2px; }
+  .card h2.punch.size-xs { font-size:92px;  letter-spacing:-1.8px; }
+  .card .subline {
+    position:absolute;
+    left:140px; right:140px;
+    bottom:160px;
+    font-family:"Titillium Web",sans-serif;
+    font-weight:400;
+    font-size:34px;
+    line-height:1.25;
+    letter-spacing:-0.4px;
+    color:var(--ink);
+  }
+  .card .wordmark {
+    position:absolute;
+    bottom:80px; right:140px;
+    font-family:"Titillium Web",sans-serif;
+    font-weight:700;
+    font-size:38px;
+    color:var(--ink);
+    letter-spacing:-0.5px;
+  }
+  .card .wordmark .dot { color:var(--orange); }
+</style>
+</head>
+<body>
+<!-- CARD_CONTENT -->
+</body>
+</html>

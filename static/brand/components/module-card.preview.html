@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>module-card — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="status-badge.css">
+<link rel="stylesheet" href="module-card.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 1280px; margin: 0 auto; }
+  .specimen + .specimen { border-top: 1px dashed var(--border-dim); margin-top: 3rem; padding-top: 3rem; }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: 1.5rem;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div class="specimen">
+    <div class="specimen__label">— 4 statuts : active / planned / archive / highlight</div>
+    <div class="grid">
+
+      <div class="module-card module-card--active module-card--hover">
+        <span class="module-card__status">
+          <span class="status-badge status-badge--wip">En cours</span>
+        </span>
+        <h3 class="module-card__title">Cotation GPS</h3>
+        <p class="module-card__body">Une dimension = une chaîne de cotes traçable. Auditable au lot.</p>
+        <div class="module-card__meta">
+          <span>v 0.4.2</span><span>· 12 entreprises</span>
+        </div>
+      </div>
+
+      <div class="module-card module-card--planned module-card--hover">
+        <span class="module-card__status">
+          <span class="status-badge status-badge--planned">Planifié</span>
+        </span>
+        <h3 class="module-card__title">Reporting capacitaire</h3>
+        <p class="module-card__body">Charge atelier croisée avec la complexité de cotation.</p>
+        <div class="module-card__meta">
+          <span>Q3 2026</span>
+        </div>
+      </div>
+
+      <div class="module-card module-card--archive">
+        <span class="module-card__status">
+          <span class="status-badge status-badge--archive">Archive</span>
+        </span>
+        <h3 class="module-card__title">Export DXF legacy</h3>
+        <p class="module-card__body">Remplacé par STEP AP242 + PMI. Maintenu en lecture seule.</p>
+      </div>
+
+      <div class="module-card module-card--highlight module-card--hover">
+        <span class="module-card__status">
+          <span class="status-badge status-badge--live">Live</span>
+        </span>
+        <h3 class="module-card__title">Capture experts</h3>
+        <p class="module-card__body">Sprint 5 jours sur site. Méthode capturée avant départ.</p>
+        <div class="module-card__meta">
+          <span>flagship</span><span>· 3 prochains slots</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label">— Tone-soft (trace7 SaaS)</div>
+    <div class="tone-soft">
+      <div class="grid">
+        <div class="module-card module-card--active module-card--hover">
+          <span class="module-card__status">
+            <span class="status-badge status-badge--wip">En cours</span>
+          </span>
+          <h3 class="module-card__title">Cotation GPS</h3>
+          <p class="module-card__body">Une dimension = une chaîne de cotes traçable.</p>
+        </div>
+        <div class="module-card module-card--planned module-card--hover">
+          <span class="module-card__status">
+            <span class="status-badge status-badge--planned">Planifié</span>
+          </span>
+          <h3 class="module-card__title">Reporting capacitaire</h3>
+          <p class="module-card__body">Charge atelier × complexité.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

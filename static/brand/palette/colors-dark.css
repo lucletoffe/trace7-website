@@ -1,0 +1,69 @@
+/* undust palette — DARK mode (default)
+   Source : brand/palette/colors.json
+   Toutes les valeurs base figées DESIGN-SYSTEM.md respectées. */
+
+:root, [data-theme="dark"] {
+  /* Backgrounds */
+  --bg:              #1a1a1a;
+  --bg-elev:         #141414;
+
+  /* Text */
+  --text:            #e5e7eb;
+  --text-muted:      #9ca3af;
+
+  /* Borders */
+  --border:          #4a4a4a;
+  --border-dim:      #2a2a2a;
+
+  /* Accent — orange */
+  --accent-50:       #fff4ef;
+  --accent-100:      #ffe4d6;
+  --accent-200:      #ffc7ad;
+  --accent-300:      #ffa37e;
+  --accent-400:      #ff8857;
+  --accent:          #ff6b35;
+  --accent-500:      #ff6b35;
+  --accent-600:      #e85a26;
+  --accent-700:      #c4491b;
+  --accent-800:      #963617;
+  --accent-900:      #6e2812;
+  --accent-dim:      rgba(255,107,53,0.12);
+  --accent-glow:     rgba(255,107,53,0.18);
+
+  /* Teal — industrie */
+  --teal-50:         #eff5f6;
+  --teal-100:        #d8e6e9;
+  --teal-200:        #b3cdd3;
+  --teal-300:        #86afb8;
+  --teal-400:        #62929d;
+  --teal:            #4a7f8a;
+  --teal-500:        #4a7f8a;
+  --teal-600:        #3d6a73;
+  --teal-700:        #33575e;
+  --teal-800:        #2a4549;
+  --teal-900:        #1f3338;
+  --teal-dim:        rgba(74,127,138,0.12);
+
+  /* Green — live */
+  --green-50:        #ecfdf3;
+  --green-100:       #d1fadf;
+  --green-200:       #a6f4c5;
+  --green-300:       #6ce9a6;
+  --green:           #4ade80;
+  --green-500:       #4ade80;
+  --green-600:       #16b364;
+  --green-700:       #079455;
+  --green-dim:       rgba(74,222,128,0.12);
+
+  /* Critical — rouge */
+  --critical-50:     #fdf2f2;
+  --critical-100:    #f3d9d9;
+  --critical-200:    #e7b3b3;
+  --critical-300:    #d68a8a;
+  --critical-400:    #c66565;
+  --critical:        #b84848;
+  --critical-500:    #b84848;
+  --critical-600:    #9a3838;
+  --critical-700:    #7d2c2c;
+  --critical-dim:    rgba(184,72,72,0.12);
+}

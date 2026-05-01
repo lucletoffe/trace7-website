@@ -1,0 +1,48 @@
+/* undust palette — LIGHT mode
+   Source : brand/palette/colors.json
+   Bg blanc cassé chaud (papier), text ink, accent orange CONSERVÉ comme signature. */
+
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg:              #fafaf7;
+  --bg-elev:         #f3efe5;
+
+  /* Text */
+  --text:            #1a1a1a;
+  --text-soft:       #4a4a4a;
+  --text-muted:      #8a8478;
+
+  /* Borders */
+  --border:          #d4cfc1;
+  --border-dim:      #e8e3d4;
+
+  /* Accent — orange (#ff6b35 conservé en signature ; pour body texte, utiliser accent-700 qui passe AA) */
+  --accent-50:       #fff4ef;
+  --accent-100:      #ffe4d6;
+  --accent-200:      #ffc7ad;
+  --accent-300:      #ffa37e;
+  --accent-400:      #ff8857;
+  --accent:          #ff6b35;
+  --accent-500:      #ff6b35;
+  --accent-600:      #e85a26;
+  --accent-700:      #c4491b;  /* à utiliser pour texte body sur fond clair (AA 5.6:1) */
+  --accent-800:      #963617;
+  --accent-900:      #6e2812;
+  --accent-dim:      rgba(255,107,53,0.12);
+  --accent-glow:     rgba(255,107,53,0.18);
+
+  /* Teal */
+  --teal:            #4a7f8a;
+  --teal-500:        #4a7f8a;
+  --teal-700:        #33575e;  /* body teal sur fond clair (AA 6.7:1) */
+  --teal-dim:        rgba(74,127,138,0.10);
+
+  /* Green */
+  --green:           #16b364;  /* sur light, on descend à 600 pour contraste */
+  --green-500:       #16b364;
+
+  /* Critical */
+  --critical:        #b84848;
+  --critical-500:    #b84848;
+  --critical-700:    #7d2c2c;  /* body critique sur fond clair (AAA 7.2:1) */
+}

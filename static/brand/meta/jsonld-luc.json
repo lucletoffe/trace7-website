@@ -1,0 +1,61 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lucletoffe.com/#person",
+      "name": "Luc Létoffé",
+      "givenName": "Luc",
+      "familyName": "Létoffé",
+      "jobTitle": "Fondateur undust",
+      "worksFor": { "@id": "https://undust.co/#organization" },
+      "url": "https://lucletoffe.com",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://lucletoffe.com/assets/portrait.webp"
+      },
+      "description": "Fondateur undust. 15 ans terrain industriel. Speaker continuité cognitive industrielle.",
+      "knowsAbout": [
+        "Industrial engineering",
+        "Knowledge transfer",
+        "GD&T (Geometric Dimensioning and Tolerancing)",
+        "Méthode Hitachi",
+        "Continuité cognitive industrielle",
+        "Hardware critique",
+        "Design rationale"
+      ],
+      "alumniOf": [
+        { "@type": "Organization", "name": "Valeo" },
+        { "@type": "Organization", "name": "Hall32" },
+        { "@type": "Organization", "name": "Hitachi Rail" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Clermont-Ferrand",
+        "addressCountry": "FR"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/lucletoffe",
+        "https://twitter.com/lucletoffe",
+        "https://github.com/lucletoffe",
+        "https://undust.co",
+        "https://antifrag.fr",
+        "https://signal.antifrag.fr"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "luc@undust.co",
+        "contactType": "personal",
+        "availableLanguage": ["French", "English"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lucletoffe.com/#website",
+      "url": "https://lucletoffe.com",
+      "name": "Luc Létoffé",
+      "author": { "@id": "https://lucletoffe.com/#person" },
+      "inLanguage": "fr-FR"
+    }
+  ]
+}

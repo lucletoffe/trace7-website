@@ -1,0 +1,4 @@
+# Politique IA — lucletoffe.com
+# Voir aussi /llms.txt et /robots.txt
+Allow: *
+Contact: luc@undust.co

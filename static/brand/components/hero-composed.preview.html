@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>hero-composed — preview v1.1</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="../typography/typography.css">
+<link rel="stylesheet" href="../tones/tones.css">
+<link rel="stylesheet" href="hero-composed.css">
+<style>
+  body { padding: 3rem 5vw; max-width: 1200px; margin: 0 auto; }
+  .specimen + .specimen { border-top: 1px dashed var(--border-dim); margin-top: 4rem; padding-top: 4rem; }
+  .specimen__label {
+    font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: 1.5rem;
+  }
+</style>
+</head>
+<body class="tone-tactical">
+
+  <div class="specimen">
+    <div class="specimen__label">— Variant : ship (default, accent orange) — tone-tactical</div>
+    <div class="hero-composed hero-composed--ship">
+      <p class="hero-composed__mark">undust · capture des savoir-faire</p>
+      <p class="hero-composed__l1">90% des plans cotés sont faux. Personne ne le voit.</p>
+      <h1 class="hero-composed__l2">On dépoussière l'industrie.</h1>
+      <p class="hero-composed__l3">Une journée. Trois angles. Vos plans audités sans flinguer la prod.</p>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label">— Variant : ship · teal (bénéfice dominant)</div>
+    <div class="hero-composed hero-composed--ship hero-composed--teal">
+      <p class="hero-composed__mark">trace7 · saas cotation gps</p>
+      <p class="hero-composed__l1">Vos cotations dérivent à chaque révision.</p>
+      <h1 class="hero-composed__l2">On verrouille la trace.</h1>
+      <p class="hero-composed__l3">Une source de vérité par dimension. Auditable. Traçable.</p>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label">— Variant : ship · critical (douleur dominante)</div>
+    <div class="hero-composed hero-composed--ship hero-composed--critical">
+      <p class="hero-composed__mark">antifrag · le média anti-médiocrité</p>
+      <p class="hero-composed__l1">Vos meilleurs partent à la retraite. Sans transmettre.</p>
+      <h1 class="hero-composed__l2">On le dit tout fort.</h1>
+      <p class="hero-composed__l3">Et on le redessine — pendant qu'il est encore temps.</p>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label">— Variant : simple (l2 seul, slap pur)</div>
+    <div class="hero-composed hero-composed--simple">
+      <h1 class="hero-composed__l2">Vos plans mentent.</h1>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label">— Variant : ship · tone-soft (registre posé, trace7)</div>
+    <div class="tone-soft">
+      <div class="hero-composed hero-composed--ship">
+        <p class="hero-composed__mark">trace7 · saas cotation gps</p>
+        <p class="hero-composed__l1">Vos cotations dérivent à chaque révision.</p>
+        <h1 class="hero-composed__l2">On verrouille la trace.</h1>
+        <p class="hero-composed__l3">Une source de vérité par dimension. Auditable. Traçable.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

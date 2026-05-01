@@ -1,0 +1,106 @@
+/* undust form-embed — v1.1
+   Pattern HTML générique pour formulaire souverain (alternative à Tally).
+   Endpoint-agnostic : action="{{ENDPOINT_URL}}" à remplir par le site.
+   Backends compatibles : PHP o2switch / Cabin Forms / FormSpree.
+   Dépend de tokens.css + typography.css + tones.css + components.css (.btn, .input, .field).
+*/
+
+.form-embed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 32rem;
+  background: var(--bg-elev);
+  border: var(--border-strength-dim);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.form-embed__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0;
+}
+
+.form-embed__intro {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
+/* .field hérité de components.css v1.0 ; on ré-affirme la base. */
+.form-embed .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-embed .field__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+  color: var(--text-muted);
+}
+.form-embed .field__label--required::after {
+  content: ' *';
+  color: var(--accent);
+}
+
+.form-embed .field__hint {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+}
+.form-embed .field__error {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--critical);
+}
+
+.form-embed__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.form-embed__consent input[type="checkbox"] {
+  margin-top: 0.25rem;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.form-embed__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.form-embed__honey {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  visibility: hidden;
+}
+
+/* Status messages */
+.form-embed__status {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid currentColor;
+}
+.form-embed__status--success { color: var(--green);    background: var(--green-dim); }
+.form-embed__status--error   { color: var(--critical); background: var(--critical-dim); }

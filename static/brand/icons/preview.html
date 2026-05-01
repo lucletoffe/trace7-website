@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>undust — pack icônes</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --paper: #fafaf7;
+      --ink: #1a1a1a;
+      --ink-2: #4a4a4a;
+      --ink-3: #6f6f6f;
+      --line: #d8d4c8;
+      --line-light: #ece8dc;
+      --orange: #ff6b35;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--paper); color: var(--ink); font-family: 'Titillium Web', sans-serif; }
+    body { padding: 64px 48px; max-width: 1280px; margin: 0 auto; }
+
+    .head { display: flex; align-items: baseline; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+    .head h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+    .head .meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-2); letter-spacing: 0.04em; text-transform: uppercase; }
+    .lede { font-size: 15px; color: var(--ink-2); margin-bottom: 56px; max-width: 720px; line-height: 1.55; }
+
+    h2 { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--line-light); }
+    section { margin-bottom: 64px; }
+
+    /* ─── Grille principale ─── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .cell {
+      background: var(--paper);
+      padding: 24px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.15s;
+    }
+    .cell:hover { background: white; }
+    .cell svg.icon { width: 32px; height: 32px; color: var(--ink); }
+    .cell .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.02em; }
+    .cell .id { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink-3); opacity: 0.7; }
+
+    /* ─── Tailles ─── */
+    .sizes { display: flex; align-items: end; gap: 48px; padding: 32px; border: 1px solid var(--line); background: white; }
+    .size-card { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .size-card svg { color: var(--ink); }
+    .size-card .px { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); }
+    .size-24 { width: 24px; height: 24px; }
+    .size-32 { width: 32px; height: 32px; }
+    .size-48 { width: 48px; height: 48px; }
+    .size-64 { width: 64px; height: 64px; }
+
+    /* ─── Couleurs ─── */
+    .colors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .color-cell { padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .color-cell svg { width: 40px; height: 40px; }
+    .color-cell .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+    .c-paper { background: var(--paper); color: var(--ink); }
+    .c-ink { background: var(--ink); color: var(--paper); }
+    .c-orange { background: var(--orange); color: var(--paper); }
+    .c-paper-orange { background: var(--paper); color: var(--orange); }
+
+    /* ─── Snippets ─── */
+    pre { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--ink); color: #ece8dc; padding: 24px; overflow-x: auto; line-height: 1.65; border: 1px solid var(--ink); margin-bottom: 12px; }
+    pre .c { color: #888; }
+    pre .t { color: #ffb38a; }
+    pre .a { color: #d8d4c8; }
+    pre .s { color: #b3d4a3; }
+    .snippet-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-2); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ─── Use cases ─── */
+    .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .use-case { padding: 24px; border: 1px solid var(--line); background: white; }
+    .use-case h3 { font-size: 13px; font-weight: 600; margin-bottom: 16px; color: var(--ink-2); }
+    .uc-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; font-size: 14px; color: var(--ink-2); }
+    .uc-row svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--orange); }
+    .uc-row.check svg { color: #4a8550; }
+    .uc-row.x svg { color: #c44a3a; }
+
+    .footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+
+  <!-- Symbol library agrégée -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><defs>
+    <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/><path d="M8 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/><path d="M2 20v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1"/><path d="M14 15h2a4 4 0 0 1 4 4v1"/></symbol>
+    <symbol id="icon-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17 8.5 14.5a2 2 0 0 1 0-2.83l4.67-4.67a2 2 0 0 1 2.83 0L18 9.5"/><path d="M3 12 7 8h4l2 2"/><path d="m13 19 1.5 1.5a1.5 1.5 0 0 0 2.12-2.12L15 16.76"/><path d="m11 17 2.5 2.5a1.5 1.5 0 0 0 2.12 0L17.62 17.5a1.5 1.5 0 0 0 0-2.12L15 12.76"/><path d="M21 12 17 8h-4"/></symbol>
+    <symbol id="icon-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v3M12 10 6.5 17.5M12 10l5.5 7.5M7 19h10"/></symbol>
+    <symbol id="icon-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></symbol>
+    <symbol id="icon-tools" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></symbol>
+    <symbol id="icon-beaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v7L4.5 19a1.5 1.5 0 0 0 1.3 2.5h12.4a1.5 1.5 0 0 0 1.3-2.5L14 10V3"/><path d="M7 14h10"/></symbol>
+    <symbol id="icon-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5a2 2 0 0 1 2-2h6v17H4a2 2 0 0 1-2-2Z"/><path d="M22 5a2 2 0 0 0-2-2h-6v17h6a2 2 0 0 0 2-2Z"/><path d="M10 7H6M10 11H6M18 7h-4M18 11h-4"/></symbol>
+    <symbol id="icon-magnifying-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="icon-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 21h14"/><path d="m7 8-3 6a3 3 0 0 0 6 0L7 8Z"/><path d="m17 8-3 6a3 3 0 0 0 6 0l-3-6Z"/><path d="M7 8h10"/></symbol>
+    <symbol id="icon-chart-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="6" width="3" height="12"/></symbol>
+    <symbol id="icon-lightning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="0.6" fill="currentColor"/></symbol>
+    <symbol id="icon-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6a9 9 0 0 0 8 9 9 9 0 0 0 8-9V6Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="icon-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="icon-x-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18M18 6 6 18"/></symbol>
+    <symbol id="icon-cursor-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 4 6.5 16 2.5-7 7-2.5L4 4Z"/></symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="icon-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5v9L12 21l9-4.5v-9L12 3Z"/><path d="M3 7.5 12 12l9-4.5"/><path d="M12 12v9"/></symbol>
+    <symbol id="icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h8l10 10-8 8L3 11Z"/><circle cx="7.5" cy="7.5" r="1.2"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  </defs></svg>
+
+  <div class="head">
+    <h1>undust — pack icônes</h1>
+    <div class="meta">prompt 12 · 21 icônes · viewBox 24 · stroke 1.5</div>
+  </div>
+  <p class="lede">
+    Pack line-art cohérent pour tout l'écosystème undust : sites, slides, dashboards, signature mail.
+    Style blueprint / schéma technique. Trait 1.5px uniforme, <code style="background:var(--line-light); padding:2px 6px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">currentColor</code> pour héritage couleur, <code style="background:var(--line-light); padding:2px 6px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">round</code> caps & joins.
+  </p>
+
+  <!-- ============== Grille des 21 icônes ============== -->
+  <section>
+    <h2>Library · 21 icônes</h2>
+    <div class="grid">
+      <div class="cell"><svg class="icon"><use href="#icon-users"/></svg><div class="label">users</div><div class="id">équipe</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-handshake"/></svg><div class="label">handshake</div><div class="id">partenariat</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-network"/></svg><div class="label">network</div><div class="id">connectivité</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-cog"/></svg><div class="label">cog</div><div class="id">système</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-tools"/></svg><div class="label">tools</div><div class="id">atelier</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-beaker"/></svg><div class="label">beaker</div><div class="id">R&amp;D</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-book-open"/></svg><div class="label">book-open</div><div class="id">manifeste</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-magnifying-glass"/></svg><div class="label">magnifying-glass</div><div class="id">audit</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-scale"/></svg><div class="label">scale</div><div class="id">antifragilité</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-chart-bar"/></svg><div class="label">chart-bar</div><div class="id">data</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-lightning"/></svg><div class="label">lightning</div><div class="id">signal</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-lock"/></svg><div class="label">lock</div><div class="id">souveraineté</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-shield-check"/></svg><div class="label">shield-check</div><div class="id">conformité</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-flag"/></svg><div class="label">flag</div><div class="id">milestone</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-check"/></svg><div class="label">check</div><div class="id">validation</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-x-mark"/></svg><div class="label">x-mark</div><div class="id">erreur</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-cursor-arrow"/></svg><div class="label">cursor-arrow</div><div class="id">action</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-chevron-right"/></svg><div class="label">chevron-right</div><div class="id">navigation</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-cube"/></svg><div class="label">cube</div><div class="id">composant</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-tag"/></svg><div class="label">tag</div><div class="id">classification</div></div>
+      <div class="cell"><svg class="icon"><use href="#icon-clock"/></svg><div class="label">clock</div><div class="id">durée</div></div>
+    </div>
+  </section>
+
+  <!-- ============== Tailles ============== -->
+  <section>
+    <h2>Tailles · 24 / 32 / 48 / 64</h2>
+    <div class="sizes">
+      <div class="size-card"><svg class="size-24"><use href="#icon-cog"/></svg><div class="px">24 px</div></div>
+      <div class="size-card"><svg class="size-32"><use href="#icon-cog"/></svg><div class="px">32 px</div></div>
+      <div class="size-card"><svg class="size-48"><use href="#icon-cog"/></svg><div class="px">48 px</div></div>
+      <div class="size-card"><svg class="size-64"><use href="#icon-cog"/></svg><div class="px">64 px</div></div>
+
+      <div class="size-card"><svg class="size-24"><use href="#icon-network"/></svg><div class="px">24 px</div></div>
+      <div class="size-card"><svg class="size-32"><use href="#icon-network"/></svg><div class="px">32 px</div></div>
+      <div class="size-card"><svg class="size-48"><use href="#icon-network"/></svg><div class="px">48 px</div></div>
+      <div class="size-card"><svg class="size-64"><use href="#icon-network"/></svg><div class="px">64 px</div></div>
+    </div>
+  </section>
+
+  <!-- ============== Couleurs ============== -->
+  <section>
+    <h2>currentColor · héritage parent</h2>
+    <div class="colors">
+      <div class="color-cell c-paper"><svg><use href="#icon-shield-check"/></svg><div class="label">ink on paper</div></div>
+      <div class="color-cell c-ink"><svg><use href="#icon-shield-check"/></svg><div class="label">paper on ink</div></div>
+      <div class="color-cell c-orange"><svg><use href="#icon-shield-check"/></svg><div class="label">paper on orange</div></div>
+      <div class="color-cell c-paper-orange"><svg><use href="#icon-shield-check"/></svg><div class="label">orange on paper</div></div>
+    </div>
+  </section>
+
+  <!-- ============== Use-cases ============== -->
+  <section>
+    <h2>En contexte</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <h3>Liste de features</h3>
+        <div class="uc-row check"><svg><use href="#icon-check"/></svg><span>Données encryptées at-rest et in-transit</span></div>
+        <div class="uc-row check"><svg><use href="#icon-check"/></svg><span>Modèles open-weights, inférence locale</span></div>
+        <div class="uc-row check"><svg><use href="#icon-check"/></svg><span>Audit trail cryptographiquement signé</span></div>
+        <div class="uc-row x"><svg><use href="#icon-x-mark"/></svg><span>Pas de télémétrie, pas de cloud tiers</span></div>
+      </div>
+      <div class="use-case">
+        <h3>Métadonnées doc</h3>
+        <div class="uc-row"><svg><use href="#icon-clock"/></svg><span>Lecture · 8 minutes</span></div>
+        <div class="uc-row"><svg><use href="#icon-tag"/></svg><span>Antifragilité · Souveraineté</span></div>
+        <div class="uc-row"><svg><use href="#icon-users"/></svg><span>Pour : équipes data &amp; sécurité</span></div>
+        <div class="uc-row"><svg><use href="#icon-flag"/></svg><span>Version 2026.04 — stable</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== Snippets ============== -->
+  <section>
+    <h2>Intégration</h2>
+
+    <div class="snippet-label">A · Symbol library (recommandé)</div>
+    <pre><span class="c">&lt;!-- 1. Inclure une fois en haut du &lt;body&gt; --&gt;</span>
+&lt;<span class="t">div</span> <span class="a">hidden</span>&gt;{{ <span class="s">readfile</span> "icons-symbols.svg" }}&lt;/<span class="t">div</span>&gt;
+
+<span class="c">&lt;!-- 2. Utiliser n'importe où --&gt;</span>
+&lt;<span class="t">svg</span> <span class="a">class</span>="icon"&gt;&lt;<span class="t">use</span> <span class="a">href</span>="#icon-users"/&gt;&lt;/<span class="t">svg</span>&gt;
+
+<span class="c">/* CSS minimal */</span>
+.icon { <span class="a">width</span>: 1em; <span class="a">height</span>: 1em; <span class="a">vertical-align</span>: -0.15em; }</pre>
+
+    <div class="snippet-label" style="margin-top: 24px;">B · SVG individuel inline</div>
+    <pre>&lt;<span class="t">svg</span> <span class="a">viewBox</span>="0 0 24 24" <span class="a">width</span>="24" <span class="a">height</span>="24"
+     <span class="a">fill</span>="none" <span class="a">stroke</span>="currentColor" <span class="a">stroke-width</span>="1.5"
+     <span class="a">stroke-linecap</span>="round" <span class="a">stroke-linejoin</span>="round"&gt;
+  &lt;<span class="t">circle</span> <span class="a">cx</span>="12" <span class="a">cy</span>="5" <span class="a">r</span>="2"/&gt;
+  &lt;<span class="t">circle</span> <span class="a">cx</span>="5"  <span class="a">cy</span>="19" <span class="a">r</span>="2"/&gt;
+  &lt;<span class="t">circle</span> <span class="a">cx</span>="19" <span class="a">cy</span>="19" <span class="a">r</span>="2"/&gt;
+  &lt;<span class="t">path</span> <span class="a">d</span>="M12 7v3M12 10 6.5 17.5M12 10l5.5 7.5M7 19h10"/&gt;
+&lt;/<span class="t">svg</span>&gt;</pre>
+  </section>
+
+  <div class="footer">
+    undust · prompt 12 · 21 icônes · brand/icons/
+  </div>
+
+</body>
+</html>

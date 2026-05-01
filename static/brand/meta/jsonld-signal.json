@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Periodical",
+      "@id": "https://signal.antifrag.fr/#periodical",
+      "name": "Signal Antifragile",
+      "alternateName": "ANT-7",
+      "url": "https://signal.antifrag.fr",
+      "issn": "{{ISSN}}",
+      "publisher": { "@id": "https://undust.co/#organization" },
+      "editor": { "@id": "https://lucletoffe.com/#person" },
+      "inLanguage": "fr",
+      "description": "Newsletter hebdomadaire sur l'industrie critique. Veille technique, retours d'expérience terrain, doctrine 'filiation pas disruption'.",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Ingénieurs industriels (hardware critique : défense, aéro, ferroviaire, médical, énergie)"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://signal.antifrag.fr/#website",
+      "url": "https://signal.antifrag.fr",
+      "name": "Signal Antifragile",
+      "publisher": { "@id": "https://undust.co/#organization" },
+      "inLanguage": "fr-FR",
+      "potentialAction": {
+        "@type": "SubscribeAction",
+        "target": "https://signal.antifrag.fr/#newsletter"
+      }
+    }
+  ]
+}

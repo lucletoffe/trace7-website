@@ -1,0 +1,85 @@
+/* undust proof-card — v1.1
+   Carte preuve avec gros chiffre dominant.
+   Moment cognitif servi : #2bis preuve par chiffre.
+   Règle : le chiffre domine VISUELLEMENT — le label est étiquette, pas poids.
+   Dépend de tokens.css + typography.css + tones.css.
+*/
+
+.proof-card {
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr;
+  gap: 1.5rem 2rem;
+  align-items: start;
+  padding: var(--tone-card-padding) 0;
+}
+
+@media (max-width: 640px) {
+  .proof-card { grid-template-columns: 1fr; gap: 0.75rem; }
+}
+
+.proof-card__col-num {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.proof-card__col-context {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  padding-top: 0.5rem;
+}
+
+.proof-card__number {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--accent);
+  margin: 0;
+}
+
+.proof-card--accent   .proof-card__number { color: var(--accent); }
+.proof-card--teal     .proof-card__number { color: var(--teal); }
+.proof-card--critical .proof-card__number { color: var(--critical); }
+.proof-card--muted    .proof-card__number { color: var(--text); }
+
+.proof-card__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-eyebrow);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.proof-card__context {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+  max-width: 50ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.proof-card__detail {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Variante : layout stack (chiffre au-dessus, contexte en dessous) — pour grilles serrées */
+.proof-card--stack {
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+.proof-card--stack .proof-card__col-context { padding-top: 0; }

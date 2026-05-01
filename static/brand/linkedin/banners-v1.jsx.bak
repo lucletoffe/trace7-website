@@ -1,0 +1,176 @@
+/* global React */
+const { useState } = React;
+
+const ProfileMask = () => (
+  <>
+    <div style={{
+      position: 'absolute', left: 76, bottom: -76,
+      width: 152, height: 152, borderRadius: '50%',
+      background: '#0a0a0a', border: '4px solid #0a0a0a',
+      pointerEvents: 'none', zIndex: 5,
+      display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
+      paddingTop: 14, fontFamily: '"JetBrains Mono", monospace',
+      fontSize: 9, color: 'rgba(255,107,53,0.4)',
+      letterSpacing: '0.15em', textTransform: 'uppercase'
+    }}>photo</div>
+    <div style={{
+      position: 'absolute', bottom: 16, right: 24, display: 'flex', gap: 8, zIndex: 5
+    }}>
+      {['+ Suivre', 'Message'].map(t => (
+        <div key={t} style={{
+          background: 'rgba(255,255,255,0.05)', border: '1px dashed rgba(255,107,53,0.25)',
+          borderRadius: 999, padding: '6px 14px',
+          fontFamily: '"JetBrains Mono", monospace', fontSize: 9,
+          color: 'rgba(255,107,53,0.4)',
+          letterSpacing: '0.15em', textTransform: 'uppercase'
+        }}>{t}</div>
+      ))}
+    </div>
+  </>
+);
+
+const TealCornerGrid = () => (
+  <svg style={{ position: 'absolute', top: 0, right: 0, opacity: 0.7 }}
+       width="500" height="280" viewBox="0 0 500 280">
+    <defs>
+      <pattern id="tg" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4a7f8a" strokeWidth="1.2"/>
+      </pattern>
+      <linearGradient id="fg" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#1a1a1a" stopOpacity="1"/>
+        <stop offset="60%" stopColor="#1a1a1a" stopOpacity="0"/>
+      </linearGradient>
+      <mask id="gm"><rect width="500" height="280" fill="white"/><rect width="500" height="280" fill="url(#fg)"/></mask>
+    </defs>
+    <rect width="500" height="280" fill="url(#tg)" mask="url(#gm)"/>
+  </svg>
+);
+
+const SafeGuides = () => (
+  <div style={{
+    position: 'absolute', left: 250, top: 24, width: 1190, height: 296,
+    border: '1px dashed rgba(74,127,138,0.25)', pointerEvents: 'none',
+    fontFamily: '"JetBrains Mono", monospace', fontSize: 9,
+    color: 'rgba(74,127,138,0.4)', letterSpacing: '0.15em',
+    textTransform: 'uppercase', padding: 6, zIndex: 4
+  }}>safe content</div>
+);
+
+const Frame = ({ children }) => (
+  <div style={{
+    width: 1584, height: 396, background: '#1a1a1a',
+    fontFamily: '"Titillium Web", sans-serif', color: '#e5e7eb',
+    position: 'relative', overflow: 'visible'
+  }}>{children}</div>
+);
+
+const Badge = ({ children, color = '#ff6b35' }) => (
+  <div style={{
+    position: 'absolute', top: 32, left: 250, zIndex: 2,
+    fontFamily: '"JetBrains Mono", monospace', fontSize: 11,
+    letterSpacing: '0.22em', textTransform: 'uppercase',
+    color, display: 'inline-flex', alignItems: 'center', gap: 8,
+    padding: '6px 12px', border: `1px solid ${color}`, borderRadius: 4
+  }}>
+    <span style={{ width: 6, height: 6, background: color, borderRadius: '50%' }}/>
+    {children}
+  </div>
+);
+
+const FOUR = ['Capter', 'Structurer', 'Indexer', 'Transmettre'];
+
+/* ============= V1 FINALE ============= */
+const V1Final = ({ showGuides }) => (
+  <Frame>
+    <TealCornerGrid/>
+    <Badge>ia · industrie · hardware</Badge>
+
+    {/* Wordmark — top right, aligné avec la colonne 4 verbes */}
+    <div style={{
+      position: 'absolute', top: 32, right: 80,
+      fontFamily: '"Titillium Web", sans-serif',
+      fontWeight: 700, fontSize: 22, letterSpacing: '-0.5px',
+      color: '#e5e7eb', zIndex: 3, lineHeight: 1, textAlign: 'right'
+    }}>undust<span style={{ color: '#ff6b35' }}>.</span></div>
+
+    {/* Colonne 4 verbes — droite, alignée à droite, sous undust */}
+    <div style={{
+      position: 'absolute', top: 78, right: 80, zIndex: 3,
+      display: 'flex', flexDirection: 'column', gap: 10,
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 13,
+      letterSpacing: '0.18em', textTransform: 'uppercase',
+      textAlign: 'right'
+    }}>
+      {FOUR.map((v, i) => (
+        <div key={v} style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 10
+        }}>
+          <span style={{ color: '#e5e7eb' }}>{v}</span>
+          <span style={{
+            width: 6, height: 6, background: '#ff6b35', borderRadius: '50%',
+            display: 'inline-block', flexShrink: 0
+          }}/>
+        </div>
+      ))}
+    </div>
+
+    {/* Bloc principal gauche — slogan */}
+    <div style={{
+      position: 'absolute', top: 88, left: 250, right: 320,
+      fontSize: 80, fontWeight: 700, lineHeight: 0.98, letterSpacing: '-2.4px', zIndex: 2
+    }}>
+      <div style={{ color: '#e5e7eb' }}>VOTRE EXPERT PART.</div>
+      <div style={{ color: '#ff6b35' }}>SON SAVOIR RESTE.</div>
+    </div>
+
+    {/* Sous-titre 1 — 30 ans de métier */}
+    <div style={{
+      position: 'absolute', top: 268, left: 250, right: 320, zIndex: 2,
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 14,
+      color: '#9ca3af', letterSpacing: '0.04em', fontStyle: 'italic'
+    }}>30 ans de métier ne se remplacent pas, ils se transmettent.</div>
+
+    {/* Sous-titre 2 — souverain / auditable / France */}
+    <div style={{
+      position: 'absolute', bottom: 36, left: 250, right: 380, zIndex: 2,
+      fontFamily: '"JetBrains Mono", monospace', fontSize: 13,
+      color: '#9ca3af', letterSpacing: '0.04em', lineHeight: 1.5
+    }}>
+      Souverain. Auditable. <span style={{ color: '#4ade80' }}>Hébergé en France.</span>
+      &nbsp;·&nbsp; Pas de LLM américain sur votre savoir métier.
+    </div>
+
+    <ProfileMask/>{showGuides && <SafeGuides/>}
+  </Frame>
+);
+
+function App() {
+  const [showGuides, setShowGuides] = useState(true);
+  return (
+    <div style={{ background: '#0e0e0e', minHeight: '100vh' }}>
+      <div style={{
+        position: 'fixed', top: 16, right: 16, zIndex: 1000,
+        background: '#1a1a1a', border: '1px solid #2a2a2a',
+        padding: '10px 14px', borderRadius: 8,
+        fontFamily: '"JetBrains Mono", monospace', fontSize: 12,
+        color: '#e5e7eb', display: 'flex', alignItems: 'center', gap: 8
+      }}>
+        <input type="checkbox" id="ss" checked={showGuides} onChange={e => setShowGuides(e.target.checked)}/>
+        <label htmlFor="ss">show LinkedIn safe-zones</label>
+      </div>
+      <DesignCanvas
+        title="Banner LinkedIn — V1 finale"
+        subtitle="Badge IA · industrie · hardware · 4 verbes en colonne droite · sous-souveraineté"
+      >
+        <DCSection id="final" title="V1 finale — bannière retenue">
+          <DCArtboard id="V1Final" label="V1 finale (1584 × 396)" width={1584} height={396}>
+            <V1Final showGuides={showGuides}/>
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);

@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://antifrag.fr/#organization",
+      "name": "Antifragile Hardware",
+      "alternateName": "AFHW",
+      "url": "https://antifrag.fr",
+      "parentOrganization": { "@id": "https://undust.co/#organization" },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://antifrag.fr/assets/afhw-logo-A-white-bg-transparent.png"
+      },
+      "founder": { "@id": "https://lucletoffe.com/#person" },
+      "description": "Mouvement public undust pour ingénieurs et PME hardware critique. Média + formation + communauté.",
+      "knowsAbout": [
+        "Hardware critique",
+        "Mémoire transmissible",
+        "Communauté ingénieurs industriels",
+        "Le Cercle (formation continue)"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Clermont-Ferrand",
+        "addressCountry": "FR"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/lucletoffe",
+        "https://twitter.com/lucletoffe",
+        "https://undust.co",
+        "https://signal.antifrag.fr"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "luc@undust.co",
+        "contactType": "customer support",
+        "availableLanguage": ["French", "English"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://antifrag.fr/#website",
+      "url": "https://antifrag.fr",
+      "name": "Antifragile Hardware",
+      "publisher": { "@id": "https://antifrag.fr/#organization" },
+      "inLanguage": "fr-FR"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+/* undust feature-card — v1.1
+   Bloc narratif complet (vs .card v1.0 qui est l'atome).
+   Moments cognitifs servis : #2 thèse + preuve courte (combo).
+   Dépend de tokens.css + typography.css + tones.css.
+*/
+
+.feature-card {
+  background: var(--bg-elev);
+  border: var(--border-strength-dim);
+  border-radius: var(--radius-md);
+  padding: var(--tone-card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  transition: border-color var(--t-base), transform var(--t-base);
+  /* registre couleur par défaut : muted */
+  color: var(--text-muted);
+}
+
+.feature-card--hover:hover,
+a.feature-card:hover {
+  border-color: var(--border);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Variantes registre — pilotent l'icône, l'eyebrow et le highlight */
+.feature-card--accent   { --feature-card-tint: var(--accent); }
+.feature-card--teal     { --feature-card-tint: var(--teal); }
+.feature-card--critical { --feature-card-tint: var(--critical); }
+.feature-card--muted    { --feature-card-tint: var(--text-muted); }
+
+/* Default tint = muted */
+.feature-card { --feature-card-tint: var(--text-muted); }
+
+/* Variante poids : --lg */
+.feature-card--lg {
+  padding: calc(var(--tone-card-padding) + 0.5rem);
+  gap: 1.125rem;
+}
+
+/* Icon container 24×24 */
+.feature-card__icon {
+  width: 28px;
+  height: 28px;
+  color: var(--feature-card-tint);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-card__icon svg { width: 24px; height: 24px; stroke: currentColor; fill: none; }
+
+/* Eyebrow */
+.feature-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-eyebrow);
+  color: var(--feature-card-tint);
+  margin: 0;
+}
+
+/* Title */
+.feature-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0;
+  text-wrap: balance;
+}
+.feature-card--lg .feature-card__title { font-size: var(--fs-h2); }
+
+/* Body */
+.feature-card__body {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Highlight (italique, séparé par border-top) */
+.feature-card__highlight {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-style: italic;
+  font-weight: var(--fw-regular);
+  line-height: 1.45;
+  color: var(--feature-card-tint);
+  border-top: var(--border-strength-dim);
+  padding-top: 0.875rem;
+  margin: 0.25rem 0 0;
+}
+.feature-card--lg .feature-card__highlight { font-size: var(--fs-body-lg); }
+
+/* a.feature-card : link wrapper sans soulignement */
+a.feature-card { text-decoration: none; color: inherit; }

@@ -1,0 +1,5 @@
+Contact: mailto:security@undust.co
+Expires: 2027-04-30T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://lucletoffe.com/.well-known/security.txt
+Policy: https://lucletoffe.com/security-policy
