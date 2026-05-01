@@ -8,7 +8,9 @@
 <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="website">
-<!-- ===== Brand kit v1.1 — undust ===== -->
+<!-- CSS site (legacy, sera override par brand kit) -->
+<link rel="stylesheet" href="/css/main.css">
+<!-- ===== Brand kit v1.1 — undust (PRIORITAIRE) ===== -->
 <link rel="stylesheet" href="/brand/tokens/tokens.css">
 <link rel="stylesheet" href="/brand/typography/typography.css">
 <link rel="stylesheet" href="/brand/tones/tones.css">
@@ -26,6 +28,4 @@
 <link rel="stylesheet" href="/brand/components/status-badge.css">
 <link rel="stylesheet" href="/brand/components/faq-item.css">
 <link rel="stylesheet" href="/brand/components/form-embed.css">
-<!-- site-specific (overrides brand) -->
-<link rel="stylesheet" href="/css/main.css">
 {{ partial "json-ld.html" . }}
