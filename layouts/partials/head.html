@@ -8,16 +8,18 @@
 <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="website">
-<!-- CSS site (legacy, sera override par brand kit) -->
-<link rel="stylesheet" href="/css/main.css">
-<!-- ===== Brand kit v1.1 — undust (PRIORITAIRE) ===== -->
+<!-- ===== Brand kit v1.1 — foundations (chargees AVANT pour ne pas casser le layout legacy) ===== -->
 <link rel="stylesheet" href="/brand/tokens/tokens.css">
 <link rel="stylesheet" href="/brand/typography/typography.css">
 <link rel="stylesheet" href="/brand/tones/tones.css">
 <link rel="stylesheet" href="/brand/patterns/bg-dotgrid.css">
 <link rel="stylesheet" href="/brand/patterns/bg-gradient-radial.css">
 <link rel="stylesheet" href="/brand/patterns/section-types.css">
-<link rel="stylesheet" href="/brand/components/components.css">
+
+<!-- CSS site (legacy, prioritaire sur les atomes communs) -->
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- ===== Brand kit v1.1 — composants uniques v1.1 (PRIORITAIRES, aucun conflit avec legacy) ===== -->
 <link rel="stylesheet" href="/brand/components/hero-composed.css">
 <link rel="stylesheet" href="/brand/components/feature-card.css">
 <link rel="stylesheet" href="/brand/components/module-card.css">
@@ -28,4 +30,6 @@
 <link rel="stylesheet" href="/brand/components/status-badge.css">
 <link rel="stylesheet" href="/brand/components/faq-item.css">
 <link rel="stylesheet" href="/brand/components/form-embed.css">
+<!-- NB : components.css (atomes .btn/.card/.site-header/...) volontairement non charge sur trace7 :
+     le legacy main.css definit son header/footer/.brand/.seven et le brand kit casserait le layout. -->
 {{ partial "json-ld.html" . }}

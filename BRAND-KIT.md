@@ -16,7 +16,12 @@
 `static/brand/` → servi à `/brand/...` — **déjà inclus** dans `layouts/partials/head.html`, pas besoin de toucher.
 Showcase complet : http://localhost:1314/brand/components/index.html
 
-L'ordre CSS est : `static/css/main.css` (legacy) puis brand kit → **brand kit prioritaire**. Les classes brand kit gagnent en cas de conflit.
+L'ordre CSS est en sandwich :
+1. **Brand kit foundations** (tokens, typography, tones, patterns) chargées AVANT — variables partagées disponibles
+2. **Legacy `/css/main.css`** au milieu — prioritaire pour les classes communes (`.site-header`, `.brand`, `.seven`, etc.)
+3. **Brand kit composants v1.1** uniques chargés APRÈS — prioritaires (aucune collision possible vu leurs préfixes uniques `hero-composed`, `feature-card`, etc.)
+
+⚠️ **`components.css` (atomes v1.0 : `.btn` `.card` `.badge` `.site-header` `.site-footer`) n'est volontairement PAS chargé sur trace7** — le legacy `main.css` définit son propre header/footer/wordmark Trace7 et le brand kit casserait le layout. Pour un bouton dans une nouvelle page, écris-le directement avec les vars CSS du brand kit (voir exemple plus bas) plutôt que de chercher `.btn--primary`.
 
 ## Variables CSS dispo (utilise-les, ne hardcode JAMAIS)
 
@@ -138,15 +143,36 @@ Variants : `--active` / `--planned` / `--archive` / `--highlight`
 </form>
 ```
 
-## Composants v1.0 atomes (génériques, brand kit prioritaire)
+## Atomes v1.0 — non chargés sur trace7 (collision potentielle avec legacy)
 
-- `.btn`, `.btn--primary`, `.btn--ghost`, `.btn--quiet`, `.btn--critical`, `.btn--lg`, `.btn--sm`
-- `.card`, `.card--hover`, `.card--accent`, `.card--teal`, `.card--critical`, `.card--green`
-- `.badge`, `.badge--accent` / `--teal` / `--green` / `--critical` / `--muted`
-- `.input`, `.textarea`, `.select`, `.field`, `.field__label`, `.field__hint`, `.field__error`
-- `.eyebrow`, `.eyebrow--accent`, `.eyebrow--teal`
-- `.divider`, `.divider--dashed`
-- `.link`, `.link--accent`, `.link--mono`
+`components.css` n'est PAS chargé. Les classes `.btn`, `.card`, `.badge`, `.site-header`, `.site-footer`, `.input`, `.eyebrow`, `.divider`, `.link` du brand kit ne sont **PAS** disponibles ici.
+
+Pour un bouton dans une nouvelle page, écris-le directement avec les vars CSS :
+
+```html
+<a href="/demo/" class="t7-cta-primary">Demander une démo →</a>
+```
+```css
+.t7-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  text-decoration: none;
+  transition: background var(--t-fast);
+}
+.t7-cta-primary:hover { background: var(--accent-600); }
+```
+
+Pour les composants narratifs (hero, cards de features, témoignages, etc.), **utilise les v1.1 ci-dessus** — ils sont chargés et fonctionnent sans collision.
 
 ## Patterns / sections
 
