@@ -1,6 +1,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, noai, noimageai">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#1a1a1a" id="meta-theme-color">
+<!-- Pré-paint thème (évite le flash) -->
+<script>
+(function(){try{var s=localStorage.getItem('undust-theme');var pl=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;document.documentElement.setAttribute('data-theme',s||(pl?'light':'dark'));}catch(e){}})();
+</script>
 <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.description }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <link rel="canonical" href="{{ .Permalink }}">
@@ -33,6 +39,9 @@
 <link rel="stylesheet" href="/brand/components/status-badge.css">
 <link rel="stylesheet" href="/brand/components/faq-item.css">
 <link rel="stylesheet" href="/brand/components/form-embed.css">
-<!-- NB : components.css (atomes .btn/.card/.site-header/...) volontairement non charge sur trace7 :
-     le legacy main.css definit son header/footer/.brand/.seven et le brand kit casserait le layout. -->
+<!-- Header unifié undust.co · antifrag.fr · trace7.fr (audit 2026-05-03) -->
+<link rel="stylesheet" href="/brand/components/site-header.css">
+<script defer src="/brand/components/site-header.js"></script>
+<!-- NB : components.css (atomes .btn/.card/...) volontairement non charge sur trace7 :
+     le legacy main.css definit son footer et le brand kit casserait le layout. -->
 {{ partial "json-ld.html" . }}

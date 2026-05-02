@@ -1,0 +1,204 @@
+/* =============================================================
+   site-header.css — barre unifiée undust.co · antifrag.fr · trace7.fr
+   Source de vérité visuelle : undust.co (port 1315).
+   Décision audit 2026-05-03 (artifact y7OzI3HW) : unité visuelle.
+
+   Tokens consommés : --bg, --text, --text-muted, --border-dim,
+   --accent — tous définis dans /brand/tokens/tokens.css.
+
+   Le mode clair/sombre est géré par data-theme="dark|light" sur <html>.
+   ============================================================= */
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4rem;
+  padding: 0 clamp(1rem, 3vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg) 92%, transparent),
+    color-mix(in srgb, var(--bg) 0%, transparent)
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100;
+}
+
+/* fallback navigateur sans color-mix (rare) */
+@supports not (background: color-mix(in srgb, red, blue)) {
+  .site-header {
+    background: linear-gradient(to bottom, var(--bg), transparent);
+  }
+}
+
+/* ----- Logo ----- */
+.site-header .brand,
+.site-header .logo {
+  font-family: var(--font-mono, ui-monospace, "JetBrains Mono", Menlo, monospace);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+}
+.site-header .brand:hover,
+.site-header .logo:hover {
+  text-decoration: none;
+  color: var(--text);
+}
+.site-header .logo-dot,
+.site-header .brand .seven {
+  color: var(--accent);
+  font-weight: 700;
+}
+.site-header .brand strong { font-weight: 600; }
+
+/* ----- Navigation centrale (optionnelle) ----- */
+.site-header .main-nav,
+.site-header .internal-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 2vw, 1.4rem);
+  flex: 1;
+  justify-content: center;
+  font-family: var(--font-display, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  flex-wrap: wrap;
+}
+.site-header .main-nav a,
+.site-header .internal-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.2rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.site-header .main-nav a:hover,
+.site-header .internal-nav a:hover,
+.site-header .main-nav a[aria-current],
+.site-header .internal-nav a[aria-current] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ----- Actions à droite ----- */
+.site-header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* ----- Toggle thème ----- */
+.theme-toggle {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border-dim);
+  color: var(--text-muted);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.theme-toggle:active { transform: scale(0.95); }
+
+/* Icônes sun/moon */
+.theme-icon { display: none; }
+[data-theme="dark"]  .theme-icon--sun  { display: inline-block; }
+[data-theme="light"] .theme-icon--moon { display: inline-block; }
+:root:not([data-theme]) .theme-icon--sun { display: inline-block; } /* fallback dark */
+
+/* ----- Scroll hint (utilisé par undust principalement) ----- */
+.site-header .scroll-hint {
+  font-family: var(--font-mono, ui-monospace, "JetBrains Mono", Menlo, monospace);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: opacity 0.4s ease-out, visibility 0.4s ease-out, color 0.15s;
+}
+.site-header .scroll-hint:hover { color: var(--text); }
+.site-header.is-end .scroll-hint {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ----- Espacement contenu pour ne pas passer SOUS le header fixe ----- */
+body { padding-top: 0; } /* la plupart des sites ont déjà leur propre offset hero */
+
+/* ----- Variant "internal" pour antifrag (compatibilité ascendante) ----- */
+.internal-header { /* alias de .site-header pour Hugo antifrag */
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4rem;
+  padding: 0 clamp(1rem, 3vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg) 92%, transparent),
+    color-mix(in srgb, var(--bg) 0%, transparent)
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100;
+}
+.internal-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+.internal-brand {
+  font-family: var(--font-mono, ui-monospace, "JetBrains Mono", Menlo, monospace);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 720px) {
+  .site-header,
+  .internal-header {
+    height: 3.5rem;
+  }
+  .site-header .main-nav,
+  .site-header .internal-nav,
+  .internal-header .internal-nav {
+    font-size: 0.78rem;
+    gap: 0.7rem;
+  }
+}
