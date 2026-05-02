@@ -22,7 +22,7 @@
   </section>
 
   <section class="early-bird">
-    <p>Places fondatrices restantes : <span id="early-bird-counter" data-max="{{ .Params.early_bird_max }}">{{ .Params.early_bird_max }}</span> / {{ .Params.early_bird_max }}</p>
+    <p>Places fondatrices restantes : <span id="early-bird-counter" data-max="{{ .Site.Data.founders.total }}">{{ .Site.Data.founders.remaining }}</span> / {{ .Site.Data.founders.total }}</p>
   </section>
 </article>
 {{ end }}

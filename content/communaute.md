@@ -18,7 +18,7 @@ La communauté Praticien Trace7 est un **module dédié** intégré à l'applica
 
 **Revues croisées sur invitation.** Pour les cas particulièrement instructifs (cotation critique, arbitrage SIL4, dossier conformité), le posteur peut demander une revue croisée par 2-3 Praticiens senior. Format visio 30 minutes, enregistré dans Trace7, indexé pour les autres.
 
-**Luc dans le cercle.** Luc Letoffé est dans la communauté en permanence — pas comme animateur, mais comme Praticien. Il poste ses propres cas, débriefe ceux des autres, et reste accessible pour les questions méthode profondes.
+**Luc dans le cercle.** Luc Létoffé est dans la communauté en permanence — pas comme animateur, mais comme Praticien. Il poste ses propres cas, débriefe ceux des autres, et reste accessible pour les questions méthode profondes.
 
 ## Souveraineté
 

@@ -36,11 +36,11 @@ Inclus dans Praticien :
 - Le logiciel Trace7 — capture, restitution, conformité — sans limite d'usage personnel.
 - Les modules formation **embarqués dans l'application** — méthode de spécification géométrique (ISO GPS), capture du raisonnement technique, traçabilité décisionnelle. Pas un PDF qui dort.
 - L'accès à la communauté privée — un cas par semaine, débrief en groupe, règle métier extraite.
-- **Un cas perso suivi par Luc Letoffé en personne** pendant les 12 premiers mois.
+- **Un cas perso suivi par Luc Létoffé en personne** pendant les 12 premiers mois.
 
 ## Compteur early bird
 
-**50 places fondatrices**. Prix verrouillé à vie. Garantie écrite. Aucune migration de prix tant que le Praticien reste actif. Compteur visible en home (`23/50` au moment où vous lisez). Lorsque les 50 sont prises, le tarif passe à 79 €/mois pour les nouveaux entrants — et les fondateurs gardent les 39 €.
+**{{< founders-total >}} places fondatrices**. Prix verrouillé à vie. Garantie écrite. Aucune migration de prix tant que le Praticien reste actif. Compteur visible en home (`{{< founders-remaining >}}/{{< founders-total >}}` au moment où vous lisez). Lorsque les {{< founders-total >}} sont prises, le tarif passe à 79 €/mois pour les nouveaux entrants — et les fondateurs gardent les 39 €.
 
 ## Différence Trace7 « Praticien » vs mission « Atlas »
 

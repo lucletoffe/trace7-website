@@ -7,7 +7,7 @@ description: "Logiciel de spécification technique pour l'industrie hardware cri
   <p class="kicker">Trace7 · Logiciel produit · Praticien individuel à 39 €/mois</p>
   <h1>Documente vos projets en travaillant.</h1>
   <p class="lede">Trace7 capte les arbitrages techniques de votre BE pendant qu'ils se prennent. Pas un agent IA qui tourne dans le dos. Pas un PLM de plus à remplir le vendredi soir. Un module qui documente la décision pendant qu'elle se prend — et qui la restitue le jour où votre meilleur expert n'est plus là pour la rejouer.</p>
-  <p class="early-bird-counter"><strong>50 sièges fondateurs</strong> à vie — <span id="early-bird-counter" data-max="50">23</span> places restantes en early bird.</p>
+  <p class="early-bird-counter"><strong>{{< founders-total >}} sièges fondateurs</strong> à vie — <span id="early-bird-counter" data-max="{{< founders-total >}}">{{< founders-remaining >}}</span> places restantes en early bird.</p>
   <p class="hero-cta">
     <a href="/pricing/" class="cta-primary">→ Voir les 4 tiers</a>
     <a href="/demo/" class="cta-secondary">→ Réserver une démo</a>
@@ -53,7 +53,7 @@ Réservée aux 50 premiers fondateurs. Un cercle d'ingénieurs méthode, BE, qua
 
 ## Sécurité · 100 % souverain
 
-Données hébergées en France (OVH HDS) ou en on-premise chez vous. Modèles d'IA tournant en local. Aucun transit hors UE. Code source du moteur livré sous séquestre pour les clients Atlas et On-premise. **Mistral fournit l'infra. Nous fournissons le métier.**
+Données hébergées en France (OVH HDS) ou en on-premise chez vous. Modèles d'IA tournant en local. Aucun transit hors UE. Code source du moteur livré sous séquestre pour les clients Atlas et On-premise. **Trace7 capte. Fractal7 indexe. Mistral fournit le LLM commodifié.**
 
 → [Architecture sécurité détaillée](/securite/)
 

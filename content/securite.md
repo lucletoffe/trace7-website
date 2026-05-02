@@ -1,6 +1,6 @@
 ---
 title: "Sécurité — architecture souveraine et opposabilité"
-description: "Hébergement France HDS ou on-premise. Chiffrement bout-en-bout. SSO SAML / OIDC, MFA, RBAC granulaire. Mistral fournit l'infra, nous fournissons le métier. Aucun transit hyperscaler étranger."
+description: "Hébergement France HDS ou on-premise. Chiffrement bout-en-bout. SSO SAML / OIDC, MFA, RBAC granulaire. Trace7 capte. Fractal7 indexe. Mistral fournit le LLM commodifié. Aucun transit hyperscaler étranger."
 weight: 80
 ---
 
@@ -10,13 +10,17 @@ weight: 80
 
 **On-premise (offre dédiée).** Pour les clients ferroviaire / défense / nucléaire / agroalimentaire critiques, Trace7 est livrable **chez vous**, sur votre infrastructure, sans aucune connexion internet sortante. Le moteur de capture, le moteur de recherche sémantique, les modèles d'IA — tout tourne en local. Le code source du moteur est livré sous **séquestre** pour garantir la pérennité.
 
-## Architecture LLM — Mistral fournit l'infra, nous fournissons le métier
+## Architecture — trois couches souveraines
 
-Trace7 utilise des modèles d'IA pour la transcription vocale, l'embedding sémantique métier et la classification des décisions. Notre stack LLM par défaut s'appuie sur **Mistral Workflows** (orchestration souveraine) et des modèles **embedding spécialisés hardware critique** entraînés en interne.
+> **Trace7 capte. Fractal7 indexe. Mistral fournit le LLM commodifié.**
 
-Aucun appel n'est routé vers un hyperscaler étranger. Aucun token de votre métier ne transite par OpenAI, Anthropic, Google, AWS ou Azure. Le périmètre est entièrement français — Mistral pour l'infra LLM, OVH pour l'hébergement, Antifragile Hardware pour le métier.
+Trace7 utilise des modèles d'IA pour la transcription vocale, l'embedding sémantique métier et la classification des décisions. Notre stack repose sur trois couches souveraines :
 
-> *« Mistral fournit l'infra. Nous fournissons le métier. »*
+- **Trace7** — la capture du geste, l'interface terrain. Vocal, contextuel, règle métier.
+- **Fractal7** — notre moteur de traçabilité décisionnelle. Indexation, liens, restitution. C'est le composant qui fait la valeur durable de votre référentiel.
+- **Mistral** — le LLM commodifié, orchestré via **Mistral Workflows** (souverain). Plus des modèles **embedding spécialisés hardware critique** entraînés en interne.
+
+Aucun appel n'est routé vers un hyperscaler étranger. Aucun token de votre métier ne transite par OpenAI, Anthropic, Google, AWS ou Azure. Le périmètre est entièrement français — Mistral pour le LLM commodifié, OVH pour l'hébergement, Fractal7 pour le moteur, Trace7 pour l'interface.
 
 ## Chiffrement
 
@@ -49,4 +53,4 @@ La doctrine IA d'Antifragile Hardware (transparence, traçabilité, droit, gouve
 
 ## Contact RSSI
 
-Pour toute question architecture, sécurité, audit, contrat de sous-traitance — Luc Letoffé reste joignable directement : **rssi@trace7.fr** ou via [Cal.com 30 min](https://cal.com/luc-letoffe/rssi).
+Pour toute question architecture, sécurité, audit, contrat de sous-traitance — Luc Létoffé reste joignable directement : **rssi@trace7.fr** ou via [Cal.com 30 min](https://cal.com/luc-letoffe/rssi).
