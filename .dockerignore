@@ -1,0 +1,12 @@
+.git
+.github
+public
+resources
+.hugo_build.lock
+node_modules
+*.md
+!content/**/*.md
+.DS_Store
+Dockerfile
+docker-compose.yml
+.dockerignore

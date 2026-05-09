@@ -1,0 +1,22 @@
+services:
+  trace7-static:
+    container_name: trace7-static
+    image: trace7-static:local
+    build: .
+    restart: unless-stopped
+    networks:
+      - kamal
+    labels:
+      kamal-proxy.enabled: "true"
+      kamal-proxy.host: "trace7.fr,www.trace7.fr"
+      kamal-proxy.tls: "true"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/up"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+networks:
+  kamal:
+    external: true
+    name: kamal
